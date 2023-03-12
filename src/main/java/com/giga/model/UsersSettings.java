@@ -1,6 +1,5 @@
-package entity1;
+package com.giga.model;
 
-import com.example.recepcja.entities.Specjalizacja;
 
 import javax.persistence.*;
 import java.util.Objects;

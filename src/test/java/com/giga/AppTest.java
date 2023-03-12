@@ -1,8 +1,6 @@
 package com.giga;
 
-import com.giga.model.Gun;
-import com.giga.model.FireTest;
-import com.giga.model.Vehicle;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

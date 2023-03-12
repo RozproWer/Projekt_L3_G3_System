@@ -1,6 +1,4 @@
-package entity1;
-
-import com.example.recepcja.entities.Specjalizacja;
+package com.giga.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

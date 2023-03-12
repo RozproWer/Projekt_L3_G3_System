@@ -1,4 +1,4 @@
-package entity1;
+package com.giga.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
