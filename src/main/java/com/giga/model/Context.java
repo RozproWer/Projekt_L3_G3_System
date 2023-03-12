@@ -41,7 +41,6 @@ public class Context {
     private SortedList<Vehicle> sortedVehicleTable =  new SortedList<>(filteredVehicleTable);
     */
 
-
     private final static Context instance = new Context();
 
     /**

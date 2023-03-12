@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "visits", schema = "htask")
-public class Visits {
+public class Visit {
     private int id;
     private int patientId;
     private int doctorId;
@@ -25,19 +25,20 @@ public class Visits {
         this.id = id;
     }
 
-    @ManyToOne(targetEntity = Users.class)
+    @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "id")
-    private Users users;
+    private User user;
     public int getDoctorId() {
-        return users.getId();
+        return user.getId();
     }
 
-    @ManyToOne(targetEntity = Users.class)
+    @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "id")
-    private Users users1;
+    private User user1;
     public int getUserId() {
-        return users1.getId();
+        return user1.getId();
     }
+
 //    @Basic
 //    @Column(name = "patient_id", nullable = false)
 //    public int getPatientId() {
@@ -95,8 +96,8 @@ public class Visits {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Visits visits = (Visits) o;
-        return id == visits.id && patientId == visits.patientId && doctorId == visits.doctorId && Objects.equals(title, visits.title) && Objects.equals(description, visits.description) && Objects.equals(createdOn, visits.createdOn) && Objects.equals(appointmentOn, visits.appointmentOn);
+        Visit visit = (Visit) o;
+        return id == visit.id && patientId == visit.patientId && doctorId == visit.doctorId && Objects.equals(title, visit.title) && Objects.equals(description, visit.description) && Objects.equals(createdOn, visit.createdOn) && Objects.equals(appointmentOn, visit.appointmentOn);
     }
 
     @Override

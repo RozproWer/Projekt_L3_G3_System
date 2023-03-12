@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "messages", schema = "htask")
-public class Messages {
+public class Message {
     private int id;
     private int userId;
     private int taskId;
@@ -25,9 +25,9 @@ public class Messages {
     }
 
 
-    @ManyToOne(targetEntity = Users.class)
+    @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "id")
-    private Users users;
+    private User user;
     public int getUserId() {
         return userId;
     }
@@ -36,7 +36,7 @@ public class Messages {
         this.userId = userId;
     }
 
-    @ManyToOne(targetEntity = Tasks.class)
+    @ManyToOne(targetEntity = Task.class)
     @JoinColumn(name = "id")
     public int getTaskId() {
         return taskId;
@@ -70,8 +70,8 @@ public class Messages {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Messages messages = (Messages) o;
-        return id == messages.id && userId == messages.userId && taskId == messages.taskId && Objects.equals(createdOn, messages.createdOn) && Objects.equals(message, messages.message);
+        Message message = (Message) o;
+        return id == message.id && userId == message.userId && taskId == message.taskId && Objects.equals(createdOn, message.createdOn) && Objects.equals(this.message, message.message);
     }
 
     @Override

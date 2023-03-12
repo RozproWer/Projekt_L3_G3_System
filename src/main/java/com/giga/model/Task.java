@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "tasks", schema = "htask")
-public class Tasks {
+public class Task {
     private int id;
     private String title;
     private int doctorId;
@@ -38,18 +38,18 @@ public class Tasks {
         this.title = title;
     }
 
-    @ManyToOne(targetEntity = Users.class)
+    @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "id")
-    private Users users;
+    private User user;
     public int getDoctorId() {
-        return users.getId();
+        return user.getId();
     }
 
-    @ManyToOne(targetEntity = Users.class)
+    @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "id")
-    private Users users1;
+    private User user1;
     public int getUserId() {
-        return users1.getId();
+        return user1.getId();
     }
 
     @Basic
@@ -96,8 +96,8 @@ public class Tasks {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Tasks tasks = (Tasks) o;
-        return id == tasks.id && doctorId == tasks.doctorId && Objects.equals(title, tasks.title) && Objects.equals(description, tasks.description) && Objects.equals(createdOn, tasks.createdOn) && Objects.equals(finishedOn, tasks.finishedOn) && Objects.equals(status, tasks.status);
+        Task task = (Task) o;
+        return id == task.id && doctorId == task.doctorId && Objects.equals(title, task.title) && Objects.equals(description, task.description) && Objects.equals(createdOn, task.createdOn) && Objects.equals(finishedOn, task.finishedOn) && Objects.equals(status, task.status);
     }
 
     @Override
