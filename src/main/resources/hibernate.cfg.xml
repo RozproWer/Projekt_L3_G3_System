@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="dialect"  >org.sqlite.hibernate.dialect.SQLiteDialect</property>
+        <property name="javax.persistence.jdbc.driver"  >org.sqlite.JDBC</property>
+        <property name="javax.persistence.jdbc.user"></property>
+        <property name="javax.persistence.jdbc.password"></property>
+        <property name="connection.url">jdbc:sqlite:sqlite/db/gps.db</property>
+        <property name="hibernate.show_sql" >false</property>
+        <property name="format_sql">true</property>
+        <property name="hibernate.connection.charSet"  >UTF-8</property>
+        <property name="hibernate.hbm2ddl.auto" >update</property>
+        <property name="hibernate.generate_statistics">false</property>
+        <property name="hibernate.connection.foreign_keys">true</property>
+        <!--
+        <mapping class="com.giga.model.Gun"/>
+        <mapping class="com.giga.model.Vehicle"/>
+        <mapping class="com.giga.model.FireTest"/>
+        -->
+    </session-factory>
+</hibernate-configuration>
