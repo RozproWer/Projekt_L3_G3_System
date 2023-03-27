@@ -5,7 +5,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78ec6d25-172d-4280-83e0-85336c9466fd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/AppLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/AppLauncher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/HibernateConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/HibernateConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/controllers/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/model/Context.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/Context.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/model/DoctorPatient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/DoctorPatient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/model/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/model/UserDoctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/UserDoctor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/model/UserSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/UserSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/model/Visit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/Visit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/model/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/view/MainAuthedView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/MainAuthedView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/view/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/MainView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/view/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/giga/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/giga/htask/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/AppLauncher.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/HibernateConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/controllers/MainController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/model/Context.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/model/DoctorPatient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/model/Message.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/model/Task.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/model/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/model/UserDoctor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/model/UserSettings.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/model/Visit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/view/MainAuthedView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/view/MainView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/view/gunEditView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/view/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/giga/AppTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +99,7 @@
   </component>
   <component name="RunManager">
     <configuration name="AppLauncher" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.giga.AppLauncher" />
+      <option name="MAIN_CLASS_NAME" value="com.giga.htask.AppLauncher" />
       <module name="hospital-task-app" />
       <extension name="net.ashald.envfile">
         <option name="IS_ENABLED" value="false" />
@@ -86,7 +127,7 @@
       <workItem from="1679858399418" duration="6471000" />
       <workItem from="1679864946150" duration="1317000" />
       <workItem from="1679866290303" duration="484000" />
-      <workItem from="1679867296762" duration="23406000" />
+      <workItem from="1679867296762" duration="23540000" />
     </task>
     <servers />
   </component>
@@ -109,7 +150,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/giga/model/Context.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/giga/htask/model/Context.java</url>
           <line>38</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>

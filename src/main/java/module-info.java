@@ -7,10 +7,10 @@ module com.giga {
     requires java.naming;
     requires org.flywaydb.core;
 
-    opens com.giga to javafx.fxml;
-    opens com.giga.controllers to javafx.fxml;
-    exports com.giga.controllers;
-    exports com.giga.model;
-    exports com.giga;
+    opens com.giga.htask to javafx.fxml;
+    opens com.giga.htask.controllers to javafx.fxml;
+    exports com.giga.htask.controllers;
+    exports com.giga.htask.model;
+    exports com.giga.htask;
     opens db.migration;
 }

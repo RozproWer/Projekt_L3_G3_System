@@ -20,13 +20,13 @@
         <property name="hibernate.connection.autocommit">true</property>
 
         <property name="hibernate.generate_statistics">false</property>
-        <mapping class="com.giga.model.Task"/>
-        <mapping class="com.giga.model.User"/>
-        <mapping class="com.giga.model.Visit"/>
-        <mapping class="com.giga.model.Message"/>
-        <mapping class="com.giga.model.UserDoctor"/>
-        <mapping class="com.giga.model.UserSettings"/>
-        <mapping class="com.giga.model.DoctorPatient"/>
+        <mapping class="com.giga.htask.model.Task"/>
+        <mapping class="com.giga.htask.model.User"/>
+        <mapping class="com.giga.htask.model.Visit"/>
+        <mapping class="com.giga.htask.model.Message"/>
+        <mapping class="com.giga.htask.model.UserDoctor"/>
+        <mapping class="com.giga.htask.model.UserSettings"/>
+        <mapping class="com.giga.htask.model.DoctorPatient"/>
     </session-factory>
 
 </hibernate-configuration>

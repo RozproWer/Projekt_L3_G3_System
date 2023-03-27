@@ -64,7 +64,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.giga.AppLauncher</mainClass>
+                            <mainClass>com.giga.htask.AppLauncher</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
@@ -82,7 +82,7 @@
                         <!-- Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.giga.AppLauncher</mainClass>
+                            <mainClass>com.giga.htask.AppLauncher</mainClass>
                         </configuration>
                     </execution>
                 </executions>
