@@ -1,5 +1,8 @@
 package com.giga.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -17,22 +20,14 @@ import java.util.Objects;
 @Table(name = "users_doctors")
 public class UserDoctor {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "doctor_id")
-    private User user;
-
-
-    @Column(name = "description", nullable = true, length = 255)
+    private User doctor;
     private String description;
-
-    @Column(name = "specialization", nullable = true, length = 255)
     private String specialization;
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -41,14 +36,18 @@ public class UserDoctor {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    @JoinColumn(name = "doctor_id")
+    public User getDoctor() {
+        return doctor;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setDoctor(User doctor) {
+        this.doctor = doctor;
     }
 
+    @Column(name = "description", nullable = true, length = 255)
     public String getDescription() {
         return description;
     }
@@ -57,6 +56,7 @@ public class UserDoctor {
         this.description = description;
     }
 
+    @Column(name = "specialization", nullable = true, length = 255)
     public String getSpecialization() {
         return specialization;
     }
@@ -71,14 +71,13 @@ public class UserDoctor {
         if (o == null || getClass() != o.getClass()) return false;
         UserDoctor that = (UserDoctor) o;
         return id == that.id &&
-                Objects.equals(user, that.user) &&
+                Objects.equals(doctor, that.doctor) &&
                 Objects.equals(description, that.description) &&
                 Objects.equals(specialization, that.specialization);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, user, description, specialization);
+        return Objects.hash(id, doctor, description, specialization);
     }
-
 }

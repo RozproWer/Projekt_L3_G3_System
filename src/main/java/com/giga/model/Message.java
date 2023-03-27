@@ -12,8 +12,7 @@ import java.util.Objects;
 public class Message {
     private int id;
     private int taskId;
-    private User patient;
-    private User doctor;
+    private DoctorPatient doctorPatient;
     private Timestamp createdOn;
     private String message;
 
@@ -28,27 +27,15 @@ public class Message {
         this.id = id;
     }
 
-
     @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "doctor_id", nullable = false)
-    public User getDoctor() {
-        return doctor;
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    @JoinColumn(name = "doctor_patient_id", nullable = false)
+    public DoctorPatient getDoctorPatient() {
+        return doctorPatient;
     }
 
-    public void setDoctor(User doctor) {
-        this.doctor = doctor;
-    }
-
-    @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "patient_id", nullable = false)
-    public User getPatient() {
-        return patient;
-    }
-
-    public void setPatient(User patient) {
-        this.patient = patient;
+    public void setDoctorPatient(DoctorPatient doctorPatient) {
+        this.doctorPatient = doctorPatient;
     }
 
     @ManyToOne(targetEntity = Task.class)
@@ -86,11 +73,11 @@ public class Message {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Message message = (Message) o;
-        return id == message.id && doctor == message.doctor && patient == message.patient && taskId == message.taskId && Objects.equals(createdOn, message.createdOn) && Objects.equals(this.message, message.message);
+        return id == message.id && doctorPatient == message.doctorPatient && taskId == message.taskId && Objects.equals(createdOn, message.createdOn) && Objects.equals(this.message, message.message);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, doctor, patient, taskId, createdOn, message);
+        return Objects.hash(id, doctorPatient, taskId, createdOn, message);
     }
 }

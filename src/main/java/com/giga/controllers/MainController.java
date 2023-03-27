@@ -35,6 +35,7 @@ public class MainController implements Initializable {
     @FXML
     private Tab VehicleTab;
     */
+
     @FXML
     private final static MainController instance = new MainController();
     
@@ -63,9 +64,9 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         /*
-        VehicleTab.setClosable(false);
-        GunTab.setClosable(false);
-        FireTestTab.setClosable(false);
+        XXTab.setClosable(false);
+        XXTab.setClosable(false);
+        XXTestTab.setClosable(false);
         */
     }
 

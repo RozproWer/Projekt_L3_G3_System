@@ -5,70 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78ec6d25-172d-4280-83e0-85336c9466fd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Java_EE_6_Java_EE_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hospital-task-app.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/model/UserDoctor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/model/UserSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_5_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_gwenn_sqlite_dialect_0_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_3_0_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_fastinfoset_FastInfoset_1_2_15.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_persistence_javax_persistence_api_2_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_13_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_11_20.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_flywaydb_flyway_core_8_2_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_runtime_2_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_txw2_2_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_1_2_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_5_6_1_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_2_2_3_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_4_2_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_spec_javax_transaction_jboss_transaction_api_1_2_spec_1_1_1_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jvnet_staxex_stax_ex_1_8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_xerial_sqlite_jdbc_3_36_0_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projekt_L3_G3_System.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Projekt_L3_G3_System.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlite/db/gps.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlite/db/htask.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/HibernateConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/HibernateConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/model/DoctorPatient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/controllers/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/model/Context.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/model/Context.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/model/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/model/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/model/Task.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/model/UserDoctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/model/UserDoctor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/model/UserSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/model/UserSettings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/model/Visit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/model/Visit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V9__Guns.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1__htasktest.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/giga/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/HibernateConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/giga/HibernateConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/model/Context.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/giga/model/Context.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/model/Messages.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/model/PatientsDoctors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/model/Tasks.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/model/Users.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/model/UsersSettings.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/model/Visits.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/db/migration/V9__Guns.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/model/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/giga/model/Message.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/model/Task.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/giga/model/Task.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/giga/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/giga/model/Visit.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/giga/model/Visit.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +29,13 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -142,7 +101,7 @@
       <workItem from="1679858399418" duration="6471000" />
       <workItem from="1679864946150" duration="1317000" />
       <workItem from="1679866290303" duration="484000" />
-      <workItem from="1679867296762" duration="8767000" />
+      <workItem from="1679867296762" duration="22151000" />
     </task>
     <servers />
   </component>
@@ -166,7 +125,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/giga/model/Context.java</url>
-          <line>39</line>
+          <line>38</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

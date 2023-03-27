@@ -11,8 +11,7 @@ import java.util.Objects;
 @Table(name = "visits")
 public class Visit {
     private int id;
-    private User patient;
-    private User doctor;
+    private DoctorPatient doctorPatient;
     private String title;
     private String description;
     private Timestamp createdOn;
@@ -29,27 +28,15 @@ public class Visit {
     }
 
     @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "doctor_id", nullable = false)
-    public User getDoctor() {
-        return doctor;
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    @JoinColumn(name = "doctor_patient_id", nullable = false)
+    public DoctorPatient getDoctorPatient() {
+        return doctorPatient;
     }
 
-    public void setDoctor(User doctor) {
-        this.doctor = doctor;
+    public void setDoctorPatient(DoctorPatient doctorPatient) {
+        this.doctorPatient = doctorPatient;
     }
-
-    @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "patient_id", nullable = false)
-    public User getPatient() {
-        return patient;
-    }
-
-    public void setPatient(User patient) {
-        this.patient = patient;
-    }
-
 
     @Basic
     @Column(name = "title", nullable = false, length = 255)
@@ -96,11 +83,11 @@ public class Visit {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Visit visit = (Visit) o;
-        return id == visit.id &&  doctor == visit.doctor && patient == visit.patient && Objects.equals(title, visit.title) && Objects.equals(description, visit.description) && Objects.equals(createdOn, visit.createdOn) && Objects.equals(appointmentOn, visit.appointmentOn);
+        return id == visit.id && doctorPatient == visit.doctorPatient && Objects.equals(title, visit.title) && Objects.equals(description, visit.description) && Objects.equals(createdOn, visit.createdOn) && Objects.equals(appointmentOn, visit.appointmentOn);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, doctor, patient,title, description, createdOn, appointmentOn);
+        return Objects.hash(id, doctorPatient, title, description, createdOn, appointmentOn);
     }
 }

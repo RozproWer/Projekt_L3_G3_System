@@ -1,5 +1,8 @@
 package com.giga.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -14,18 +17,12 @@ import java.util.Objects;
 @Entity
 @Table(name = "users_settings")
 public class UserSettings {
+    private int id;
+    private User user;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @Column(name = "is_dark_mode", nullable = false)
-    private boolean isDarkMode;
-
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -34,6 +31,9 @@ public class UserSettings {
         this.id = id;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    @JoinColumn(name = "user_id")
     public User getUser() {
         return user;
     }
@@ -41,6 +41,9 @@ public class UserSettings {
     public void setUser(User user) {
         this.user = user;
     }
+
+    @Column(name = "is_dark_mode", nullable = false)
+    private boolean isDarkMode;
 
     public boolean isDarkMode() {
         return isDarkMode;

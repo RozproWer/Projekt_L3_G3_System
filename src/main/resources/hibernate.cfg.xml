@@ -13,7 +13,7 @@
         <property name="hibernate.show_sql" >true</property>
         <property name="format_sql">true</property>
         <property name="hibernate.connection.charSet"  >UTF-8</property>
-        <property name="hibernate.hbm2ddl.auto">create-drop</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
         <property name="hibernate.connection.useUnicode">true</property>
         <property name="hibernate.connection.characterEncoding">UTF-8</property>
 
@@ -24,7 +24,9 @@
         <mapping class="com.giga.model.User"/>
         <mapping class="com.giga.model.Visit"/>
         <mapping class="com.giga.model.Message"/>
-
+        <mapping class="com.giga.model.UserDoctor"/>
+        <mapping class="com.giga.model.UserSettings"/>
+        <mapping class="com.giga.model.DoctorPatient"/>
     </session-factory>
 
 </hibernate-configuration>

@@ -12,13 +12,11 @@ import java.util.Objects;
 public class Task {
     private int id;
     private String title;
-    private User patient;
-    private User doctor;
+    private DoctorPatient doctorPatient;
     private String description;
     private Timestamp createdOn;
     private Timestamp finishedOn;
     private String status;
-
 
     @Id
     @Column(name = "id", nullable = false)
@@ -32,25 +30,14 @@ public class Task {
     }
 
     @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "doctor_id", nullable = false)
-    public User getDoctor() {
-        return doctor;
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    @JoinColumn(name = "doctor_patient_id", nullable = false)
+    public DoctorPatient getDoctorPatient() {
+        return doctorPatient;
     }
 
-    public void setDoctor(User doctor) {
-        this.doctor = doctor;
-    }
-
-    @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "patient_id", nullable = false)
-    public User getPatient() {
-        return patient;
-    }
-
-    public void setPatient(User patient) {
-        this.patient = patient;
+    public void setDoctorPatient(DoctorPatient doctorPatient) {
+        this.doctorPatient = doctorPatient;
     }
 
     @Basic
@@ -109,11 +96,11 @@ public class Task {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return id == task.id && doctor == task.doctor && patient == task.patient && Objects.equals(title, task.title) && Objects.equals(description, task.description) && Objects.equals(createdOn, task.createdOn) && Objects.equals(finishedOn, task.finishedOn) && Objects.equals(status, task.status);
+        return id == task.id && doctorPatient == task.doctorPatient && Objects.equals(title, task.title) && Objects.equals(description, task.description) && Objects.equals(createdOn, task.createdOn) && Objects.equals(finishedOn, task.finishedOn) && Objects.equals(status, task.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, doctor, patient, description, createdOn, finishedOn, status);
+        return Objects.hash(id, title, doctorPatient, description, createdOn, finishedOn, status);
     }
 }
