@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.VBox?>
 <!-- teraz pytanie  czy da sie programistycznie czy trzeba MainAuthedViewPatient, MainAuthedViewDoctor... -->
 <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" >
     <children>
-        <TabPane fx:id="MainTabPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-           <tabs>
-              <Tab fx:id="FireTestTab" text="Fire Test">
-                 <content>
-                    <fx:include fx:id="FireTestForm" source="fireTestForm.fxml" />
-                 </content>
-              </Tab>
-              <Tab fx:id="GunTab" text="Add Gun">
-                 <content>
-                    <fx:include fx:id="GunForm" source="gunForm.fxml" />
-                 </content>
-              </Tab>
-              <Tab fx:id="VehicleTab" text="Add Vehicle">
-                 <content>
-                    <fx:include fx:id="VehicleForm" source="vehicleForm.fxml" />
-                 </content>
-              </Tab>
-           </tabs>
-        </TabPane>
+
     </children>
 </VBox>

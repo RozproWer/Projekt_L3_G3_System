@@ -21,20 +21,7 @@ public class MainController implements Initializable {
     // Variable name must match name of Controller which is name of Class of Controller:
     // https://docs.oracle.com/javase/8/javafx/api/javafx/fxml/doc-files/introduction_to_fxml.html#nested_controllers
     // https://community.oracle.com/tech/developers/discussion/3561276/refresh-included-tab-page
-    /*
-    @FXML
-    private VehicleFormController VehicleFormController;
-    @FXML
-    private GunFormController GunFormController;
-    @FXML
-    private FireTestFormController FireTestFormController;
-    @FXML
-    private Tab FireTestTab;
-    @FXML
-    private Tab GunTab;
-    @FXML
-    private Tab VehicleTab;
-    */
+
 
     @FXML
     private final static MainController instance = new MainController();
@@ -63,11 +50,6 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        /*
-        XXTab.setClosable(false);
-        XXTab.setClosable(false);
-        XXTestTab.setClosable(false);
-        */
     }
 
 }

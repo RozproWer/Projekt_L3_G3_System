@@ -40,8 +40,12 @@ public class App extends Application {
         Session session = sessionFactory.openSession();
         session.close();
 
+        String url = new Configuration().configure().getProperty("hibernate.connection.url").toString();
+        String username = new Configuration().configure().getProperty("hibernate.connection.username").toString();
+        String password = new Configuration().configure().getProperty("hibernate.connection.password").toString();
+
         //migrate db using flyway
-        Flyway flyway = Flyway.configure().dataSource("jdbc:mysql://localhost:3306/htasktest", "root", "").baselineOnMigrate(true).load();
+        Flyway flyway = Flyway.configure().dataSource(url, username, password).baselineOnMigrate(true).load();
         flyway.migrate();
 
         //load main scene
