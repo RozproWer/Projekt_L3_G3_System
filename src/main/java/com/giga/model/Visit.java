@@ -1,15 +1,18 @@
 package com.giga.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "visits", schema = "htask")
+@Table(name = "visits")
 public class Visit {
     private int id;
-    private int patientId;
-    private int doctorId;
+    private User patient;
+    private User doctor;
     private String title;
     private String description;
     private Timestamp createdOn;
@@ -25,31 +28,27 @@ public class Visit {
         this.id = id;
     }
 
-    @ManyToOne(targetEntity = User.class)
-    @JoinColumn(name = "id")
-    private User user;
-    public int getDoctorId() {
-        return user.getId();
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "doctor_id", nullable = false)
+    public User getDoctor() {
+        return doctor;
     }
 
-    @ManyToOne(targetEntity = User.class)
-    @JoinColumn(name = "id")
-    private User user1;
-    public int getUserId() {
-        return user1.getId();
+    public void setDoctor(User doctor) {
+        this.doctor = doctor;
     }
 
-//    @Basic
-//    @Column(name = "patient_id", nullable = false)
-//    public int getPatientId() {
-//        return patientId;
-//    }
-//
-//    @Basic
-//    @Column(name = "doctor_id", nullable = false)
-//    public int getDoctorId() {
-//        return doctorId;
-//    }
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "patient_id", nullable = false)
+    public User getPatient() {
+        return patient;
+    }
+
+    public void setPatient(User patient) {
+        this.patient = patient;
+    }
 
 
     @Basic
@@ -97,11 +96,11 @@ public class Visit {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Visit visit = (Visit) o;
-        return id == visit.id && patientId == visit.patientId && doctorId == visit.doctorId && Objects.equals(title, visit.title) && Objects.equals(description, visit.description) && Objects.equals(createdOn, visit.createdOn) && Objects.equals(appointmentOn, visit.appointmentOn);
+        return id == visit.id &&  doctor == visit.doctor && patient == visit.patient && Objects.equals(title, visit.title) && Objects.equals(description, visit.description) && Objects.equals(createdOn, visit.createdOn) && Objects.equals(appointmentOn, visit.appointmentOn);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, patientId, doctorId, title, description, createdOn, appointmentOn);
+        return Objects.hash(id, doctor, patient,title, description, createdOn, appointmentOn);
     }
 }

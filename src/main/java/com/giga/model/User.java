@@ -1,8 +1,12 @@
 package com.giga.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Hibernate mapped entity User class
@@ -12,7 +16,7 @@ import java.util.Objects;
  */
 
 @Entity
-@Table(name = "users", schema = "htask")
+@Table(name = "users")
 public class User {
     private int id;
     private int name;
@@ -26,8 +30,8 @@ public class User {
     private Timestamp createdOn;
 
     @Id
-    @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }

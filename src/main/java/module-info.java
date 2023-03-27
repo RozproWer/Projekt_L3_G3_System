@@ -6,6 +6,7 @@ module com.giga {
     requires org.hibernate.orm.core;
     requires java.naming;
     requires org.flywaydb.core;
+
     opens com.giga to javafx.fxml;
     opens com.giga.controllers to javafx.fxml;
     exports com.giga.controllers;

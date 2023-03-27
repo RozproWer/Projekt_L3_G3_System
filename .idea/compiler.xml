@@ -6,11 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Projekt_L3_G3_System" />
+        <module name="hospital-task-app" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Projekt_L3_G3_System" target="11" />
-    </bytecodeTargetLevel>
   </component>
 </project>

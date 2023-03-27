@@ -1,16 +1,20 @@
 package com.giga;
 
 import com.giga.controllers.MainController;
-import org.flywaydb.core.Flyway;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.Flushable;
 import java.io.IOException;
 
+
 import org.hibernate.Session;
+import org.flywaydb.core.Flyway;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -34,11 +38,10 @@ public class App extends Application {
         // create db
         SessionFactory sessionFactory = HibernateConnection.getSessionFactory();
         Session session = sessionFactory.openSession();
-        // session.createQuery("PRAGMA foreign_keys = ON;");
         session.close();
 
         //migrate db using flyway
-        Flyway flyway = Flyway.configure().dataSource("jdbc:sqlite:sqlite/db/htask.db", null, null).baselineOnMigrate(true).load();
+        Flyway flyway = Flyway.configure().dataSource("jdbc:mysql://localhost:3306/htasktest", "root", "").baselineOnMigrate(true).load();
         flyway.migrate();
 
         //load main scene

@@ -1,21 +1,25 @@
 package com.giga.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "messages", schema = "htask")
+@Table(name = "messages")
 public class Message {
     private int id;
-    private int userId;
     private int taskId;
+    private User patient;
+    private User doctor;
     private Timestamp createdOn;
     private String message;
 
     @Id
-    @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -25,19 +29,30 @@ public class Message {
     }
 
 
-    @ManyToOne(targetEntity = User.class)
-    @JoinColumn(name = "id")
-    private User user;
-    public int getUserId() {
-        return userId;
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "doctor_id", nullable = false)
+    public User getDoctor() {
+        return doctor;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setDoctor(User doctor) {
+        this.doctor = doctor;
+    }
+
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "patient_id", nullable = false)
+    public User getPatient() {
+        return patient;
+    }
+
+    public void setPatient(User patient) {
+        this.patient = patient;
     }
 
     @ManyToOne(targetEntity = Task.class)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "task", nullable = false)
     public int getTaskId() {
         return taskId;
     }
@@ -71,11 +86,11 @@ public class Message {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Message message = (Message) o;
-        return id == message.id && userId == message.userId && taskId == message.taskId && Objects.equals(createdOn, message.createdOn) && Objects.equals(this.message, message.message);
+        return id == message.id && doctor == message.doctor && patient == message.patient && taskId == message.taskId && Objects.equals(createdOn, message.createdOn) && Objects.equals(this.message, message.message);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userId, taskId, createdOn, message);
+        return Objects.hash(id, doctor, patient, taskId, createdOn, message);
     }
 }
