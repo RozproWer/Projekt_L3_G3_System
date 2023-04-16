@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.giga.htask.controllers.content.admin.PatientsController"
+            fx:id="contentRoot">
+
+    <VBox fx:id="contentVbox">
+        <Label text="Patients" styleClass="content-title" fx:id="contentTitle"/>
+        <HBox fx:id="contentOutput">
+            <Label text="" styleClass="error" fx:id="contentError" visible="false"/>
+            <Label text="" styleClass="success" fx:id="contentSuccess" visible="false"/>
+            <Label text="" styleClass="info" fx:id="contentInfo" visible="false"/>
+        </HBox>
+        <TextField fx:id="filterField" promptText="Search" />
+        <TableView fx:id="patientsTable" visible="true">
+            <columns>
+                <TableColumn fx:id="idColumn" prefWidth="70.0" text="ID" />
+                <TableColumn fx:id="nameColumn" prefWidth="100.0" text="Name" />
+                <TableColumn fx:id="surnameColumn" prefWidth="100.0" text="Surname" />
+                <TableColumn fx:id="peselColumn" prefWidth="75.0" text="PESEL" />
+                <TableColumn fx:id="addressColumn" prefWidth="100.0" text="Address" />
+                <TableColumn fx:id="telephoneColumn" prefWidth="100.0" text="Telephone" />
+                <TableColumn fx:id="emailColumn" prefWidth="100.0" text="Email" />
+                <TableColumn fx:id="roleColumn" prefWidth="75.0" text="Role" />
+                <TableColumn fx:id="createdOnColumn" prefWidth="150.0" text="Created On" />
+                <TableColumn fx:id="tasksColumn"   prefWidth="100.0" text="Tasks" />
+                <TableColumn fx:id="visitsColumn"   prefWidth="100.0" text="Visits" />
+                <TableColumn fx:id="editColumn"  prefWidth="150.0" text="Details/Edit" />
+                <TableColumn fx:id="deleteColumn"   prefWidth="100.0" text="Delete" />
+            </columns>
+        </TableView>
+    </VBox>
+</AnchorPane>

@@ -1,9 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.VBox?>
-<!-- teraz pytanie  czy da sie programistycznie czy trzeba MainAuthedViewPatient, MainAuthedViewDoctor... -->
-<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" >
-    <children>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TabPane?>
+<VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" >
+    <BorderPane prefWidth="Infinity">
 
-    </children>
+            <left>
+                <HBox spacing="10" style="-fx-padding: 10 10 10 10;">
+                    <Label fx:id="labelUserInfo"  text="User: John Doe (Admin)" />
+                </HBox>
+            </left>
+            <right >
+                <HBox spacing="10" style="-fx-padding: 10 10 10 10;">
+                    <Button fx:id="buttonLogout" text="Logout" BorderPane.alignment="CENTER_RIGHT" />
+                </HBox>
+            </right>
+
+        <left>
+            <VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+                  spacing="10" alignment="CENTER" fx:id="verticalMenu" >
+
+            </VBox>
+        </left>
+        <center >
+            <TabPane fx:id="contentContainer">
+                <tabs>
+                </tabs>
+            </TabPane>
+        </center>
+    </BorderPane>
 </VBox>

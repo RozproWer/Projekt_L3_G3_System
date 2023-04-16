@@ -20,8 +20,8 @@ import java.util.Set;
 @Table(name = "users")
 public class User {
     private int id;
-    private int name;
-    private int surname;
+    private String name;
+    private String surname;
     private String pesel;
     private String address;
     private String telephone;
@@ -29,6 +29,11 @@ public class User {
     private String role;
     private String password;
     private Timestamp createdOn;
+    private UserSettings userSettings;
+    private UserDoctor userDoctor;
+
+    @Transient
+    private String specialization;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,31 +47,41 @@ public class User {
     }
 
 
-    @OneToMany(mappedBy = "doctor", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OneToOne(mappedBy = "doctor", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private Set<UserDoctor> userDoctors = new HashSet<>();
+    public UserDoctor getUserDoctor() {
+        return userDoctor;
+    }
+    public void setUserDoctor(UserDoctor userDoctor) {
+        this.userDoctor = userDoctor;
+    }
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private Set<UserSettings> userSettings = new HashSet<>();
+    public UserSettings getUserSettings() {
+        return userSettings;
+    }
+    public void setUserSettings(UserSettings userSettings) {
+        this.userSettings = userSettings;
+    }
 
     @Basic
     @Column(name = "name", nullable = false)
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 
     @Basic
     @Column(name = "surname", nullable = false)
-    public int getSurname() {
+    public String getSurname() {
         return surname;
     }
 
-    public void setSurname(int surname) {
+    public void setSurname(String surname) {
         this.surname = surname;
     }
 
@@ -145,11 +160,19 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && name == user.name && surname == user.surname && Objects.equals(pesel, user.pesel) && Objects.equals(address, user.address) && Objects.equals(telephone, user.telephone) && Objects.equals(email, user.email) && Objects.equals(role, user.role) && Objects.equals(password, user.password) && Objects.equals(createdOn, user.createdOn);
+        return id == user.id && Objects.equals(name,user.name) && Objects.equals(surname,user.surname) && Objects.equals(pesel, user.pesel) && Objects.equals(address, user.address) && Objects.equals(telephone, user.telephone) && Objects.equals(email, user.email) && Objects.equals(role, user.role) && Objects.equals(password, user.password) && Objects.equals(createdOn, user.createdOn);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, name, surname, pesel, address, telephone, email, role, password, createdOn);
     }
+
+    /*Getters for setCellValueFactory*/
+
+    @Transient
+    public String getSpecialization() {
+        return userDoctor.getSpecialization();
+    }
+
 }

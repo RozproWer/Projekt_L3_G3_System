@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:id="contentRoot">
+    <VBox fx:id="contentVbox">
+        <Label text="Hospital Tasks App" styleClass="content-title" fx:id="contentTitle"/>
+        <HBox fx:id="contentOutput">
+            <Label text="" styleClass="error" fx:id="contentError" visible="false"/>
+            <Label text="" styleClass="success" fx:id="contentSuccess" visible="false"/>
+            <Label text="" styleClass="info" fx:id="contentInfo" visible="false"/>
+        </HBox>
+        <VBox fx:id="clockBox" alignment="CENTER">
+            <Label fx:id="userLabel" style="-fx-font-size: 48pt;"/>
+            <Label fx:id="timeLabel" style="-fx-font-size: 48pt;"/>
+            <Label fx:id="dateLabel" style="-fx-font-size: 16pt;"/>
+        </VBox>
+    </VBox>
+
+
+</AnchorPane>

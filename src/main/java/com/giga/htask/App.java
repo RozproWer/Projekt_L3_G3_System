@@ -1,11 +1,15 @@
 package com.giga.htask;
 
+import com.giga.htask.controllers.MainAuthedController;
 import com.giga.htask.controllers.MainController;
 
+import com.giga.htask.model.Context;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,9 +31,8 @@ import org.hibernate.cfg.Configuration;
  */
 public class App extends Application {
 
-    //root of scene graph for app
-    private static Scene scene;
 
+    public static Stage stage;
     //called when app starts up and sets root of scene to MainView.fxml
     @Override
     public void start(Stage stage) throws IOException, ClassNotFoundException {
@@ -47,22 +50,58 @@ public class App extends Application {
         Flyway flyway = Flyway.configure().dataSource(url, username, password).baselineOnMigrate(true).load();
         flyway.migrate();
 
-        //load main scene
-        scene = new Scene(loadFXML("MainView"));
+        // Get dimensions of the screen to make it fullscreen
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("view/" + "MainView"+ ".fxml"));
+        Parent root = loader.load();
+        MainController controller1 = new MainController();
+        loader.setController(controller1);
+        Scene scene = new Scene(root);
+        this.stage = stage;
         stage.setScene(scene);
+        stage.setX(screenBounds.getMinX());
+        stage.setY(screenBounds.getMinY());
+        stage.setWidth(screenBounds.getWidth());
+        stage.setHeight(screenBounds.getHeight());
+        stage.setOnShowing(e -> {
+            loadStyles();
+        });
+        stage.sceneProperty().addListener((observable, oldScene, newScene) -> {
+            loadStyles();
+        });
         stage.show();
-        stage.setTitle("Hospital Tasks App");
     }
 
-    //sets root of scene to fxml file
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+    public static void changeTheme(){
+        if(Context.getInstance().isDarkMode()){
+            App.stage.getScene().getStylesheets().add(App.class.getResource("styles/darkmode.css").toExternalForm());
+        }
+        else{
+            App.stage.getScene().getStylesheets().remove(App.class.getResource("styles/darkmode.css").toExternalForm());
+        }
     }
+    private static void loadStyles(){
+        App.stage.getScene().getStylesheets().add(App.class.getResource("styles/styles.css").toExternalForm());
 
+        if(Context.getInstance().isDarkMode()){
+            App.stage.getScene().getStylesheets().add(App.class.getResource("styles/darkmode.css").toExternalForm());
+        }
+    }
     //loads fxml file and sets controller to MainController
-    private static Parent loadFXML(String fxml) throws IOException {
+    public static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/" + fxml + ".fxml"));
         fxmlLoader.setController(MainController.getInstance());
+        return fxmlLoader.load();
+    }
+
+    public static Parent loadView(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/" + fxml + ".fxml"));
+        return fxmlLoader.load();
+    }
+    public static Parent loadViewController(String fxml, Object controller) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/" + fxml + ".fxml"));
+        fxmlLoader.setController(controller);
         return fxmlLoader.load();
     }
 

@@ -128,7 +128,7 @@ Działania:
 2.  Przydzielanie zadań: Lekarz przypisuje zadania do pacjentów na podstawie ich potrzeb takich jak zażywanie leków lub wykonywanie ćwiczeń.
 3.  Monitorowanie postępu zadań: Lekarz monitoruje postęp zadań pacjentów za pomocą chatu zadań i aktualizuje statusy zadań
 
-Sekwencje:
+Sekwencje obsługi zadań:
 
 1. Lekarz tworzy zadanie wraz z opisem zadania udostępniając w ten sposób chat zadania.
 2. Pacjent otrzymuje nowe zadanie przydzielone przez lekarza.
@@ -162,15 +162,14 @@ Działania:
 
 - Rejestrowanie Lekarzy i Pacjentów
 
-Sekwencja formularza rejestracji pacjenta:
+Sekwencja formularza rejestracji pacjenta: 
 
 1. Rejestrator medyczny uzupełnia dane osobowe potencjalnego pacjenta i tworzy go.
-2. Rejestrator przypisuje lekarza z listy lekarzy
-3. Rejestrator rejestruje pierwszą wizytę
-4. Lekarz otrzymuje możliwość dopisywania wizyt i zadań do nowego użytkownika
-
-5. Administrator generuje pliku pdf z danymi zarejestrowanego użytkownika wraz z hasłem
-6. Pacjent otrzymuje dostęp do konta z danymi z pliku pdf
+2. Rejestrator medyczny przypisuje lekarza z listy lekarzy.
+3. Rejestrator medyczny otrzymuje możliwość tworzenia wizyty dla danego pacjenta.
+4. Lekarz otrzymuje możliwość dopisywania wizyt i zadań do nowego użytkownika.
+5. System generuje pliku pdf z danymi zarejestrowanego użytkownika wraz z hasłem.
+6. Pacjent otrzymuje dostęp do konta z danymi z pliku pdf.
 
 ## Wymagania funkcjonalne
 
@@ -235,13 +234,27 @@ Sekwencja formularza rejestracji pacjenta:
   <img src="./uml/przydzielanie_zadan_lekarz.png" height="450">
 
 - ###### [Diagram sekwencji]
-  Wstawić rys. diagramu UML
+
+### Diagram sekwencji rejestracji pacjenta
+
+  <img src="./uml/diagram_sekwencji_rejestracji_pacjenta.png" height="450">
+
+### Diagram sekwencji obsługi zadań
+
+  <img src="./uml/diagram_sekwencji_obslugi_zadan.png" height="450"> 
+
 - ###### [Diagram klas]
   Wstawić rys. diagramu UML
 
 ## Baza danych
 
-###### Diagram ERD
+###### Projekt ERD
+
+  <img src="./erd/erd_diagram.jpg" height="450"> 
+  
+###### Finalna implementacja
+ 
+  <img src="./erd/erd_finalna_implementacja.jpg" height="450">
 
 ###### Skrypt do utworzenia struktury bazy danych
 

@@ -1,0 +1,46 @@
+
+.button {
+    -fx-padding: 10px 20px;
+}
+.label {
+    -fx-padding: 5px 10px;
+}
+.text-field {
+    -fx-padding: 7px;
+}
+
+.hbox,HBox  {
+    -fx-padding: 10px;
+}
+.vbox,VBox  {
+    -fx-padding: 10px;
+}
+.border-pane {
+    -fx-padding: 10px;
+}
+.anchor-pane {
+    -fx-padding: 10px;
+}
+.grid-pane {
+    -fx-padding: 10px;
+}
+.flow-pane {
+    -fx-padding: 10px;
+}
+.tool-bar {
+    -fx-padding: 5px 10px;
+}
+.tab {
+    -fx-padding: 10px;
+}
+.titled-pane {
+    -fx-padding: 10px;
+}
+#contentTitle, .content-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 0px;
+}
+#contentVbox,.content-vbox{
+    -fx-padding: 20px 20px;
+}

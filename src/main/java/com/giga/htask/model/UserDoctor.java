@@ -35,7 +35,7 @@ public class UserDoctor {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.NO_ACTION)
     @JoinColumn(name = "doctor_id")
     public User getDoctor() {

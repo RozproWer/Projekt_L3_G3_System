@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:id="contentRoot">
+    <HBox>
+        <VBox fx:id="contentVbox" styleClass="content-vbox">
+            <Label text="Edit Doctor" styleClass="content-title" fx:id="contentTitle"/>
+            <HBox fx:id="contentOutput">
+                <Label text="" styleClass="error" fx:id="contentError" visible="false"/>
+                <Label text="" styleClass="success" fx:id="contentSuccess" visible="false"/>
+                <Label text="" styleClass="info" fx:id="contentInfo" visible="false"/>
+            </HBox>
+            <HBox alignment="CENTER">
+                <VBox>
+                    <GridPane fx:id="contentForm" hgap="10" vgap="10">
+                        <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                        <TextField fx:id="nameField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                        <Label text="Surname:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                        <TextField fx:id="surnameField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                        <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                        <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                        <Label text="Phone:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                        <TextField fx:id="telephoneField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                        <Label text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                        <TextField fx:id="addressField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                        <Label text="Pesel:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                        <TextField fx:id="peselField" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                        <Label text="Specialization:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                        <TextField fx:id="specializationField" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+                        <Label text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+                        <TextArea fx:id="descriptionTextArea" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+                        <Button text="Submit" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+                    </GridPane>
+                </VBox>
+                <VBox>
+                    <GridPane fx:id="contentSummary" hgap="10" vgap="10">
+                        <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                        <Label fx:id="name" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                        <Label text="Surname:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                        <Label fx:id="surname" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                        <Label text="Role:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                        <Label fx:id="role" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                        <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                        <Label fx:id="email" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                        <Label text="Telephone:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                        <Label fx:id="telephone" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                        <Label text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                        <Label fx:id="address" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                        <Label text="Pesel:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                        <Label fx:id="pesel" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+                        <Label text="Specialization:" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+                        <Label fx:id="specialization" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+                        <Label text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+                        <Label fx:id="description" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+                        <Label text="Created on:" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+                        <Label fx:id="createdOn" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+                    </GridPane>
+                </VBox>
+
+            </HBox>
+
+        </VBox>
+        <VBox styleClass="content-vbox">
+            <Label text="Assigned patients" styleClass="content-title" fx:id="doctorPatientsTitle"/>
+            <HBox alignment="CENTER">
+                <TableView fx:id="doctorPatientsTable">
+                    <TableColumn text="Id" prefWidth="100.0" fx:id="idColumn"/>
+                    <TableColumn text="Name" prefWidth="100.0" fx:id="nameColumn"/>
+                    <TableColumn text="Surname" prefWidth="150.0" fx:id="surnameColumn"/>
+                    <TableColumn text="Pesel" prefWidth="120.0" fx:id="peselColumn"/>
+                    <TableColumn text="Email"  prefWidth="150.0" fx:id="emailColumn"/>
+                    <TableColumn text="Show Details"  prefWidth="150.0" fx:id="editColumn"/>
+                </TableView>
+            </HBox>
+        </VBox>
+    </HBox>
+</AnchorPane>
+

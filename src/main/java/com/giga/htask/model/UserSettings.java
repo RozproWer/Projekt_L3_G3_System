@@ -16,12 +16,14 @@ import java.util.Objects;
 @Entity
 @Table(name = "users_settings")
 public class UserSettings {
-    private int id;
-    private User user;
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
+    private int id;
+
     public int getId() {
         return id;
     }
@@ -30,9 +32,10 @@ public class UserSettings {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @OnDelete(action = OnDeleteAction.NO_ACTION)
-    @JoinColumn(name = "user_id")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
     public User getUser() {
         return user;
     }
@@ -41,15 +44,15 @@ public class UserSettings {
         this.user = user;
     }
 
-    @Column(name = "is_dark_mode", nullable = false)
+    @Column(name = "darkMode", nullable = false)
     private boolean isDarkMode;
 
     public boolean isDarkMode() {
         return isDarkMode;
     }
 
-    public void setDarkMode(boolean darkMode) {
-        isDarkMode = darkMode;
+    public void setDarkMode(boolean isDarkMode) {
+        this.isDarkMode = isDarkMode;
     }
 
     @Override

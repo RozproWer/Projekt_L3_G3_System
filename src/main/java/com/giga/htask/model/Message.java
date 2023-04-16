@@ -13,6 +13,7 @@ public class Message {
     private int id;
     private int taskId;
     private DoctorPatient doctorPatient;
+    private User sender;
     private Timestamp createdOn;
     private String message;
 
@@ -67,6 +68,20 @@ public class Message {
     public void setMessage(String message) {
         this.message = message;
     }
+
+
+
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    @JoinColumn(name = "sender_id", nullable = false)
+    public User getSender() {
+        return sender;
+    }
+
+    public void setSender(User sender) {
+        this.sender = sender;
+    }
+
 
     @Override
     public boolean equals(Object o) {
