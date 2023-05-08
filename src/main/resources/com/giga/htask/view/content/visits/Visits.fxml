@@ -10,6 +10,7 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:id="contentRoot">
+    <ScrollPane fx:id="contentScrollPane">
     <VBox fx:id="contentVbox">
         <Label text="Tasks" styleClass="content-title" fx:id="contentTitle"/>
         <HBox fx:id="contentOutput">
@@ -18,6 +19,7 @@
             <Label text="" styleClass="info" fx:id="contentInfo" visible="false"/>
         </HBox>
         <VBox fx:id="contentTasks">
+            <ScrollPane>
             <TextField fx:id="filterField" promptText="Search" />
             <TableView fx:id="visitsTable" visible="true">
                 <columns>
@@ -52,7 +54,10 @@
                     <DateTimePicker fx:id="appointmentOnDateTimePicker" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
 
                 </GridPane>
-            </VBox></VBox>
+            </VBox>
+            </ScrollPane>
+        </VBox>
 
     </VBox>
+    </ScrollPane>
 </AnchorPane>

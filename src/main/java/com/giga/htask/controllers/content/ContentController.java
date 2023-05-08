@@ -48,9 +48,12 @@ public abstract class ContentController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        contentScrollPane.setFitToWidth(true);
-        contentScrollPane.setFitToHeight(true);
-        contentScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        if (contentScrollPane != null ){
+            contentScrollPane.setFitToWidth(true);
+            contentScrollPane.setFitToHeight(true);
+            contentScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        }
+
 
         clearMessages();
         contentRoot.focusedProperty().addListener((obs, oldVal, newVal) -> {
