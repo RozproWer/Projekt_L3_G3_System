@@ -19,6 +19,7 @@ public class Visit {
 
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -27,7 +28,7 @@ public class Visit {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
+    @ManyToOne(fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "doctor_patient_id", nullable = false)
     public DoctorPatient getDoctorPatient() {

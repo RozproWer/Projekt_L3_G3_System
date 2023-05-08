@@ -5,6 +5,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -13,6 +14,7 @@ public class Task {
     private int id;
     private String title;
     private DoctorPatient doctorPatient;
+    private List<Message> messages;
     private String description;
     private Timestamp createdOn;
     private Timestamp finishedOn;
@@ -30,7 +32,7 @@ public class Task {
     }
 
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
+    @ManyToOne(fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "doctor_patient_id", nullable = false)
     public DoctorPatient getDoctorPatient() {
@@ -95,6 +97,16 @@ public class Task {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    //create a one-to-many relationship between tasks and messages
+    @OneToMany(mappedBy = "task", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    public List<Message> getMessages() {
+        return messages;
+    }
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
 
     @Override
     public boolean equals(Object o) {

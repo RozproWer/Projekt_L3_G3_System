@@ -8,7 +8,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.giga.htask.controllers.content.admin.DoctorsController"
+            fx:controller="com.giga.htask.controllers.content.doctors.DoctorsController"
             fx:id="contentRoot" >
         <VBox fx:id="contentVbox"  >
             <Label text="Doctors" styleClass="content-title" fx:id="contentTitle"/>

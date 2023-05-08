@@ -9,20 +9,19 @@ module com.giga {
     requires com.calendarfx.view;
     requires itextpdf;
     requires java.desktop;
+    requires tornadofx.controls;
 
     opens com.giga.htask to javafx.fxml;
     opens com.giga.htask.controllers to javafx.fxml;
     opens com.giga.htask.controllers.content to javafx.fxml;
-    opens com.giga.htask.controllers.content.doctor to javafx.fxml;
-    opens com.giga.htask.controllers.content.patient to javafx.fxml;
+
 
     opens com.giga.htask.controllers.content.shared to javafx.fxml;
 
 
     exports com.giga.htask.controllers;
 
-    exports com.giga.htask.controllers.content.doctor;
-    exports com.giga.htask.controllers.content.patient;
+
     exports com.giga.htask.controllers.content;
 
     exports com.giga.htask.controllers.content.shared;
@@ -30,8 +29,14 @@ module com.giga {
     exports com.giga.htask;
     opens db.migration;
     opens com.giga.htask.model;
-    exports com.giga.htask.controllers.content.admin;
-    opens com.giga.htask.controllers.content.admin to javafx.fxml;
+    exports com.giga.htask.controllers.content.doctors;
+    opens com.giga.htask.controllers.content.doctors to javafx.fxml;
     exports com.giga.htask.utils;
     opens com.giga.htask.utils to javafx.fxml;
+    exports com.giga.htask.controllers.content.patients;
+    opens com.giga.htask.controllers.content.patients to javafx.fxml;
+    exports com.giga.htask.controllers.content.visits;
+    opens com.giga.htask.controllers.content.visits to javafx.fxml;
+    exports com.giga.htask.controllers.content.tasks;
+    opens com.giga.htask.controllers.content.tasks to javafx.fxml;
 }

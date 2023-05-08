@@ -1,19 +1,16 @@
-package com.giga.htask.controllers.content.shared;
+package com.giga.htask.controllers.content.tasks;
 
 import com.giga.htask.controllers.content.ContentController;
-import com.giga.htask.controllers.content.admin.DoctorController;
-import com.giga.htask.controllers.content.admin.PatientController;
+import com.giga.htask.controllers.content.doctors.DoctorController;
+import com.giga.htask.controllers.content.patients.PatientController;
 import com.giga.htask.model.Context;
 import com.giga.htask.model.Task;
 import com.giga.htask.model.User;
 import com.giga.htask.utils.ButtonCellAddTabFactory;
 import com.giga.htask.utils.SortedFilteredObservableList;
 import com.giga.htask.utils.TimestampValueFactory;
-import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -132,52 +129,17 @@ public class TasksController extends ContentController implements Initializable 
                 new ReadOnlyObjectWrapper<>(cellData.getValue().getDoctorPatient().getPatient().getId()));
 
 
-        deleteColumn.setCellValueFactory(new PropertyValueFactory<Task, Integer>("id"));
-        Callback<TableColumn<Task, String>, TableCell<Task, Integer>> cellDeleteFactory =
-                new Callback<TableColumn<Task, String>, TableCell<Task, Integer>>() {
-                    @Override
-                    public TableCell call(final TableColumn<Task, String> column) {
-                        final TableCell<Task, Integer> cell = new TableCell<Task, Integer>() {
-                            final Button btn = new Button(column.getText());
-
-                            @Override
-                            public void updateItem(Integer id, boolean empty) {
-                                super.updateItem(id, empty);
-                                if (empty) {
-                                    setGraphic(null);
-                                } else {
-
-                                    btn.setOnAction(event -> {
-                                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                                        alert.setTitle("Delete operation");
-                                        alert.setHeaderText("Are sure you want to delete this entity?");
-                                        alert.showAndWait();
-
-                                        if (alert.getResult() == ButtonType.OK) {
-                                            Context.getInstance().deleteEntityById(User.class,id);
-                                            updateTables();
-                                        }
-                                    });
-                                    setGraphic(btn);
-                                }
-                                setText(null);
-                            }
-                        };
-                        return cell;
-                    }
-                };
-
         Callback<TableColumn<Task, Integer>, TableCell<Task, Integer>> cellEditFactory =
-                new ButtonCellAddTabFactory( "Edit task", "content/shared/Task", TaskController.class);
+                new ButtonCellAddTabFactory( "Edit task", "content/tasks/Task", TaskController.class);
 
         Callback<TableColumn<Task, Integer>, TableCell<Task, Integer>> cellDoctorFactory =
-                new ButtonCellAddTabFactory( "Edit Doctor", "content/admin/EditDoctor", DoctorController.class);
+                new ButtonCellAddTabFactory( "Edit Doctor", "content/doctors/Doctor", DoctorController.class);
 
         Callback<TableColumn<Task, Integer>, TableCell<Task, Integer>> cellPatientFactory =
-                new ButtonCellAddTabFactory( "Edit Patient", "content/admin/EditPatient", PatientController.class);
+                new ButtonCellAddTabFactory( "Edit Patient", "content/patients/Patient", PatientController.class);
 
 
-
+        deleteColumn.setCellValueFactory(new PropertyValueFactory<Task, Integer>("id"));
         sfoList.getSortedList().comparatorProperty().bind(tasksTable.comparatorProperty());
         tasksTable.setItems(sfoList.getSortedList());
 
@@ -229,7 +191,41 @@ public class TasksController extends ContentController implements Initializable 
             tasksTable.setItems(sfoList.getSortedList());
         });
 
-        //deleteColumn.setCellFactory(cellDeleteFactory);
+
+        Callback<TableColumn<Task, Integer>, TableCell<Task, Integer>> cellDeleteFactory =
+                new Callback<TableColumn<Task, Integer>, TableCell<Task, Integer>>() {
+                    @Override
+                    public TableCell call(final TableColumn<Task, Integer> column) {
+                        final TableCell<Task, Integer> cell = new TableCell<Task, Integer>() {
+                            final Button btn = new Button(column.getText());
+
+                            @Override
+                            public void updateItem(Integer id, boolean empty) {
+                                super.updateItem(id, empty);
+                                if (empty) {
+                                    setGraphic(null);
+                                } else {
+
+                                    btn.setOnAction(event -> {
+                                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                        alert.setTitle("Delete operation");
+                                        alert.setHeaderText("Are sure you want to delete this task?");
+                                        alert.showAndWait();
+
+                                        if (alert.getResult() == ButtonType.OK) {
+                                            Context.getInstance().deleteEntityById(Task.class,id);
+                                            updateTables();
+                                        }
+                                    });
+                                    setGraphic(btn);
+                                }
+                                setText(null);
+                            }
+                        };
+                        return cell;
+                    }
+                };
+        deleteColumn.setCellFactory(cellDeleteFactory);
         editColumn.setCellFactory(cellEditFactory);
         doctorShowColumn.setCellFactory(cellDoctorFactory);
         patientShowColumn.setCellFactory(cellPatientFactory);
@@ -279,10 +275,15 @@ public class TasksController extends ContentController implements Initializable 
         Task task = new Task();
         task.setTitle(titleField.getText());
         task.setDescription(descriptionTextArea.getText());
-        task.setStatus("new");
+        task.setStatus("unfinished");
         //get doctorPatient using context function getDoctorPatient
-        User patient = (User) userComboBox.getSelectionModel().getSelectedItem();
-        task.setDoctorPatient(Context.getInstance().getDoctorPatientByDoctorAndPatientId(user.getId(),patient.getId()));
+        User patientOrDoctor = (User) userComboBox.getSelectionModel().getSelectedItem();
+        if (user.getRole().equals("doctor")){
+          task.setDoctorPatient(Context.getInstance().getDoctorPatientByDoctorAndPatientId(user.getId(),patientOrDoctor.getId()));
+
+        }else {
+            task.setDoctorPatient(Context.getInstance().getDoctorPatientByDoctorAndPatientId(patientOrDoctor.getId(),user.getId()));
+        }
         Boolean success = Context.getInstance().saveOrUpdateEntity(task);
         if(success){
             setSuccess("Task added successfully");

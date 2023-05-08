@@ -6,6 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import tornadofx.control.DateTimePicker?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:id="contentRoot">
@@ -48,7 +49,8 @@
                     <TextArea fx:id="descriptionTextArea" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="5"/>
                     <Button fx:id="addVisitButton" text="Add Visit" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
                     <Label text="Appointment On:" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
-                    <DatePicker fx:id="appointmentOnDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+                    <DateTimePicker fx:id="appointmentOnDateTimePicker" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+
                 </GridPane>
             </VBox></VBox>
 

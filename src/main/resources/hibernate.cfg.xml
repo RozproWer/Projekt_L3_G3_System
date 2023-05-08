@@ -18,6 +18,8 @@
         <property name="hibernate.connection.characterEncoding">UTF-8</property>
         <property name="hibernate.connection.autocommit">true</property>
         <property name="hibernate.order_updates">true</property>
+        <property name="connection.pool_size">50</property>
+
         <property name="hibernate.generate_statistics">false</property>
         <mapping class="com.giga.htask.model.Task"/>
         <mapping class="com.giga.htask.model.User"/>

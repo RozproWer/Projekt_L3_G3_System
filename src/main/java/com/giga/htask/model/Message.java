@@ -12,7 +12,7 @@ import java.util.Objects;
 public class Message {
     private int id;
     private int taskId;
-    private DoctorPatient doctorPatient;
+    private Task task;
     private User sender;
     private Timestamp createdOn;
     private String message;
@@ -29,26 +29,15 @@ public class Message {
     }
 
     @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "doctor_patient_id", nullable = false)
-    public DoctorPatient getDoctorPatient() {
-        return doctorPatient;
+    @JoinColumn(name = "task_id", nullable = false)
+    public Task getTask() {
+        return task;
     }
 
-    public void setDoctorPatient(DoctorPatient doctorPatient) {
-        this.doctorPatient = doctorPatient;
+    public void setTask(Task task) {
+        this.task = task;
     }
 
-    @ManyToOne(targetEntity = Task.class)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "task", nullable = false)
-    public int getTaskId() {
-        return taskId;
-    }
-
-    public void setTaskId(int taskId) {
-        this.taskId = taskId;
-    }
 
     @Basic
     @Column(name = "created_on", nullable = false)
@@ -59,6 +48,11 @@ public class Message {
     public void setCreatedOn(Timestamp createdOn) {
         this.createdOn = createdOn;
     }
+    @PrePersist
+    protected void onCreate() {
+        createdOn = new Timestamp(System.currentTimeMillis());
+    }
+
 
     @Basic
     @Column(name = "message", nullable = false, length = 1024)
@@ -89,11 +83,11 @@ public class Message {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Message message = (Message) o;
-        return id == message.id && doctorPatient == message.doctorPatient && taskId == message.taskId && Objects.equals(createdOn, message.createdOn) && Objects.equals(this.message, message.message);
+        return id == message.id && task == message.task  && Objects.equals(createdOn, message.createdOn) && Objects.equals(this.message, message.message);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, doctorPatient, taskId, createdOn, message);
+        return Objects.hash(id, task, createdOn, message);
     }
 }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import tornadofx.control.DateTimePicker?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:id="contentRoot">
+    <VBox fx:id="contentVbox">
+        <Label text="Tasks" styleClass="content-title" fx:id="contentTitle"/>
+        <HBox fx:id="contentOutput">
+            <Label styleClass="error" fx:id="contentError" />
+            <Label styleClass="success" fx:id="contentSuccess"/>
+            <Label styleClass="info" fx:id="contentInfo" />
+        </HBox>
+        <HBox>
+            <VBox minWidth="300">
+                <Label text="Summary" styleClass="content-title" />
+                <GridPane fx:id="contentSummary" hgap="10" vgap="10">
+                    <Label text="Title:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <Label fx:id="titleLabel" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                    <Label text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <Label fx:id="descriptionLabel" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    <Label text="Created on:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <Label fx:id="createdOnLabel" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    <Label text="Appointed On:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <Label fx:id="appointedOnLabel" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                    <Label text="Patient:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                    <Label fx:id="patientLabel" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                    <Label text="Doctor:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                    <Label fx:id="doctorLabel" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                    <Button fx:id="showDoctorButton" GridPane.columnIndex="0" GridPane.rowIndex="6" text="Show Doctor Details"/>
+                    <Button fx:id="showPatientButton" GridPane.columnIndex="1" GridPane.rowIndex="6"  text="Show Patient Details"/>
+                </GridPane>
+            </VBox>
+            <VBox>
+                <Label text="Edit" styleClass="content-title" />
+                <GridPane fx:id="contentForm" hgap="10" vgap="10">
+                    <Label text="Title:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <TextField fx:id="titleField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                    <Label text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <TextArea fx:id="descriptionTextArea" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    <Label text="Appointed on:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <DateTimePicker fx:id="appointmentOnDateTimePicker" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    <Button fx:id="submitEditTask" text="Submit Edit Task" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                </GridPane>
+            </VBox>
+
+        </HBox>
+    </VBox>
+</AnchorPane>

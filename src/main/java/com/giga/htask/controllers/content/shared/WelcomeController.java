@@ -43,8 +43,7 @@ public class WelcomeController  extends ContentController implements Initializab
             String formattedDate = dateFormat.format(currentTime);
             timeLabel.setText(formattedTime);
             dateLabel.setText(formattedDate);
-        }),
-                new KeyFrame(Duration.seconds(1)));
+        }), new KeyFrame(Duration.seconds(1)));
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
     }

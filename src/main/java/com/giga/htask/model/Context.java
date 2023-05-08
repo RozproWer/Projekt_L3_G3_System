@@ -2,14 +2,12 @@
 package com.giga.htask.model;
 
 import com.giga.htask.HibernateConnection;
-import com.giga.htask.controllers.content.admin.DoctorController;
 import com.giga.htask.utils.ReportGenerator;
 import com.giga.htask.utils.SortedFilteredObservableList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -46,9 +44,7 @@ public class Context {
     /*Auth*/
     public User login(String email, String password) {
 
-        //log email and password
-        System.out.println("email: " + email);
-        System.out.println("password: " + password);
+
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         loggedUser = (User) session.createQuery("FROM User WHERE email = :email")
@@ -398,5 +394,18 @@ public class Context {
         session.getTransaction().commit();
         session.close();
         return FXCollections.observableArrayList(patients);
+    }
+
+    public ObservableList getMessagesByTask(Integer taskId) {
+        //create query to get all messages by task
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("FROM Message WHERE task.id = :taskId ORDER BY task.createdOn ASC");
+        query.setParameter("taskId", taskId);
+        List messages = query.getResultList();
+        session.getTransaction().commit();
+        session.close();
+        return FXCollections.observableArrayList(messages);
+
     }
 }

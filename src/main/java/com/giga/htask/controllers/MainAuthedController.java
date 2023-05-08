@@ -56,7 +56,7 @@ public class MainAuthedController extends AnchorPane implements Initializable{
             AnchorPane anchorPane = (AnchorPane) App.loadViewController(fxml,controller);
             singleTab.setContent(anchorPane);
             getInstance().contentContainer.getTabs().add(singleTab);
-            System.out.println( getInstance().contentContainer.getTabs().size());
+
             getInstance().contentContainer.getSelectionModel().select(contentContainer.getTabs().size()-1);
         }catch (IOException e){
             e.printStackTrace();
@@ -96,78 +96,52 @@ public class MainAuthedController extends AnchorPane implements Initializable{
 
 
 
-        Button buttonAppointments = new Button("Appointments");
+
         Button buttonPatients = new Button("Patients");
-        Button buttonReports = new Button("Reports");
         Button buttonDoctors = new Button("Doctors");
         Button buttonSettings = new Button("Settings");
-        Button buttonTasks = new Button("Tasks");
         switch (loggedUser.getRole()){
             case "administrator":
                 verticalMenu.getChildren().add(buttonPatients);
                 verticalMenu.getChildren().add(buttonDoctors);
-                verticalMenu.getChildren().add(buttonReports);
-
                 buttonPatients.setOnAction(e -> {
-                        addTab("Patients","content/admin/Patients",true);
+                        addTab("Patients","content/patients/Patients",true);
+                });
+                buttonDoctors.setOnAction(e -> {
+                    addTab("Doctors","content/doctors/Doctors",true);
                 });
 
-                buttonDoctors.setOnAction(e -> {
-                    addTab("Doctors","content/admin/Doctors",true);
-                });
-                buttonReports.setOnAction(e -> {
-                    addTab("Reports","content/admin/Reports",true);
-                });
                 break;
             case "receptionist":
-
+                verticalMenu.getChildren().add(buttonPatients);
+                verticalMenu.getChildren().add(buttonDoctors);
+                buttonPatients.setOnAction(e -> {
+                    addTab("Patients","content/patients/Patients",true);
+                });
+                buttonDoctors.setOnAction(e -> {
+                    addTab("Doctors","content/doctors/Doctors",true);
+                });
                 break;
             case "doctor":
-                buttonPatients.setOnAction(e -> {
-                    try {
-                        contentContainer.getTabs().add(new Tab("Reports", App.loadView("content/doctor/Patients")));
-                    } catch (IOException ioException) {
-                        ioException.printStackTrace();
-                    }
-                });
                 verticalMenu.getChildren().add(buttonPatients);
-
-                buttonAppointments.setOnAction(e -> {
-                    try {
-                        contentContainer.getTabs().add(new Tab("Tasks", App.loadView("content/doctor/Tasks")));
-                    } catch (IOException ioException) {
-                        ioException.printStackTrace();
-                    }
+                verticalMenu.getChildren().add(buttonDoctors);
+                buttonPatients.setOnAction(e -> {
+                    addTab("Patients","content/patients/Patients",true);
                 });
-                verticalMenu.getChildren().add(buttonAppointments);
-
-                Button tasksButton = new Button("Tasks");
-                tasksButton.setOnAction(e -> {
-
+                buttonDoctors.setOnAction(e -> {
+                    addTab("Doctors","content/doctors/Doctors",true);
                 });
-                verticalMenu.getChildren().add(tasksButton);
-
-                buttonReports.setOnAction(e -> {
-
-                });
-                verticalMenu.getChildren().add(buttonReports);
 
                 break;
             case "patient":
-                buttonAppointments.setOnAction(e -> {
-
+                verticalMenu.getChildren().add(buttonPatients);
+                verticalMenu.getChildren().add(buttonDoctors);
+                buttonPatients.setOnAction(e -> {
+                    addTab("Patients","content/patients/Patients",true);
                 });
-                verticalMenu.getChildren().add(buttonAppointments);
-
-                buttonTasks.setOnAction(e -> {
-
+                buttonDoctors.setOnAction(e -> {
+                    addTab("Doctors","content/doctors/Doctors",true);
                 });
-                verticalMenu.getChildren().add(buttonTasks);
-
-                buttonReports.setOnAction(e -> {
-
-                });
-                verticalMenu.getChildren().add(buttonReports);
 
                 break;
         }

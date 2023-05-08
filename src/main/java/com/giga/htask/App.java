@@ -38,8 +38,8 @@ public class App extends Application {
     public void start(Stage stage) throws IOException, ClassNotFoundException {
 
         // create db
-        SessionFactory sessionFactory = HibernateConnection.getSessionFactory();
-        Session session = sessionFactory.openSession();
+
+        Session session = HibernateConnection.getSessionFactory().openSession();
         session.close();
 
         String url = new Configuration().configure().getProperty("hibernate.connection.url").toString();

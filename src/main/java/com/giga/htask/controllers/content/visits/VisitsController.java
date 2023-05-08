@@ -1,5 +1,7 @@
-package com.giga.htask.controllers.content.shared;
+package com.giga.htask.controllers.content.visits;
 
+import com.giga.htask.controllers.content.doctors.DoctorController;
+import com.giga.htask.controllers.content.patients.PatientController;
 import com.giga.htask.model.*;
 import com.giga.htask.controllers.content.ContentController;
 import com.giga.htask.model.Visit;
@@ -14,6 +16,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
+import tornadofx.control.DateTimePicker;
+
 
 import java.net.URL;
 import java.sql.Timestamp;
@@ -73,9 +77,9 @@ public class VisitsController  extends ContentController implements Initializabl
     private ComboBox userComboBox;
     @FXML
     private TextField titleField;
-    @FXML
-    private DatePicker appointmentOnDatePicker;
 
+    @FXML
+    private DateTimePicker  appointmentOnDateTimePicker;
 
     public VisitsController(Integer userId) {
         super(userId);
@@ -100,7 +104,9 @@ public class VisitsController  extends ContentController implements Initializabl
         TimestampValueFactory<Visit> visitAppointmentOnFactory = new TimestampValueFactory<>(Visit::getCreatedOn);
         visitAppointmentOnColumn.setCellValueFactory(visitAppointmentOnFactory);
 
+        editColumn.setCellValueFactory(new PropertyValueFactory<Visit,Integer>("id"));
         visitTitleColumn.setCellValueFactory(new PropertyValueFactory<Visit,String>("title"));
+        deleteColumn.setCellValueFactory(new PropertyValueFactory<Visit,Integer>("id"));
 
         patientNameColumn.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getDoctorPatient().getPatient().getName()));
@@ -122,13 +128,60 @@ public class VisitsController  extends ContentController implements Initializabl
         patientShowColumn.setCellValueFactory(cellData ->
                 new ReadOnlyObjectWrapper<>(cellData.getValue().getDoctorPatient().getPatient().getId()));
 
+
         Callback<TableColumn<Visit, Integer>, TableCell<Visit, Integer>> cellEditFactory =
-                new ButtonCellAddTabFactory( "Edit visit", "content/admin/Visit", VisitController.class);
+                new ButtonCellAddTabFactory( "Edit visit", "content/visits/Visit", VisitController.class);
+
+        Callback<TableColumn<Visit, Integer>, TableCell<Visit, Integer>> cellDoctorFactory =
+                new ButtonCellAddTabFactory( "Edit Doctor", "content/doctors/Doctor", DoctorController.class);
+
+        Callback<TableColumn<Visit, Integer>, TableCell<Visit, Integer>> cellPatientFactory =
+                new ButtonCellAddTabFactory( "Edit Patient", "content/patients/Patient", PatientController.class);
 
         sfoList.getSortedList().comparatorProperty().bind(visitsTable.comparatorProperty());
+
+
+        Callback<TableColumn<Visit, Integer>, TableCell<Visit, Integer>> cellDeleteFactory =
+                new Callback<TableColumn<Visit, Integer>, TableCell<Visit, Integer>>() {
+                    @Override
+                    public TableCell call(final TableColumn<Visit, Integer> column) {
+                        final TableCell<Visit, Integer> cell = new TableCell<Visit, Integer>() {
+                            final Button btn = new Button(column.getText());
+
+                            @Override
+                            public void updateItem(Integer id, boolean empty) {
+                                super.updateItem(id, empty);
+                                if (empty) {
+                                    setGraphic(null);
+                                } else {
+
+                                    btn.setOnAction(event -> {
+                                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                        alert.setTitle("Delete operation");
+                                        alert.setHeaderText("Are sure you want to delete this visit?");
+                                        alert.showAndWait();
+
+                                        if (alert.getResult() == ButtonType.OK) {
+                                            Context.getInstance().deleteEntityById(Visit.class,id);
+                                           updateTables();
+                                        }
+                                    });
+                                    setGraphic(btn);
+                                }
+                                setText(null);
+                            }
+                        };
+                        return cell;
+                    }
+                };
         visitsTable.setItems(sfoList.getSortedList());
 
+        deleteColumn.setCellFactory(cellDeleteFactory);
         editColumn.setCellFactory(cellEditFactory);
+        doctorShowColumn.setCellFactory(cellDoctorFactory);
+        patientShowColumn.setCellFactory(cellPatientFactory);
+
+
         //sorting
 
         visitsTable.sortPolicyProperty().set(new Callback<TableView<Visit>, Boolean>() {
@@ -175,6 +228,14 @@ public class VisitsController  extends ContentController implements Initializabl
             });
             visitsTable.setItems(sfoList.getSortedList());
         });
+        //block dates before today in appointmentOnDateTimePicker
+        appointmentOnDateTimePicker.setDayCellFactory(picker -> new DateCell() {
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                LocalDate today = LocalDate.now();
+                setDisable(empty || date.compareTo(today) < 0 );
+            }
+        });
     }
     @Override
     protected void updateTablesIfNeeded(Boolean refresh){
@@ -197,6 +258,7 @@ public class VisitsController  extends ContentController implements Initializabl
         descriptionTextArea.setTextFormatter(new TextFormatter<String>(change ->
                 change.getControlNewText().length() <= 2048 ? change : null));
 
+
         addVisitButton.setOnAction(event -> addVisit());
     }
 
@@ -217,21 +279,20 @@ public class VisitsController  extends ContentController implements Initializabl
         }
 
         Visit visit = new Visit();
+        visit.setCreatedOn(Timestamp.valueOf(LocalDateTime.now()));
         visit.setTitle(titleField.getText());
         visit.setDescription(descriptionTextArea.getText());
-
-        LocalDate time = appointmentOnDatePicker.getValue();
-        System.out.println(time);
-        Timestamp timestamp = Timestamp.valueOf(time.atStartOfDay());
+        //visit.setCreatedOn(Timestamp.valueOf(LocalDateTime.now()));
+        LocalDateTime time = appointmentOnDateTimePicker.getDateTimeValue();
+        Timestamp timestamp = Timestamp.valueOf(time);
         visit.setAppointmentOn(timestamp);
 
-        User patient = (User) userComboBox.getSelectionModel().getSelectedItem();
+        User patientOrDoctor = (User) userComboBox.getSelectionModel().getSelectedItem();
         if (user.getRole().equals("doctor")){
-            visit.setDoctorPatient(Context.getInstance().getDoctorPatientByDoctorAndPatientId(user.getId(),patient.getId()));
+            visit.setDoctorPatient(Context.getInstance().getDoctorPatientByDoctorAndPatientId(user.getId(),patientOrDoctor.getId()));
         }else{
-            visit.setDoctorPatient(Context.getInstance().getDoctorPatientByDoctorAndPatientId(patient.getId(),user.getId()));
+            visit.setDoctorPatient(Context.getInstance().getDoctorPatientByDoctorAndPatientId(patientOrDoctor.getId(),user.getId()));
         }
-
         Boolean success = Context.getInstance().saveOrUpdateEntity(visit);
         if(success){
             setSuccess("Visit added successfully");

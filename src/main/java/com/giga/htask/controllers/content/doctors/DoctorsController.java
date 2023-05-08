@@ -1,7 +1,8 @@
-package com.giga.htask.controllers.content.admin;
+package com.giga.htask.controllers.content.doctors;
 
-import com.giga.htask.controllers.content.shared.TasksController;
-import com.giga.htask.controllers.content.shared.VisitsController;
+import com.giga.htask.controllers.content.tasks.TasksController;
+import com.giga.htask.controllers.content.visits.VisitsController;
+import com.giga.htask.model.UserDoctor;
 import com.giga.htask.utils.TimestampValueFactory;
 import com.giga.htask.utils.ButtonCellAddTabFactory;
 import com.giga.htask.controllers.content.ContentController;
@@ -17,10 +18,10 @@ import java.net.URL;
 import java.util.Comparator;
 import java.util.ResourceBundle;
 
-public class PatientsController extends ContentController implements Initializable {
+public class DoctorsController extends ContentController implements Initializable {
 
     @FXML
-    private TableView<User> patientsTable;
+    private TableView<User> doctorsTable;
     @FXML
     private TableColumn<User, Integer> idColumn;
     @FXML
@@ -36,6 +37,8 @@ public class PatientsController extends ContentController implements Initializab
     @FXML
     private TableColumn peselColumn;
     @FXML
+    private TableColumn specializationColumn;
+    @FXML
     private TableColumn roleColumn;
     @FXML
     private TableColumn deleteColumn;
@@ -49,6 +52,7 @@ public class PatientsController extends ContentController implements Initializab
     private TableColumn createdOnColumn;
     @FXML
     private TextField filterField;
+
     @FXML
     private TextField nameField;
     @FXML
@@ -62,19 +66,22 @@ public class PatientsController extends ContentController implements Initializab
     @FXML
     private TextField peselField;
     @FXML
-    private Button addPatient;
+    private TextField specializationField;
+    @FXML
+    private TextArea descriptionTextArea;
+    @FXML
+    private Button addDoctor;
 
-    public PatientsController() {
+    public DoctorsController() {
         super(Context.getInstance().getLoggedUser().getId());
     }
 
-    @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         super.initialize(location, resources);
         handleTables();
         updateTables();
-        handleAddPatient();
+        handleAddDoctor();
     }
 
     private void handleTables(){
@@ -85,6 +92,7 @@ public class PatientsController extends ContentController implements Initializab
         telephoneColumn.setCellValueFactory(new PropertyValueFactory<User,String>("telephone"));
         addressColumn.setCellValueFactory(new PropertyValueFactory<User,String>("address"));
         peselColumn.setCellValueFactory(new PropertyValueFactory<User,String>("pesel"));
+        specializationColumn.setCellValueFactory(new PropertyValueFactory<User,String>("specialization"));
         roleColumn.setCellValueFactory(new PropertyValueFactory<User,String>("role"));
         deleteColumn.setCellValueFactory(new PropertyValueFactory<User,Integer>("id"));
         editColumn.setCellValueFactory(new PropertyValueFactory<User,Integer>("id"));
@@ -94,13 +102,12 @@ public class PatientsController extends ContentController implements Initializab
         createdOnColumn.setCellValueFactory(createdOnFactory);
 
         Callback<TableColumn<User, Integer>, TableCell<User, Integer>> cellEditFactory =
-                new ButtonCellAddTabFactory( "Edit patient", "content/admin/EditPatient", PatientController.class);
+                new ButtonCellAddTabFactory( "View doctor", "content/doctors/Doctor", DoctorController.class);
         Callback<TableColumn<User, Integer>, TableCell<User, Integer>> cellVisitsFactory =
-                new ButtonCellAddTabFactory( "Patient's visits", "content/shared/Visits", VisitsController.class);
+                new ButtonCellAddTabFactory( "Doctor's visits", "content/visits/Visits", VisitsController.class);
         Callback<TableColumn<User, Integer>, TableCell<User, Integer>> cellTasksFactory =
-                new ButtonCellAddTabFactory( "Patient's tasks", "content/shared/Tasks", TasksController.class);
+                new ButtonCellAddTabFactory( "Doctor's tasks", "content/tasks/Tasks", TasksController.class);
 
-        deleteColumn.setCellValueFactory(new PropertyValueFactory<User, Integer>("id"));
         Callback<TableColumn<User, String>, TableCell<User, Integer>> cellDeleteFactory =
                 new Callback<TableColumn<User, String>, TableCell<User, Integer>>() {
                     @Override
@@ -109,8 +116,8 @@ public class PatientsController extends ContentController implements Initializab
                             final Button btn = new Button(column.getText());
 
                             @Override
-                            public void updateItem(Integer vID, boolean empty) {
-                                super.updateItem(vID, empty);
+                            public void updateItem(Integer id, boolean empty) {
+                                super.updateItem(id, empty);
                                 if (empty) {
                                     setGraphic(null);
                                 } else {
@@ -118,12 +125,12 @@ public class PatientsController extends ContentController implements Initializab
                                     btn.setOnAction(event -> {
                                         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                                         alert.setTitle("Delete operation");
-                                        alert.setHeaderText("Are sure you want to delete this entity?");
+                                        alert.setHeaderText("Are sure you want to delete this doctor?");
                                         alert.showAndWait();
 
                                         if (alert.getResult() == ButtonType.OK) {
-                                            Context.getInstance().deleteEntityById(User.class,vID);
-                                            patientsTable.setItems(Context.getInstance().getSortedPatientsTable());
+                                            Context.getInstance().deleteEntityById(User.class,id);
+                                           updateTables(true);
                                         }
                                     });
                                     setGraphic(btn);
@@ -140,13 +147,13 @@ public class PatientsController extends ContentController implements Initializab
         visitsColumn.setCellFactory(cellVisitsFactory);
         tasksColumn.setCellFactory(cellTasksFactory);
 
-        Context.getInstance().getSortedPatientsTable().comparatorProperty().bind(patientsTable.comparatorProperty());
+        Context.getInstance().getSortedDoctorsTable().comparatorProperty().bind(doctorsTable.comparatorProperty());
 
         //sorting
-        patientsTable.sortPolicyProperty().set(new Callback<TableView<User>, Boolean>() {
+        doctorsTable.sortPolicyProperty().set(new Callback<TableView<User>, Boolean>() {
             @Override
             public Boolean call(TableView<User> param) {
-                final Comparator<User> tableComparator = patientsTable.getComparator();
+                final Comparator<User> tableComparator = doctorsTable.getComparator();
                 // if the column is set to unsorted, tableComparator can be null
                 Comparator<User> comparator = tableComparator == null ? null : new Comparator<User>() {
                     @Override
@@ -155,17 +162,17 @@ public class PatientsController extends ContentController implements Initializab
                         return tableComparator.compare(o1, o2);
                     }
                 };
-                patientsTable.setItems(Context.getInstance().getFilteredPatientsTable().sorted(comparator));
+                doctorsTable.setItems(Context.getInstance().getFilteredDoctorsTable().sorted(comparator));
                 return true;
             }
         });
 
         //filtering
         filterField.textProperty().addListener((observable, oldValue, newValue) -> {
-            Context.getInstance().getSortedPatientsTable().comparatorProperty().bind(patientsTable.comparatorProperty());
+            Context.getInstance().getSortedDoctorsTable().comparatorProperty().bind(doctorsTable.comparatorProperty());
 
-            Context.getInstance().getFilteredPatientsTable().setPredicate(user -> {
-                if(!user.getRole().equals("patient")) {
+            Context.getInstance().getFilteredDoctorsTable().setPredicate(user -> {
+                if(!user.getRole().equals("doctor")) {
                     return false;
                 }
                 if (newValue == null || newValue.isEmpty()) {
@@ -180,17 +187,19 @@ public class PatientsController extends ContentController implements Initializab
                     return true;
                 } else if (user.getPesel().toLowerCase().contains(lowerCaseFilter)){
                     return true;
+                }else if (user.getSpecialization().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
                 }
                 return false;
             });
-            patientsTable.setItems(Context.getInstance().getSortedPatientsTable());
+            doctorsTable.setItems(Context.getInstance().getSortedDoctorsTable());
         });
     }
 
     /**
      * Method used to set text formaters, and handle add doctor button
      */
-    private void handleAddPatient(){
+    private void handleAddDoctor(){
         nameField.setTextFormatter(new TextFormatter<String>(change ->
                 change.getControlNewText().length() <= 255 ? change : null));
         surnameField.setTextFormatter(new TextFormatter<String>(change ->
@@ -203,15 +212,17 @@ public class PatientsController extends ContentController implements Initializab
                 change.getControlNewText().length() <= 255 ? change : null));
         peselField.setTextFormatter(new TextFormatter<String>(change ->
                 change.getControlNewText().length() <= 11 ? change : null));
-        addPatient.setOnAction(event -> addPatient());
+        specializationField.setTextFormatter(new TextFormatter<String>(change ->
+                change.getControlNewText().length() <= 255 ? change : null));
+        descriptionTextArea.setTextFormatter(new TextFormatter<String>(change ->
+                change.getControlNewText().length() <= 2048 ? change : null));
+        addDoctor.setOnAction(event -> addDoctor());
     }
 
     /**
-     * Creates patient objects and set its fields with values from text fields
-     */
-    private void addPatient() {
-
-        //validation:
+    * Creates doctor objects and set its fields with values from text fields
+    */
+    private void addDoctor() {
         if(nameField.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -290,23 +301,26 @@ public class PatientsController extends ContentController implements Initializab
             return;
         }
 
-
-
         User user = new User();
-        user.setRole("patient");
+        user.setRole("doctor");
+        UserDoctor userDoctor = new UserDoctor();
+        userDoctor.setDoctor(user);
+
         user.setName(nameField.getText());
         user.setSurname(surnameField.getText());
         user.setEmail(emailField.getText());
         user.setTelephone(telephoneField.getText());
         user.setAddress(addressField.getText());
         user.setPesel(peselField.getText());
+        userDoctor.setSpecialization(specializationField.getText());
+        userDoctor.setDescription(descriptionTextArea.getText());
         user.setPassword(Context.getInstance().generatePassword());
-        if(Context.getInstance().saveOrUpdateEntity(user)) {
+        if(Context.getInstance().saveOrUpdateEntity(user) &&  Context.getInstance().saveOrUpdateEntity(userDoctor)) {
             Context.getInstance().reportGenerator.generateNewUserReport(user);
             updateTables(true);
-            setSuccess("Patient added successfully");
+            setSuccess("Doctor added successfully");
         }else{
-            setError("Error while adding patient");
+            setError("Error while adding doctor");
         }
     }
 
@@ -317,7 +331,8 @@ public class PatientsController extends ContentController implements Initializab
      */
     @Override
     protected void updateTablesIfNeeded(Boolean refresh){
-        patientsTable.setItems(Context.getInstance().getSortedPatientsTable(refresh));
-        patientsTable.refresh();
+        doctorsTable.setItems(Context.getInstance().getSortedDoctorsTable(refresh));
+        doctorsTable.refresh();
     }
+
 }

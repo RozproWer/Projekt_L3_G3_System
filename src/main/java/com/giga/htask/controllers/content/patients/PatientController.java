@@ -1,8 +1,8 @@
-package com.giga.htask.controllers.content.admin;
+package com.giga.htask.controllers.content.patients;
 
 import com.giga.htask.controllers.content.ContentController;
-import com.giga.htask.controllers.content.shared.TasksController;
-import com.giga.htask.controllers.content.shared.VisitsController;
+import com.giga.htask.controllers.content.tasks.TasksController;
+import com.giga.htask.controllers.content.visits.VisitsController;
 import com.giga.htask.model.Context;
 import com.giga.htask.model.DoctorPatient;
 import com.giga.htask.model.User;
@@ -121,11 +121,11 @@ public class PatientController extends ContentController implements Initializabl
         visitsColumn.setCellValueFactory(new PropertyValueFactory<User,Integer>("id"));
 
         Callback<TableColumn<User, Integer>, TableCell<User, Integer>> cellEditFactory =
-                new ButtonCellAddTabFactory( "Edit patient", "content/admin/EditPatient", PatientController.class);
+                new ButtonCellAddTabFactory( "View patient", "content/patients/Patient", PatientController.class);
         Callback<TableColumn<User, Integer>, TableCell<User, Integer>> cellVisitsFactory =
-                new ButtonCellAddTabFactory( "Patient's visits", "content/shared/Visits", VisitsController.class);
+                new ButtonCellAddTabFactory( "Patient's visits", "content/visits/Visits", VisitsController.class);
         Callback<TableColumn<User, Integer>, TableCell<User, Integer>> cellTasksFactory =
-                new ButtonCellAddTabFactory( "Patient's tasks", "content/shared/Tasks", TasksController.class);
+                new ButtonCellAddTabFactory( "Patient's tasks", "content/tasks/Tasks", TasksController.class);
 
         deleteColumn.setCellValueFactory(new PropertyValueFactory<User, Integer>("id"));
         Callback<TableColumn<User, String>, TableCell<User, Integer>> cellDeleteFactory =
@@ -150,12 +150,12 @@ public class PatientController extends ContentController implements Initializabl
 
                                         if (alert.getResult() == ButtonType.OK) {
                                             if (Context.getInstance().deleteEntityById(DoctorPatient.class,Context.getInstance().getDoctorPatientId(id,user.getId()))){
-                                                System.out.println("bruh");
+
                                                 setSuccess("Doctor unassigned successfully");
                                                 updateTables();
 
                                             }else{
-                                                System.out.println("bruh");
+
                                                 setError("Error while unassigning doctor");
                                             }
                                         }
