@@ -16,6 +16,10 @@ public class SettingsController extends ContentController implements Initializab
     @FXML
     RadioButton radioButtonIsDarkMode;
 
+    public SettingsController() {
+        super(Context.getInstance().getLoggedUser().getId());
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

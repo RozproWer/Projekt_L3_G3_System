@@ -48,6 +48,7 @@ public class App extends Application {
 
         //migrate db using flyway
         Flyway flyway = Flyway.configure().dataSource(url, username, password).baselineOnMigrate(true).load();
+
         flyway.migrate();
 
         // Get dimensions of the screen to make it fullscreen

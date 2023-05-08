@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:id="contentRoot">
+    <VBox fx:id="contentVbox">
+        <Label text="Tasks" styleClass="content-title" fx:id="contentTitle"/>
+        <HBox fx:id="contentOutput">
+            <Label text="" styleClass="error" fx:id="contentError" visible="false"/>
+            <Label text="" styleClass="success" fx:id="contentSuccess" visible="false"/>
+            <Label text="" styleClass="info" fx:id="contentInfo" visible="false"/>
+        </HBox>
+    <HBox>
+        <VBox fx:id="contentTasks">
+            <Label text="Edit" styleClass="content-title" />
+            <GridPane fx:id="contentForm" hgap="10" vgap="10">
+                <Label text="Title:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="titleField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="Status:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextField fx:id="statusField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <Label text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <TextField fx:id="descriptionField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                <Button text="Submit" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+
+            </GridPane>
+        </VBox>
+            <VBox minWidth="300">
+            <Label text="Summary" styleClass="content-title" />
+                <GridPane fx:id="contentSummary" hgap="10" vgap="10">
+                    <Label text="ID:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <Label fx:id="taskId" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                    <Label text="Title:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <Label fx:id="taskTitle" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    <Label text="Created On:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <Label fx:id="taskCreatedOn" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    <Label text="Finished On:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <Label fx:id="taskFinishedOn" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                    <Label text="Status:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                    <Label fx:id="taskStatus" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                    <Label text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                    <Label fx:id="taskDescription" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+                    <Label text="Doctor Name:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                    <Label fx:id="doctorName" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+                    <Label text="Doctor Surname:" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                    <Label fx:id="doctorSurname" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+                    <Label text="Doctor Pesel:" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                    <Label fx:id="doctorPesel" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+                    <Label text="Doctor Specialization:" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                    <Label fx:id="doctorSpecialization" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+
+                    <Label text="Patient Name:" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+                    <Label fx:id="patientName" GridPane.columnIndex="3" GridPane.rowIndex="4"/>
+                    <Label text="Patient Surname:" GridPane.columnIndex="2" GridPane.rowIndex="5"/>
+                    <Label fx:id="patientSurname" GridPane.columnIndex="3" GridPane.rowIndex="5"/>
+                    <Label text="Patient Pesel:" GridPane.columnIndex="2" GridPane.rowIndex="6"/>
+                    <Label fx:id="patientPesel" GridPane.columnIndex="3" GridPane.rowIndex="6"/>
+                </GridPane>
+
+
+            </VBox>
+
+        <VBox>
+        <Label text="Chat" styleClass="content-title"/>
+            <VBox >
+                <ScrollPane fx:id="chatScrollPane" prefHeight="600">
+                    <TextArea fx:id="chatArea" editable="false" wrapText="true" prefWidth="400" prefHeight="Infinity" />
+                </ScrollPane>
+                <HBox>
+                    <TextField fx:id="textPrompt" prefWidth="300" />
+                    <Button text="Send" />
+                </HBox>
+            </VBox>
+        </VBox>
+    </HBox>
+    </VBox>
+</AnchorPane>

@@ -5,45 +5,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe04c8a9-9832-4360-ac13-1391bb15dfad" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/MainAuthedController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/TimestampValueFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/ButtonCellFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/ContentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/admin/DoctorsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/admin/EditDoctorController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/admin/EditPatientController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/admin/EditTaskDoctorController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/admin/EditTaskPatientController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/admin/PatientsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/admin/ReportsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/doctor/ApointmentsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/doctor/PatientsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/patient/ApointmentsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/patient/ReportsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/shared/SettingsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/shared/TasksController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/shared/WelcomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/styles/darkmode.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/styles/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/Doctors.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/EditDoctor.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/Patients.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/Reports.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/shared/Settings.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/shared/Welcome.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doctor_report_0_1683414657896.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doctor_report_31_1683456757305.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doctor_report_32_1683461055638.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reports/doctor_report_33_1683461261917.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reports/doctor_report_34_1683461275889.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reports/doctor_report_35_1683461836780.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reports/doctor_report_36_1683461864715.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reports/doctor_report_37_1683462069723.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reports/doctor_report_38_1683462077484.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/admin/DoctorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/admin/PatientController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/utils/ReportGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/utils/SortedFilteredObservableList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/htask/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/ContentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/ContentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/admin/DoctorsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/admin/DoctorsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/admin/EditDoctorController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/admin/EditPatientController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/admin/PatientsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/admin/PatientsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/shared/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/shared/TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/shared/TasksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/shared/TasksController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/shared/VisitsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/shared/VisitsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/Context.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/Context.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/DoctorPatient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/DoctorPatient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/Task.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/UserDoctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/UserDoctor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/UserSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/UserSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/Visit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/Visit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/MainAuthedView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/MainAuthedView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/MainView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/styles/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/Doctors.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/Doctors.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/EditDoctor.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/EditDoctor.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/EditPatient.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/EditPatient.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/Patients.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/Patients.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/shared/Tasks.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/shared/Tasks.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/shared/Visits.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/shared/Visits.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,6 +59,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Kotlin Class" />
         <option value="FxmlFile" />
         <option value="Class" />
       </list>
@@ -82,7 +85,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/shared" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
@@ -90,6 +93,8 @@
       <recent name="com.giga.htask.controllers.content.admin" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="X:\UR\DZISIAJ_TEN_NO\22-23-3inf-l3-l3_g3_ks\src\main\resources\com\giga\htask\view\content\shared" />
+      <recent name="X:\UR\DZISIAJ_TEN_NO\22-23-3inf-l3-l3_g3_ks\src\main\resources\com\giga\htask\view\content\admin" />
       <recent name="X:\UR\DZISIAJ_TEN_NO\22-23-3inf-l3-l3_g3_ks\src\main\java\com\giga\htask\controllers\content" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -99,9 +104,9 @@
       <recent name="com.giga.htask.controllers" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.giga.htask.controllers.content.shared" />
       <recent name="com.giga.htask.controllers.content.admin" />
       <recent name="com.giga.htask.controllers.content.patient" />
-      <recent name="com.giga.htask.controllers.content.shared" />
       <recent name="com.giga.htask.controllers.content.doctor" />
       <recent name="com.giga.htask.controllers.content.receptionist" />
     </key>
@@ -135,7 +140,10 @@
       <updated>1679961725844</updated>
       <workItem from="1679961727071" duration="853000" />
       <workItem from="1681301935626" duration="4994000" />
-      <workItem from="1681469765167" duration="86910000" />
+      <workItem from="1681469765167" duration="112259000" />
+      <workItem from="1683316030875" duration="13496000" />
+      <workItem from="1683379394590" duration="6284000" />
+      <workItem from="1683394169159" duration="41964000" />
     </task>
     <servers />
   </component>
@@ -161,6 +169,12 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="4" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/com/giga/htask/model/Visit.java</url>
+          <line>17</line>
+          <properties field="appointmentOn" class="com.giga.htask.model.Visit" />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

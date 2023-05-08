@@ -27,8 +27,8 @@ public class Visit {
         this.id = id;
     }
 
-    @ManyToOne
-    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "doctor_patient_id", nullable = false)
     public DoctorPatient getDoctorPatient() {
         return doctorPatient;
@@ -66,6 +66,10 @@ public class Visit {
 
     public void setCreatedOn(Timestamp createdOn) {
         this.createdOn = createdOn;
+    }
+    @PrePersist
+    protected void onCreate() {
+        createdOn = new Timestamp(System.currentTimeMillis());
     }
 
     @Basic

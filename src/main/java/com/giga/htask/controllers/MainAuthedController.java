@@ -48,10 +48,6 @@ public class MainAuthedController extends AnchorPane implements Initializable{
     private User loggedUser;
 
 
-    public MainAuthedController() {
-
-       this.loggedUser = Context.getInstance().getLoggedUser();
-    }
 
     public  void addTab(String title,String fxml,Object controller,Boolean isCloseable ) {
         Tab singleTab = new Tab(title);
@@ -75,13 +71,12 @@ public class MainAuthedController extends AnchorPane implements Initializable{
         }catch (IOException e){
             e.printStackTrace();
         }
-
     }
 
     @Override
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
-        //TODO
+        this.loggedUser = Context.getInstance().getLoggedUser();
         labelUserInfo.setText(loggedUser.getName() + " " + loggedUser.getSurname() + " " + loggedUser.getRole());
         buttonLogout.setOnAction(event -> {
             try {
@@ -96,7 +91,7 @@ public class MainAuthedController extends AnchorPane implements Initializable{
         });
 
 
-         addTab("Welcome","content/shared/Welcome",new WelcomeController(),false);
+         addTab("Welcome","content/shared/Welcome",new WelcomeController(loggedUser.getId()),false);
 
 
 

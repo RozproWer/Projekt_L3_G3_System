@@ -6,6 +6,9 @@ module com.giga {
     requires org.hibernate.orm.core;
     requires java.naming;
     requires org.flywaydb.core;
+    requires com.calendarfx.view;
+    requires itextpdf;
+    requires java.desktop;
 
     opens com.giga.htask to javafx.fxml;
     opens com.giga.htask.controllers to javafx.fxml;
@@ -29,4 +32,6 @@ module com.giga {
     opens com.giga.htask.model;
     exports com.giga.htask.controllers.content.admin;
     opens com.giga.htask.controllers.content.admin to javafx.fxml;
+    exports com.giga.htask.utils;
+    opens com.giga.htask.utils to javafx.fxml;
 }

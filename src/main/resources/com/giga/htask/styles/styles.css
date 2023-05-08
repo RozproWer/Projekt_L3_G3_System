@@ -44,3 +44,12 @@
 #contentVbox,.content-vbox{
     -fx-padding: 20px 20px;
 }
+.success {
+    -fx-text-fill: #00ff00;
+}
+.error {
+    -fx-text-fill: #ff0000;
+}
+.info {
+    -fx-text-fill: #0000ff;
+}

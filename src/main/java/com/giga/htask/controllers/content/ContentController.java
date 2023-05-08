@@ -1,5 +1,7 @@
 package com.giga.htask.controllers.content;
 
+import com.giga.htask.model.Context;
+import com.giga.htask.model.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -11,26 +13,34 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public abstract class ContentController implements Initializable {
-    @FXML
-    AnchorPane contentRoot;
+
+    protected User user;
 
     @FXML
-    HBox contentOutput;
+    protected AnchorPane contentRoot;
 
     @FXML
-    public Label contentTitle;
+    protected HBox contentOutput;
 
     @FXML
-    VBox contentVbox;
+    protected Label contentTitle;
 
     @FXML
-    Label contentError;
+    protected VBox contentVbox;
 
     @FXML
-    Label contentSuccess;
+    protected Label contentError;
 
     @FXML
-    Label contentInfo;
+    protected Label contentSuccess;
+
+    @FXML
+    protected Label contentInfo;
+
+    //create contructor
+    public ContentController(Integer userId) {
+        user = Context.getInstance().getEntityById(User.class, userId);
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -57,5 +67,14 @@ public abstract class ContentController implements Initializable {
         contentError.setText("");
         contentSuccess.setText("");
         contentInfo.setText("");
+    }
+    //because there is no default arguments in java we have 3 fookin methods
+    protected void updateTables(){
+        updateTablesIfNeeded(false);
+    }
+    protected void updateTables(Boolean refresh){
+        updateTablesIfNeeded(refresh);
+    }
+    protected void updateTablesIfNeeded(Boolean refresh){
     }
 }

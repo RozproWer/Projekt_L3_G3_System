@@ -154,7 +154,10 @@ public class User {
     public void setCreatedOn(Timestamp createdOn) {
         this.createdOn = createdOn;
     }
-
+    @PrePersist
+    protected void onCreate() {
+        createdOn = new Timestamp(System.currentTimeMillis());
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -175,4 +178,14 @@ public class User {
         return userDoctor.getSpecialization();
     }
 
+
+    //create toString method for User class, if role is doctor then add specialization to string, else return only name and surname
+    @Override
+    public String toString() {
+        if (role.equals("doctor")) {
+            return id + ": " + name + " " + surname + " (" + userDoctor.getSpecialization() + ")";
+        } else {
+            return  id+" (" + pesel+  "): "+  name + " " + surname;
+        }
+    }
 }

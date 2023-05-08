@@ -26,6 +26,11 @@ public class WelcomeController  extends ContentController implements Initializab
     private Label dateLabel;
     @FXML
     private Label userLabel;
+
+    public WelcomeController(Integer userId) {
+        super(userId);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         super.initialize(location, resources);

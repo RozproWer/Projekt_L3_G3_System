@@ -16,9 +16,8 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.connection.useUnicode">true</property>
         <property name="hibernate.connection.characterEncoding">UTF-8</property>
-
         <property name="hibernate.connection.autocommit">true</property>
-
+        <property name="hibernate.order_updates">true</property>
         <property name="hibernate.generate_statistics">false</property>
         <mapping class="com.giga.htask.model.Task"/>
         <mapping class="com.giga.htask.model.User"/>

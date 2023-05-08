@@ -29,7 +29,7 @@ public class Message {
     }
 
     @ManyToOne
-    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "doctor_patient_id", nullable = false)
     public DoctorPatient getDoctorPatient() {
         return doctorPatient;
@@ -40,6 +40,7 @@ public class Message {
     }
 
     @ManyToOne(targetEntity = Task.class)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "task", nullable = false)
     public int getTaskId() {
         return taskId;
@@ -72,7 +73,7 @@ public class Message {
 
 
     @ManyToOne
-    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "sender_id", nullable = false)
     public User getSender() {
         return sender;

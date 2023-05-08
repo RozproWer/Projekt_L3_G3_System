@@ -13,8 +13,6 @@ import java.util.Objects;
  * @since 1.0
  */
 
-//Hibernate requires each entity to have a unique identifier
-
 @Entity
 @Table(name = "users_doctors")
 public class UserDoctor {
@@ -46,7 +44,7 @@ public class UserDoctor {
         this.doctor = doctor;
     }
 
-    @Column(name = "description", nullable = true, length = 255)
+    @Column(name = "description", nullable = true, length = 512)
     public String getDescription() {
         return description;
     }

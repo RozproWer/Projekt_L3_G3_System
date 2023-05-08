@@ -23,8 +23,8 @@ public class DoctorPatient {
         this.id = id;
     }
 
-    @ManyToOne
-    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "doctor_id", nullable = false)
     public User getDoctor() {
         return doctor;
@@ -34,8 +34,8 @@ public class DoctorPatient {
         this.doctor = doctor;
     }
 
-    @ManyToOne
-    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "patient_id", nullable = false)
     public User getPatient() {
         return patient;
