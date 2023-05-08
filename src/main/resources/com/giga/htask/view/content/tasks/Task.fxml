@@ -10,14 +10,16 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:id="contentRoot">
-    <VBox fx:id="contentVbox">
+    <ScrollPane fx:id="contentScrollPane">
+        <VBox fx:id="contentVbox">
+
         <Label text="Tasks" styleClass="content-title" fx:id="contentTitle"/>
         <HBox fx:id="contentOutput">
             <Label text="" styleClass="error" fx:id="contentError" visible="false"/>
             <Label text="" styleClass="success" fx:id="contentSuccess" visible="false"/>
             <Label text="" styleClass="info" fx:id="contentInfo" visible="false"/>
         </HBox>
-    <HBox>
+        <HBox>
             <VBox minWidth="300">
                 <Label text="Summary" styleClass="content-title" />
                 <GridPane fx:id="contentSummary" hgap="10" vgap="10">
@@ -65,5 +67,7 @@
         </VBox>
 
     </HBox>
+
     </VBox>
+    </ScrollPane>
 </AnchorPane>

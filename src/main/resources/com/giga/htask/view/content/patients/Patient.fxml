@@ -9,8 +9,9 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:id="contentRoot">
-    <HBox>
+    <ScrollPane fx:id="contentScrollPane">
         <VBox fx:id="contentVbox" styleClass="content-vbox">
+
             <Label text="Patient" styleClass="content-title" fx:id="contentTitle"/>
             <HBox fx:id="contentOutput">
                 <Label text="" styleClass="error" fx:id="contentError"/>
@@ -87,8 +88,8 @@
                     </VBox>
                 </VBox>
             </HBox>
-        </VBox>
 
-    </HBox>
+        </VBox>
+    </ScrollPane>
 </AnchorPane>
 

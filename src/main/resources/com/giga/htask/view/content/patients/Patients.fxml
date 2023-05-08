@@ -10,8 +10,9 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.giga.htask.controllers.content.patients.PatientsController"
             fx:id="contentRoot">
-
+    <ScrollPane fx:id="contentScrollPane">
     <VBox fx:id="contentVbox">
+
         <Label text="Patients" styleClass="content-title" fx:id="contentTitle"/>
         <HBox fx:id="contentOutput">
             <Label  styleClass="success" fx:id="contentSuccess" />
@@ -54,5 +55,7 @@
                 <Button fx:id="addPatient" text="Submit" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
             </GridPane>
         </VBox>
+
     </VBox>
+    </ScrollPane>
 </AnchorPane>

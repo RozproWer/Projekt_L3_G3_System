@@ -1,6 +1,7 @@
 package com.giga.htask.controllers.content.patients;
 
 import com.giga.htask.controllers.content.ContentController;
+import com.giga.htask.controllers.content.doctors.DoctorController;
 import com.giga.htask.controllers.content.tasks.TasksController;
 import com.giga.htask.controllers.content.visits.VisitsController;
 import com.giga.htask.model.Context;
@@ -121,11 +122,11 @@ public class PatientController extends ContentController implements Initializabl
         visitsColumn.setCellValueFactory(new PropertyValueFactory<User,Integer>("id"));
 
         Callback<TableColumn<User, Integer>, TableCell<User, Integer>> cellEditFactory =
-                new ButtonCellAddTabFactory( "View patient", "content/patients/Patient", PatientController.class);
+                new ButtonCellAddTabFactory( "View doctor", "content/doctors/Doctor", DoctorController.class);
         Callback<TableColumn<User, Integer>, TableCell<User, Integer>> cellVisitsFactory =
-                new ButtonCellAddTabFactory( "Patient's visits", "content/visits/Visits", VisitsController.class);
+                new ButtonCellAddTabFactory( "Patient's and Doctor's visits", "content/visits/Visits", VisitsController.class); //TODO
         Callback<TableColumn<User, Integer>, TableCell<User, Integer>> cellTasksFactory =
-                new ButtonCellAddTabFactory( "Patient's tasks", "content/tasks/Tasks", TasksController.class);
+                new ButtonCellAddTabFactory( "Patient's and Doctor's tasks", "content/tasks/Tasks", TasksController.class);//TODO
 
         deleteColumn.setCellValueFactory(new PropertyValueFactory<User, Integer>("id"));
         Callback<TableColumn<User, String>, TableCell<User, Integer>> cellDeleteFactory =

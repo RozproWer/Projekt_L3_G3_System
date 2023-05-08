@@ -58,16 +58,19 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/Visit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/model/Visit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/styles/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/MainAuthedView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/MainAuthedView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/Doctors.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/doctors/Doctors.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/EditDoctor.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/doctors/Doctor.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/EditPatient.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/patients/Patient.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/Patients.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/patients/Patients.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/Reports.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/shared/Chat.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/shared/Settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/shared/Settings.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/shared/Task.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/shared/Tasks.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/tasks/Tasks.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/shared/Visit.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/shared/Visits.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/visits/Visits.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/shared/Welcome.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/shared/Welcome.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1__htasktest.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1__htasktest.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
     </list>
@@ -172,7 +175,7 @@
       <workItem from="1681469765167" duration="112259000" />
       <workItem from="1683316030875" duration="13496000" />
       <workItem from="1683379394590" duration="6284000" />
-      <workItem from="1683394169159" duration="70017000" />
+      <workItem from="1683394169159" duration="75837000" />
     </task>
     <servers />
   </component>

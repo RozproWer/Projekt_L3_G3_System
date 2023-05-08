@@ -9,6 +9,7 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:id="contentRoot">
+    <ScrollPane fx:id="contentScrollPane">
     <VBox fx:id="contentVbox">
         <Label text="Tasks" styleClass="content-title" fx:id="contentTitle"/>
         <HBox fx:id="contentOutput">
@@ -51,5 +52,7 @@
                 <Button fx:id="addTaskButton" text="Add Task" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
             </GridPane>
         </VBox>
+
     </VBox>
+</ScrollPane>
 </AnchorPane>
