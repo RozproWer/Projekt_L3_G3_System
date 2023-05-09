@@ -19,7 +19,7 @@
                 <Label text="" styleClass="info" fx:id="contentInfo"/>
             </HBox>
             <HBox>
-                <VBox>
+                <VBox fx:id="editVBox">
                     <Label text="Edit" styleClass="content-title" />
                     <GridPane fx:id="contentForm" hgap="10" vgap="10">
                         <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
@@ -63,7 +63,7 @@
 
             </HBox>
             <HBox>
-                <VBox>
+                <VBox fx:id="doctorsVBox">
                     <Label text="Assigned doctors" styleClass="content-title" fx:id="patientDoctorsTitle"/>
                     <HBox >
                         <TableView fx:id="patientDoctorsTable">
@@ -80,7 +80,7 @@
                         </TableView>
                     </HBox>
                 </VBox>
-                <VBox>
+                <VBox fx:id="assignVBox">
                 <Label text="Assign doctor" styleClass="content-title"/>
                     <VBox>
                         <ComboBox fx:id="doctorsComboBox" prefWidth="350.0"/>

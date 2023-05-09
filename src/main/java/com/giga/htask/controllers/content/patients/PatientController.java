@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
 import java.lang.reflect.InvocationTargetException;
@@ -85,6 +86,12 @@ public class PatientController extends ContentController implements Initializabl
     private Button showTasksButton;
     @FXML
     private Button showVisitsButton;
+    @FXML
+    private VBox editVBox;
+    @FXML
+    private VBox assignVBox;
+    @FXML
+    private VBox doctorsVBox;
 
     /**
      * Constructs a new instance of the {@code EditPatientController} class with the specified user ID.
@@ -96,6 +103,23 @@ public class PatientController extends ContentController implements Initializabl
         super(userId);
     }
 
+    private void handleRoles(){
+        switch( Context.getInstance().getLoggedUser().getRole()){
+            case ("doctor"):
+                assignVBox.setVisible(false);
+                deleteColumn.setVisible(false);
+                doctorsVBox.setVisible(false);
+                break;
+            case ("patient"):
+                assignVBox.setVisible(false);
+                deleteColumn.setVisible(false);
+                pesel.setVisible(false);
+                createdOn.setVisible(false);
+                editVBox.setVisible(false);
+                doctorsVBox.setVisible(false);
+                break;
+        }
+    }
     /**
      Initializes the controller with the specified location and resources. Sets the content title to display the
      name and surname of the doctor being edited, and calls the handleTable() and handleSummary() methods to set up
@@ -107,12 +131,14 @@ public class PatientController extends ContentController implements Initializabl
     public void initialize(URL location, ResourceBundle resources) {
         super.initialize(location, resources);
         contentTitle.setText("Edit Patient: " + user.getName() + " " + user.getSurname());
+        handleRoles();
         handleTable();
         updateTables();
         handleSummary();
         handleEdit();
         handleAssignDoctor();
         handleTabButtons();
+
     }
 
     /**

@@ -67,21 +67,40 @@ public class TaskController extends ContentController implements Initializable {
     Button chatSendButton;
     @FXML
     VBox chatContent;
-    private ObservableList<Message> messages ;
+    @FXML
+    private VBox editVBox;
+
+
+    private ObservableList<Message> messages;
 
     private ScheduledExecutorService scheduler;
+
 
     public TaskController(Integer taskId) {
         super(Context.getInstance().getLoggedUser().getId());
         task = Context.getInstance().getEntityById(Task.class, taskId);
     }
+
+    private void handleRoles() {
+        switch (Context.getInstance().getLoggedUser().getRole()) {
+            case ("patient"):
+                editVBox.setVisible(false);
+                break;
+            case ("receptionist"):
+                editVBox.setVisible(false);
+                break;
+        }
+    }
+
+
     private void stopScheduler() {
         scheduler.shutdown();
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         super.initialize(location, resources);
-        contentTitle.setText("Task of Patient " + task.getDoctorPatient().getPatient().getName()+ " " + task.getDoctorPatient().getPatient().getSurname());
+        contentTitle.setText("Task of Patient " + task.getDoctorPatient().getPatient().getName() + " " + task.getDoctorPatient().getPatient().getSurname());
         doctorLabel.setText(task.getDoctorPatient().getDoctor().getName() + " " + task.getDoctorPatient().getDoctor().getSurname());
         patientLabel.setText(task.getDoctorPatient().getPatient().getName() + " " + task.getDoctorPatient().getPatient().getSurname());
         messages = Context.getInstance().getMessagesByTask(task.getId());
@@ -89,11 +108,11 @@ public class TaskController extends ContentController implements Initializable {
         handleEditTask();
         updateTables();
         handleChat();
+        handleRoles();
         chatSendButton.setOnAction(event -> {
-             handleSendMessage();
+            handleSendMessage();
         });
         handleFillChat();
-
 
         // Create a scheduled executor service with a single thread
         scheduler = Executors.newSingleThreadScheduledExecutor();
@@ -113,26 +132,27 @@ public class TaskController extends ContentController implements Initializable {
 
 
     @Override
-    protected void updateTables(){
+    protected void updateTables() {
         titleLabel.setText(task.getTitle());
         titleField.setText(task.getTitle());
         descriptionTextArea.setText(task.getDescription());
         descriptionLabel.setText(task.getDescription());
         statusLabel.setText(task.getStatus());
         createdOnLabel.setText(task.getCreatedOn().toString());
-        if (task.getFinishedOn() != null){
+        if (task.getFinishedOn() != null) {
             finishedOnLabel.setText(task.getFinishedOn().toString());
-        }else{
+        } else {
             finishedOnLabel.setText("Not finished yet");
         }
-        if(task.getStatus().equals("finished")){
+        if (task.getStatus().equals("finished")) {
             statusCheckBox.setSelected(true);
-        }else{
+        } else {
             statusCheckBox.setSelected(false);
         }
     }
-    private void editTask(){
-        if(titleField.getText().isEmpty()){
+
+    private void editTask() {
+        if (titleField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Title cannot be empty");
@@ -143,23 +163,24 @@ public class TaskController extends ContentController implements Initializable {
         task.setTitle(titleField.getText());
 
 
-        if(statusCheckBox.isSelected()){
+        if (statusCheckBox.isSelected()) {
             task.setStatus("finished");
             Timestamp time = new Timestamp(System.currentTimeMillis());
             task.setFinishedOn(time);
-        }else{
+        } else {
             task.setStatus("unfinished");
             task.setFinishedOn(null);
         }
 
-        if(Context.getInstance().saveOrUpdateEntity(task)){
+        if (Context.getInstance().saveOrUpdateEntity(task)) {
             setSuccess("Task updated successfully");
             updateTables();
-        }else{
+        } else {
             setError("Error while updating task");
         }
     }
-    private void handleEditTask(){
+
+    private void handleEditTask() {
         descriptionTextArea.setTextFormatter(new TextFormatter<String>(change ->
                 change.getControlNewText().length() <= 2048 ? change : null));
         titleField.setTextFormatter(new TextFormatter<String>(change ->
@@ -167,27 +188,29 @@ public class TaskController extends ContentController implements Initializable {
         submitEditTask.setOnAction(event -> editTask());
 
     }
-    private void handleFillChat(){
+
+    private void handleFillChat() {
         chatContent.getChildren().clear();
 
         User prevAuthor = null;
-        for (Message message : messages){
+        for (Message message : messages) {
             Boolean reciever = true;
             String author = "";
 
-            if (prevAuthor == null|| message.getSender() != prevAuthor){
+            if (prevAuthor == null || message.getSender() != prevAuthor) {
                 prevAuthor = message.getSender();
-                author = "("+message.getSender().getRole()+") "+message.getSender().getName()+" "+message.getSender().getSurname();
+                author = "(" + message.getSender().getRole() + ") " + message.getSender().getName() + " " + message.getSender().getSurname();
             }
 
             //check if message is from the "me"
-            if(message.getSender().equals(user)){
-                 reciever = false;
+            if (message.getSender().equals(user)) {
+                reciever = false;
             }
-            addMessageToUi(message.getMessage(),reciever,author);
+            addMessageToUi(message.getMessage(), reciever, author);
         }
     }
-    private void handleTabButtons(){
+
+    private void handleTabButtons() {
         showPatientButton.setOnAction(event -> {
             try {
                 ContentController controller = PatientController.class.getDeclaredConstructor(Integer.class).newInstance((Integer) task.getDoctorPatient().getPatient().getId());
@@ -205,7 +228,8 @@ public class TaskController extends ContentController implements Initializable {
             }
         });
     }
-    private void handleChat(){
+
+    private void handleChat() {
 
         chatContent.heightProperty().addListener(observable -> chatScrollPane.setVvalue(1D));
     }
@@ -221,10 +245,10 @@ public class TaskController extends ContentController implements Initializable {
             message.setTask(task);
             message.setSender(Context.getInstance().getLoggedUser());
 
-            if(Context.getInstance().saveOrUpdateEntity(message)) {
+            if (Context.getInstance().saveOrUpdateEntity(message)) {
                 messages.add(message);
                 handleFillChat();
-            }else{
+            } else {
                 setError("Error while sending message");
             }
 
@@ -234,11 +258,11 @@ public class TaskController extends ContentController implements Initializable {
         }
     }
 
-    private void addMessageToUi(String message,Boolean reciever, String author ){
+    private void addMessageToUi(String message, Boolean reciever, String author) {
         Label messageLabel = new Label(message);
         Label authorLabel = new Label();
-        if(author != null || !author.isEmpty()){
-          authorLabel.setText(author);
+        if (author != null || !author.isEmpty()) {
+            authorLabel.setText(author);
         }
 
 
@@ -252,13 +276,13 @@ public class TaskController extends ContentController implements Initializable {
         messageLabel.setMaxWidth(350.D);
         authorLabel.setWrapText(true);
         messageLabel.setWrapText(true);
-        if(reciever){
+        if (reciever) {
             messageLabel.setStyle("-fx-font-size: 15px; -fx-text-fill: red;");
             authorLabel.setStyle("-fx-font-size: 10px; -fx-text-fill: blue;");
             authorLabel.setAlignment(Pos.TOP_LEFT);
             messageLabel.setAlignment(Pos.TOP_LEFT);
             messageVBox.setAlignment(Pos.TOP_LEFT);
-        }else{
+        } else {
 
             messageLabel.setStyle("-fx-font-size: 15px; -fx-text-fill: red;");
             authorLabel.setStyle("-fx-font-size: 10px; -fx-text-fill: green;");

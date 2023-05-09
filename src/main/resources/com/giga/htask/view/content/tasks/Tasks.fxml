@@ -35,12 +35,12 @@
                     <TableColumn fx:id="patientPeselColumn" prefWidth="100.0" text="Patient Pesel" />
                     <TableColumn fx:id="patientShowColumn" prefWidth="100.0" text="Show patient" />
                     <TableColumn fx:id="doctorShowColumn" prefWidth="100.0" text="Show doctor" />
-                    <TableColumn fx:id="editColumn" prefWidth="150.0" text="Details/Edit" />
+                    <TableColumn fx:id="editColumn" prefWidth="150.0" text="Details" />
                     <TableColumn fx:id="deleteColumn" prefWidth="100.0" text="Delete" />
                 </columns>
             </TableView>
         </VBox>
-        <VBox>
+        <VBox fx:id="addVBox">
             <Label text="Add Task"  fx:id="AddTitleLabel" styleClass="content-title" />
             <GridPane fx:id="addForm" hgap="10" vgap="10">
                 <Label text="Title:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>

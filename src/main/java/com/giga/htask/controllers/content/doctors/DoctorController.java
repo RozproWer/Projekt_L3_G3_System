@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
 
@@ -92,6 +93,34 @@ public class DoctorController extends ContentController implements Initializable
     private Button showTasksButton;
     @FXML
     private Button showVisitsButton;
+    @FXML
+    private VBox editVBox;
+    @FXML
+    private VBox assignVBox;
+    @FXML
+    private VBox patientsVBox;
+
+
+    public void handleRoles(){
+        switch( Context.getInstance().getLoggedUser().getRole()){
+            case ("doctor"):
+                patientsComboBox.setVisible(false);
+                assignVBox.setVisible(false);
+                deleteColumn.setVisible(false);
+                break;
+            case ("patient"):
+                patientsComboBox.setVisible(false);
+                assignVBox.setVisible(false);
+                deleteColumn.setVisible(false);
+                pesel.setVisible(false);
+                createdOn.setVisible(false);
+                editVBox.setVisible(false);
+                patientsVBox.setVisible(false);
+                showTasksButton.setVisible(false);
+                showVisitsButton.setVisible(false);
+                break;
+        }
+    }
 
     /**
      * Constructs a new instance of the {@code DoctorController} class with the specified user ID.
@@ -120,6 +149,8 @@ public class DoctorController extends ContentController implements Initializable
         handleSummary();
         handleEdit();
         handleAssignPatient();
+        handleRoles();
+        handleTabButtons();
     }
 
     /**

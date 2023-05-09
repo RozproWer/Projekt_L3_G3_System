@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import tornadofx.control.DateTimePicker;
 
@@ -77,7 +78,8 @@ public class VisitsController  extends ContentController implements Initializabl
     private ComboBox userComboBox;
     @FXML
     private TextField titleField;
-
+    @FXML
+    private VBox addVBox;
     @FXML
     private DateTimePicker  appointmentOnDateTimePicker;
 
@@ -92,10 +94,20 @@ public class VisitsController  extends ContentController implements Initializabl
         handleTables();
         updateTables();
         handleAddVisit();
-
+        handleRoles();
 
 
     }
+
+    public void handleRoles(){
+        switch( Context.getInstance().getLoggedUser().getRole()){
+            case ("patient"):
+                addVBox.setVisible(false);
+                deleteColumn.setVisible(false);
+                break;
+        }
+    }
+
     private void handleTables(){
         //set columns
         visitIdColumn.setCellValueFactory(new PropertyValueFactory<Visit,Integer>("id"));

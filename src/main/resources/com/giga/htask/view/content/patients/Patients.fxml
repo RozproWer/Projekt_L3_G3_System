@@ -33,11 +33,11 @@
                 <TableColumn fx:id="createdOnColumn" prefWidth="150.0" text="Created On" />
                 <TableColumn fx:id="tasksColumn"   prefWidth="100.0" text="Tasks" />
                 <TableColumn fx:id="visitsColumn"   prefWidth="100.0" text="Visits" />
-                <TableColumn fx:id="editColumn"  prefWidth="150.0" text="Details/Edit" />
+                <TableColumn fx:id="editColumn"  prefWidth="150.0" text="Details" />
                 <TableColumn fx:id="deleteColumn"   prefWidth="100.0" text="Delete" />
             </columns>
         </TableView>
-        <VBox>
+        <VBox fx:id="addVBox">
             <Label text="Add Patient" styleClass="content-title" />
             <GridPane fx:id="addForm" hgap="10" vgap="10">
                 <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>

@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
 import java.net.URL;
@@ -63,6 +64,8 @@ public class PatientsController extends ContentController implements Initializab
     private TextField peselField;
     @FXML
     private Button addPatient;
+    @FXML
+    private VBox addVBox;
 
     public PatientsController() {
         super(Context.getInstance().getLoggedUser().getId());
@@ -72,9 +75,23 @@ public class PatientsController extends ContentController implements Initializab
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         super.initialize(location, resources);
+        handleRoles();
         handleTables();
         updateTables();
         handleAddPatient();
+    }
+
+    private void handleRoles(){
+        switch( Context.getInstance().getLoggedUser().getRole()){
+            case ("doctor"):
+                addVBox.setVisible(false);
+                deleteColumn.setVisible(false);
+                break;
+            case ("patient"):
+                addVBox.setVisible(false);
+                deleteColumn.setVisible(false);
+                break;
+        }
     }
 
     private void handleTables(){

@@ -19,6 +19,7 @@
                     <Label styleClass="success" fx:id="contentSuccess" />
                     <Label styleClass="info" fx:id="contentInfo" />
                 </HBox>
+
                 <TextField fx:id="filterField" promptText="Search" />
                 <TableView fx:id="doctorsTable" visible="true">
                     <columns>
@@ -38,7 +39,7 @@
                         <TableColumn fx:id="deleteColumn"   prefWidth="100.0" text="Delete" />
                     </columns>
                 </TableView>
-                <VBox>
+                <VBox  fx:id="addVBox" >
                     <Label text="Add Doctor" styleClass="content-title" />
                     <GridPane fx:id="addForm" hgap="10" vgap="10">
                         <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>

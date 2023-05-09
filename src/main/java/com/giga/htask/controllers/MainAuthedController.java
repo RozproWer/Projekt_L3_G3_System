@@ -149,20 +149,22 @@ public class MainAuthedController extends AnchorPane implements Initializable{
                     addTab("Patients","content/patients/Patients",true);
                 });
                 buttonDoctors.setOnAction(e -> {
-                    addTab("Doctors","content/doctors/Doctors",true);
-                });
 
+                    ContentController doctorController = new com.giga.htask.controllers.content.doctors.DoctorController(loggedUser.getId());
+                    addTab("Doctor","content/doctors/Doctor",doctorController,true);
+                });
+                buttonDoctors.setText("My doctor profile");
                 break;
             case "patient":
                 verticalMenu.getChildren().add(buttonPatients);
                 verticalMenu.getChildren().add(buttonDoctors);
                 buttonPatients.setOnAction(e -> {
-                    addTab("Patients","content/patients/Patients",true);
-                });
-                buttonDoctors.setOnAction(e -> {
-                    addTab("Doctors","content/doctors/Doctors",true);
-                });
 
+                 ContentController patientController = new com.giga.htask.controllers.content.patients.PatientController(loggedUser.getId());
+                 addTab("Patient","content/patients/Patient",patientController,true);
+                });
+                buttonPatients.setText("My patient profile");
+                buttonDoctors.setVisible(false);
                 break;
         }
 

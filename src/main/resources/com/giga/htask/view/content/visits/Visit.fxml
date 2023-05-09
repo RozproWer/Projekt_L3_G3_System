@@ -38,7 +38,7 @@
                     <Button fx:id="showPatientButton" GridPane.columnIndex="1" GridPane.rowIndex="6"  text="Show Patient Details"/>
                 </GridPane>
             </VBox>
-            <VBox>
+            <VBox fx:id="editVBox">
                 <Label text="Edit" styleClass="content-title" />
                 <GridPane fx:id="contentForm" hgap="10" vgap="10">
                     <Label text="Title:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>

@@ -9,6 +9,7 @@ import com.giga.htask.model.Context;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import tornadofx.control.DateTimePicker;
 
 import java.lang.reflect.InvocationTargetException;
@@ -44,6 +45,9 @@ public class VisitController extends ContentController implements Initializable 
     TextArea descriptionTextArea;
     @FXML
     DateTimePicker appointmentOnDateTimePicker;
+    @FXML
+    private VBox editVBox;
+
 
     public VisitController(Integer visitId) {
         super(Context.getInstance().getLoggedUser().getId());
@@ -60,6 +64,7 @@ public class VisitController extends ContentController implements Initializable 
         handleTabButtons();
         handleEditTask();
         updateTables();
+        handleRoles();
     }
     @Override
     protected void updateTables(){
@@ -73,6 +78,19 @@ public class VisitController extends ContentController implements Initializable 
         appointedOnLabel.setText(visit.getAppointmentOn().toString());
 
     }
+
+    private void handleRoles() {
+        switch (Context.getInstance().getLoggedUser().getRole()) {
+            case ("patient"):
+                editVBox.setVisible(false);
+                break;
+            case ("receptionist"):
+                editVBox.setVisible(false);
+                break;
+        }
+    }
+
+
     private void editVisit(){
         if(titleField.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.ERROR);

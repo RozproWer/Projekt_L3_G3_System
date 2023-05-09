@@ -167,26 +167,57 @@ public class Context {
     public ObservableList<Task> getTasksTable(Integer userId) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        Query query = session.createQuery("SELECT DISTINCT t FROM Task t WHERE t.doctorPatient IN ( SELECT dp FROM DoctorPatient dp WHERE dp.patient.id = :userId OR dp.doctor.id = :userId)");
-        query.setParameter("userId", userId);
-        List userTasks = query.getResultList();
-        session.getTransaction().commit();
-        session.close();
-        ObservableList<Task> tasksTable = FXCollections.observableArrayList();
-        tasksTable.setAll(userTasks);
-        return tasksTable;
+        if(loggedUser.getRole().equals("doctor")){
+            Query query = session.createQuery("SELECT DISTINCT t FROM Task t WHERE t.doctorPatient IN ( SELECT dp FROM DoctorPatient dp WHERE dp.patient.id = :userId AND dp.doctor.id = :loggedId)");
+            query.setParameter("userId", userId);
+            query.setParameter("loggedId", loggedUser.getId());
+            List userTasks = query.getResultList();
+            session.getTransaction().commit();
+            session.close();
+            ObservableList<Task> tasksTable = FXCollections.observableArrayList();
+            tasksTable.setAll(userTasks);
+            return tasksTable;
+        }else{
+            Query query = session.createQuery("SELECT DISTINCT t FROM Task t WHERE t.doctorPatient IN ( SELECT dp FROM DoctorPatient dp WHERE dp.patient.id = :userId OR dp.doctor.id = :userId)");
+            query.setParameter("userId", userId);
+            List userTasks = query.getResultList();
+            session.getTransaction().commit();
+            session.close();
+            ObservableList<Task> tasksTable = FXCollections.observableArrayList();
+            tasksTable.setAll(userTasks);
+            return tasksTable;
+        }
+
+
     }
+
+
     public ObservableList<Visit> getVisitsTable(Integer userId) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        Query query = session.createQuery("SELECT DISTINCT v FROM Visit v WHERE v.doctorPatient IN ( SELECT dp FROM DoctorPatient dp WHERE dp.patient.id = :userId OR dp.doctor.id = :userId)");
-        query.setParameter("userId", userId);
-        List userVisits = query.getResultList();
-        session.getTransaction().commit();
-        session.close();
-        ObservableList<Visit> visitsTable = FXCollections.observableArrayList();
-        visitsTable.setAll(userVisits);
-        return visitsTable;
+
+        if(loggedUser.getRole().equals("doctor")){
+            Query query = session.createQuery("SELECT DISTINCT v FROM Visit v WHERE v.doctorPatient IN ( SELECT dp FROM DoctorPatient dp WHERE dp.patient.id = :userId and dp.doctor.id = :loggedId)");
+            query.setParameter("userId", userId);
+            query.setParameter("loggedId", loggedUser.getId());
+            List userVisits = query.getResultList();
+            session.getTransaction().commit();
+            session.close();
+            ObservableList<Visit> visitsTable = FXCollections.observableArrayList();
+            visitsTable.setAll(userVisits);
+            return visitsTable;
+        }else{
+            Query query = session.createQuery("SELECT DISTINCT v FROM Visit v WHERE v.doctorPatient IN ( SELECT dp FROM DoctorPatient dp WHERE dp.patient.id = :userId OR dp.doctor.id = :userId)");
+            query.setParameter("userId", userId);
+            List userVisits = query.getResultList();
+            session.getTransaction().commit();
+            session.close();
+            ObservableList<Visit> visitsTable = FXCollections.observableArrayList();
+            visitsTable.setAll(userVisits);
+            return visitsTable;
+        }
+
+
     }
     public SortedFilteredObservableList<Task> getSortedFilteredObservableTasksTable(Integer userId) {
         return new SortedFilteredObservableList<Task>(getTasksTable(userId), p -> true);
@@ -274,7 +305,11 @@ public class Context {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Query query = session.createQuery("SELECT dp.patient FROM DoctorPatient dp WHERE dp.doctor.id = :doctorId");
-        query.setParameter("doctorId", doctorId);
+        if(loggedUser.getRole().equals("doctor")){
+            query.setParameter("doctorId", loggedUser.getId());
+        }else{
+            query.setParameter("doctorId", doctorId);
+        }
         List patients = query.getResultList();
         session.getTransaction().commit();
         session.close();
@@ -283,12 +318,24 @@ public class Context {
     public ObservableList getPatientDoctorsTable(Integer patientId) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        Query query = session.createQuery("SELECT dp.doctor FROM DoctorPatient dp WHERE dp.patient.id = :patientId");
-        query.setParameter("patientId", patientId);
-        List doctors = query.getResultList();
-        session.getTransaction().commit();
-        session.close();
-        return FXCollections.observableArrayList(doctors);
+
+        if(loggedUser.getRole().equals("doctor")){
+            Query query = session.createQuery("SELECT dp.doctor FROM DoctorPatient dp WHERE dp.patient.id = :patientId and dp.doctor.id = :doctorId");
+            query.setParameter("patientId", patientId);
+            query.setParameter("doctorId", loggedUser.getId());
+            List doctors = query.getResultList();
+            session.getTransaction().commit();
+            session.close();
+            return FXCollections.observableArrayList(doctors);
+        }else{
+            Query query = session.createQuery("SELECT dp.doctor FROM DoctorPatient dp WHERE dp.patient.id = :patientId");
+            query.setParameter("patientId", patientId);
+            List doctors = query.getResultList();
+            session.getTransaction().commit();
+            session.close();
+            return FXCollections.observableArrayList(doctors);
+        }
+
     }
 
     public boolean addDoctorPatientAssociation(DoctorPatient doctorPatient) {

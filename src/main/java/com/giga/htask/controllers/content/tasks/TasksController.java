@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
 import java.net.URL;
@@ -71,6 +72,9 @@ public class TasksController extends ContentController implements Initializable 
     private ComboBox userComboBox;
     @FXML
     private TextField titleField;
+    @FXML
+    private VBox addVBox;
+
 
     SortedFilteredObservableList<Task> sfoList = Context.getInstance().getSortedFilteredObservableTasksTable(user.getId());
     /**
@@ -91,6 +95,15 @@ public class TasksController extends ContentController implements Initializable 
         handleTables();
         updateTables();
         handleAddTask();
+        handleRoles();
+    }
+    public void handleRoles(){
+        switch( Context.getInstance().getLoggedUser().getRole()){
+            case ("patient"):
+                addVBox.setVisible(false);
+                deleteColumn.setVisible(false);
+                break;
+        }
     }
 
     private void handleTables(){
