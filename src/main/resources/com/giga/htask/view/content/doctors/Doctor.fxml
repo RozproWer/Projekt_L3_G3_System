@@ -67,6 +67,8 @@
                             <Label fx:id="description" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
                             <Label text="Created on:" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
                             <Label fx:id="createdOn" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+                            <Button fx:id="showTasksButton" GridPane.columnIndex="0" GridPane.rowIndex="10" text="Show Visits"/>
+                            <Button fx:id="showVisitsButton" GridPane.columnIndex="1" GridPane.rowIndex="10"  text="Show Tasks"/>
                         </GridPane>
                     </VBox>
 

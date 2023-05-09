@@ -19,7 +19,7 @@
             <Label text="" styleClass="info" fx:id="contentInfo" visible="false"/>
         </HBox>
         <VBox fx:id="contentTasks">
-            <ScrollPane>
+
             <TextField fx:id="filterField" promptText="Search" />
             <TableView fx:id="visitsTable" visible="true">
                 <columns>
@@ -55,7 +55,7 @@
 
                 </GridPane>
             </VBox>
-            </ScrollPane>
+
         </VBox>
     </VBox>
     </ScrollPane>

@@ -1,5 +1,6 @@
 package com.giga.htask.controllers.content.doctors;
 
+import com.giga.htask.controllers.MainAuthedController;
 import com.giga.htask.controllers.content.patients.PatientController;
 import com.giga.htask.controllers.content.tasks.TasksController;
 import com.giga.htask.model.DoctorPatient;
@@ -15,6 +16,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 
 
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -86,6 +88,10 @@ public class DoctorController extends ContentController implements Initializable
     private ComboBox patientsComboBox;
     @FXML
     private Button assignPatientButton;
+    @FXML
+    private Button showTasksButton;
+    @FXML
+    private Button showVisitsButton;
 
     /**
      * Constructs a new instance of the {@code DoctorController} class with the specified user ID.
@@ -232,6 +238,26 @@ public class DoctorController extends ContentController implements Initializable
         descriptionTextArea.setText(user.getUserDoctor().getDescription());
         submitEditDoctor.setOnAction(event -> editDoctor());
     }
+
+    private void handleTabButtons(){
+        showTasksButton.setOnAction(event -> {
+            try {
+                ContentController controller = TasksController.class.getDeclaredConstructor(Integer.class).newInstance((Integer) user.getId());
+                MainAuthedController.getInstance().addTab("View tasks", "content/tasks/Tasks", controller, true);
+            } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+                e.printStackTrace();
+            }
+        });
+        showVisitsButton.setOnAction(event -> {
+            try {
+                ContentController controller = VisitsController.class.getDeclaredConstructor(Integer.class).newInstance((Integer) user.getId());
+                MainAuthedController.getInstance().addTab("View visits", "content/visits/Visits", controller, true);
+            } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
 
     /**
      * Edits doctor details and saves them to database. if successfull, displays success message, otherwise displays error message

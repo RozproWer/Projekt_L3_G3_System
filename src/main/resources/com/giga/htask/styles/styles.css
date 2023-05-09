@@ -8,7 +8,9 @@
 .text-field {
     -fx-padding: 7px;
 }
-
+#contentScrollPane{
+    -fx-pref-height: 900px;
+}
 .hbox,HBox  {
     -fx-padding: 10px;
 }

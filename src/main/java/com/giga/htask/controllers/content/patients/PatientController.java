@@ -1,5 +1,6 @@
 package com.giga.htask.controllers.content.patients;
 
+import com.giga.htask.controllers.MainAuthedController;
 import com.giga.htask.controllers.content.ContentController;
 import com.giga.htask.controllers.content.doctors.DoctorController;
 import com.giga.htask.controllers.content.tasks.TasksController;
@@ -8,12 +9,14 @@ import com.giga.htask.model.Context;
 import com.giga.htask.model.DoctorPatient;
 import com.giga.htask.model.User;
 import com.giga.htask.utils.ButtonCellAddTabFactory;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -109,6 +112,7 @@ public class PatientController extends ContentController implements Initializabl
         handleSummary();
         handleEdit();
         handleAssignDoctor();
+        handleTabButtons();
     }
 
     /**
@@ -181,7 +185,24 @@ public class PatientController extends ContentController implements Initializabl
 
 
     }
-
+    private void handleTabButtons(){
+        showTasksButton.setOnAction(event -> {
+            try {
+                ContentController controller = TasksController.class.getDeclaredConstructor(Integer.class).newInstance((Integer) user.getId());
+                MainAuthedController.getInstance().addTab("View tasks", "content/tasks/Tasks", controller, true);
+            } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+                e.printStackTrace();
+            }
+        });
+        showVisitsButton.setOnAction(event -> {
+            try {
+                ContentController controller = VisitsController.class.getDeclaredConstructor(Integer.class).newInstance((Integer) user.getId());
+                MainAuthedController.getInstance().addTab("View visits", "content/visits/Visits", controller, true);
+            } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+                e.printStackTrace();
+            }
+        });
+    }
     @Override
     protected void updateTablesIfNeeded(Boolean refresh){
         patientDoctorsTable.setItems(Context.getInstance().getPatientDoctorsTable(user.getId()));
