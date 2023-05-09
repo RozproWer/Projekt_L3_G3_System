@@ -130,7 +130,7 @@ public class DoctorsController extends ContentController implements Initializabl
 
                                         if (alert.getResult() == ButtonType.OK) {
                                             if(Context.getInstance().deleteEntityById(User.class,id)){
-                                                setError("Successfully deleted entity");
+                                                setSuccess("Successfully deleted entity");
                                                 updateTables(true);
                                             }else{
                                                 setError("Error while deleting entity");

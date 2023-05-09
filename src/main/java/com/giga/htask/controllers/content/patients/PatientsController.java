@@ -123,7 +123,7 @@ public class PatientsController extends ContentController implements Initializab
 
                                         if (alert.getResult() == ButtonType.OK) {
                                             if(Context.getInstance().deleteEntityById(User.class,vID)){
-                                                setError("Successfully deleted entity");
+                                                setSuccess("Successfully deleted entity");
                                                 updateTables(true);
                                             }else{
                                                 setError("Error while deleting entity");

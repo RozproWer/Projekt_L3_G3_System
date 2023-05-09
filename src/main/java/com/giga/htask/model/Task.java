@@ -99,7 +99,8 @@ public class Task {
     }
 
     //create a one-to-many relationship between tasks and messages
-    @OneToMany(mappedBy = "task", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "task", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     public List<Message> getMessages() {
         return messages;
     }

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c2e15a8e-3fee-4715-8793-d5f5fd09b179" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../../../../../../../reports/doctor_report_31_1683584555550.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../../../../../reports/doctor_report_32_1683586904580.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../../../../../reports/doctor_report_33_1683461261917.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../../../../../reports/doctor_report_33_1683587293492.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../../../../../reports/doctor_report_34_1683461275889.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../../../../../reports/doctor_report_35_1683461836780.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../../../../../reports/doctor_report_36_1683461864715.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../../../../../reports/doctor_report_37_1683462069723.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../../../../../reports/doctor_report_38_1683462077484.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../../../../../reports/doctor_report_39_1683475641190.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../../../../../reports/doctor_report_40_1683475660650.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../../../../../reports/doctor_report_41_1683485382026.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DoctorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../patients/PatientController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../patients/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shared/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/TaskController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tasks/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../visits/VisitController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../visits/VisitsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../visits/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../utils/ReportGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../utils/SortedFilteredObservableList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/content/doctors/Doctor.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/content/doctors/Doctors.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/content/tasks/Task.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/content/visits/Visit.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../../../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../../../.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../../../.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../../../.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../../../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../../../.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../../../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../../../.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../../../pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../../../pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MainAuthedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../MainAuthedController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ContentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ContentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admin/DoctorsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/DoctorsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admin/EditDoctorController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admin/EditPatientController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admin/EditTaskDoctorController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admin/EditTaskPatientController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admin/PatientsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../patients/PatientsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admin/ReportsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../doctor/ApointmentsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../doctor/PatientsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../patient/ApointmentsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../patient/ReportsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shared/ChatController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shared/TaskController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shared/TasksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tasks/TasksController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shared/VisitController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shared/VisitsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shared/WelcomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../shared/WelcomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../model/Context.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../model/Context.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../model/DoctorPatient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../model/DoctorPatient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../model/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../model/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../model/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../model/UserDoctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../model/UserDoctor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../model/Visit.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../model/Visit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/styles/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/MainAuthedView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/MainAuthedView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/content/admin/Doctors.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/content/admin/EditDoctor.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/content/admin/EditPatient.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/content/patients/Patient.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/content/admin/Patients.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/content/patients/Patients.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/content/admin/Reports.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/content/shared/Chat.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/content/shared/Settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/content/shared/Settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/content/shared/Task.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/content/shared/Tasks.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/content/tasks/Tasks.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/content/shared/Visit.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/content/shared/Visits.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/content/visits/Visits.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/content/shared/Welcome.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../resources/com/giga/htask/view/content/shared/Welcome.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../resources/db/migration/V1__htasktest.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../resources/db/migration/V1__htasktest.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../../../resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../../../resources/hibernate.cfg.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../../../../../.." />
+  </component>
+  <component name="ProjectId" id="2PXAWsRuhiYPsqHAzRkAE1ZEmg5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c2e15a8e-3fee-4715-8793-d5f5fd09b179" name="Changes" comment="" />
+      <created>1683593087542</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683593087542</updated>
+      <workItem from="1683593088835" duration="2000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -213,8 +213,13 @@ public class TasksController extends ContentController implements Initializable 
                                         alert.showAndWait();
 
                                         if (alert.getResult() == ButtonType.OK) {
-                                            Context.getInstance().deleteEntityById(Task.class,id);
-                                            updateTables();
+                                            if(Context.getInstance().deleteEntityById(Task.class,id)){
+                                                updateTables();
+                                                setSuccess("Task deleted successfully");
+                                            }else{
+                                                setError("Task could not be deleted");
+                                            }
+
                                         }
                                     });
                                     setGraphic(btn);

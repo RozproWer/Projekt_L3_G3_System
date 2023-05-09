@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe04c8a9-9832-4360-ac13-1391bb15dfad" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hospital-task-app.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/reports/doctor_report_31_1683584555550.pdf" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/reports/doctor_report_32_1683586904580.pdf" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/reports/doctor_report_33_1683461261917.pdf" afterDir="false" />
@@ -18,6 +20,7 @@
       <change afterPath="$PROJECT_DIR$/reports/doctor_report_40_1683475660650.pdf" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/reports/doctor_report_41_1683485382026.pdf" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/doctors/DoctorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/doctors/doctors.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/doctors/package-info.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/patients/PatientController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/patients/package-info.java" afterDir="false" />
@@ -35,6 +38,7 @@
       <change afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/visits/Visit.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/giga/htask/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/App.java" afterDir="false" />
@@ -110,6 +114,28 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/giga/htask/model/DoctorPatient.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/MainAuthedController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/giga/htask/App.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/visits/Visits.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/visits/Visit.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/giga/htask/AppLauncher.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/giga/htask/HibernateConnection.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/visits/VisitsController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/visits/VisitController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/tasks/TaskController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/giga/htask/model/User.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/giga/htask/model/UserSettings.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/tasks/Task.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/doctors/DoctorsController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/tasks/TasksController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/patients/PatientsController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/doctors/DoctorController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/giga/htask/model/Context.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/com/giga/htask/styles/styles.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/patients/PatientController.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="2NcS9OoYrVvoagmpHGR8YcCaFgp" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -118,6 +144,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/doctors" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -152,9 +179,11 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+    <configuration name="AppLauncher" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="12" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.giga.htask.AppLauncher" />
-      <module name="22-23-3inf-l3-l3_g3_ks" />
+      <module name="hospital-task-app" />
       <extension name="net.ashald.envfile">
         <option name="IS_ENABLED" value="false" />
         <option name="IS_SUBST" value="false" />
@@ -183,7 +212,8 @@
       <workItem from="1681469765167" duration="112259000" />
       <workItem from="1683316030875" duration="13496000" />
       <workItem from="1683379394590" duration="6284000" />
-      <workItem from="1683394169159" duration="79658000" />
+      <workItem from="1683394169159" duration="79899000" />
+      <workItem from="1683593101912" duration="311000" />
     </task>
     <servers />
   </component>

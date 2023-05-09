@@ -162,8 +162,13 @@ public class VisitsController  extends ContentController implements Initializabl
                                         alert.showAndWait();
 
                                         if (alert.getResult() == ButtonType.OK) {
-                                            Context.getInstance().deleteEntityById(Visit.class,id);
-                                           updateTables();
+                                           if( Context.getInstance().deleteEntityById(Visit.class,id)){
+                                               updateTables();
+                                               setSuccess("Task deleted successfully");
+                                           }else{
+                                               setError("Task could not be deleted");
+                                           }
+
                                         }
                                     });
                                     setGraphic(btn);
