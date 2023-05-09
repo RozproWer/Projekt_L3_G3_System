@@ -250,6 +250,7 @@ public class DoctorController extends ContentController implements Initializable
 
         if (isSuccess) {
             setSuccess("Successfully updated doctor details");
+            handleSummary();
         } else {
             setError("Failed to update user");
         }

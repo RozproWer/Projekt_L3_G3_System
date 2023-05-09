@@ -5,12 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe04c8a9-9832-4360-ac13-1391bb15dfad" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/reports/doctor_report_31_1683584555550.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reports/doctor_report_32_1683586904580.pdf" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/reports/doctor_report_33_1683461261917.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reports/doctor_report_33_1683587293492.pdf" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/reports/doctor_report_34_1683461275889.pdf" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/reports/doctor_report_35_1683461836780.pdf" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/reports/doctor_report_36_1683461864715.pdf" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/reports/doctor_report_37_1683462069723.pdf" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/reports/doctor_report_38_1683462077484.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reports/doctor_report_39_1683475641190.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reports/doctor_report_40_1683475660650.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reports/doctor_report_41_1683485382026.pdf" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/doctors/DoctorController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/doctors/package-info.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/patients/PatientController.java" afterDir="false" />
@@ -23,6 +29,8 @@
       <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/visits/package-info.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/utils/ReportGenerator.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/giga/htask/utils/SortedFilteredObservableList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/doctors/Doctor.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/doctors/Doctors.fxml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/tasks/Task.fxml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/visits/Visit.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
@@ -59,8 +67,8 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/styles/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/MainAuthedView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/MainAuthedView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/Doctors.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/doctors/Doctors.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/EditDoctor.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/doctors/Doctor.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/Doctors.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/EditDoctor.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/EditPatient.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/patients/Patient.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/Patients.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/patients/Patients.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/giga/htask/view/content/admin/Reports.fxml" beforeDir="false" />
@@ -175,7 +183,7 @@
       <workItem from="1681469765167" duration="112259000" />
       <workItem from="1683316030875" duration="13496000" />
       <workItem from="1683379394590" duration="6284000" />
-      <workItem from="1683394169159" duration="77282000" />
+      <workItem from="1683394169159" duration="77828000" />
     </task>
     <servers />
   </component>
@@ -211,6 +219,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/visits/VisitsController.java</url>
           <line>201</line>
           <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/giga/htask/controllers/content/tasks/TaskController.java</url>
+          <line>134</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

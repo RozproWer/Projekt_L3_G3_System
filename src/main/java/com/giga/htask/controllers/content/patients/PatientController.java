@@ -246,6 +246,7 @@ public class PatientController extends ContentController implements Initializabl
 
         if(isSuccess) {
             setSuccess("Successfully updated patient details");
+            handleSummary();
         } else {
             setError("Failed to update user");
         }
