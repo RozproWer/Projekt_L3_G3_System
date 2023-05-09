@@ -129,8 +129,13 @@ public class DoctorsController extends ContentController implements Initializabl
                                         alert.showAndWait();
 
                                         if (alert.getResult() == ButtonType.OK) {
-                                            Context.getInstance().deleteEntityById(User.class,id);
-                                           updateTables(true);
+                                            if(Context.getInstance().deleteEntityById(User.class,id)){
+                                                setError("Successfully deleted entity");
+                                                updateTables(true);
+                                            }else{
+                                                setError("Error while deleting entity");
+                                            }
+
                                         }
                                     });
                                     setGraphic(btn);

@@ -122,8 +122,13 @@ public class PatientsController extends ContentController implements Initializab
                                         alert.showAndWait();
 
                                         if (alert.getResult() == ButtonType.OK) {
-                                            Context.getInstance().deleteEntityById(User.class,vID);
-                                            patientsTable.setItems(Context.getInstance().getSortedPatientsTable());
+                                            if(Context.getInstance().deleteEntityById(User.class,vID)){
+                                                setError("Successfully deleted entity");
+                                                updateTables(true);
+                                            }else{
+                                                setError("Error while deleting entity");
+                                            }
+
                                         }
                                     });
                                     setGraphic(btn);
@@ -296,8 +301,6 @@ public class PatientsController extends ContentController implements Initializab
             alert.showAndWait();
             return;
         }
-
-
 
         User user = new User();
         user.setRole("patient");
