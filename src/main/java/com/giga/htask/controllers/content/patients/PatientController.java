@@ -78,6 +78,11 @@ public class PatientController extends ContentController implements Initializabl
     private ComboBox doctorsComboBox;
     @FXML
     private Button assignDoctorButton;
+    @FXML
+    private Button showTasksButton;
+    @FXML
+    private Button showVisitsButton;
+
     /**
      * Constructs a new instance of the {@code EditPatientController} class with the specified user ID.
      * This constructor calls the constructor of the superclass ({@code UserController}) with the same argument.
@@ -118,8 +123,7 @@ public class PatientController extends ContentController implements Initializabl
         peselColumn.setCellValueFactory(new PropertyValueFactory<User,String>("pesel"));
         specializationColumn.setCellValueFactory(new PropertyValueFactory<User,String>("specialization"));
         editColumn.setCellValueFactory(new PropertyValueFactory<User,Integer>("id"));
-        tasksColumn.setCellValueFactory(new PropertyValueFactory<User,Integer>("id"));
-        visitsColumn.setCellValueFactory(new PropertyValueFactory<User,Integer>("id"));
+
 
         Callback<TableColumn<User, Integer>, TableCell<User, Integer>> cellEditFactory =
                 new ButtonCellAddTabFactory( "View doctor", "content/doctors/Doctor", DoctorController.class);
@@ -172,8 +176,7 @@ public class PatientController extends ContentController implements Initializabl
 
 
         editColumn.setCellFactory(cellEditFactory);
-        tasksColumn.setCellFactory(cellTasksFactory);
-        visitsColumn.setCellFactory(cellVisitsFactory);
+
         deleteColumn.setCellFactory(cellDeleteFactory);
 
 

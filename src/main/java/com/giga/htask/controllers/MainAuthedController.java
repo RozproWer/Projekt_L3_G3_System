@@ -5,6 +5,8 @@ import com.giga.htask.controllers.content.ContentController;
 import com.giga.htask.controllers.content.shared.WelcomeController;
 import com.giga.htask.model.Context;
 import com.giga.htask.model.User;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -55,11 +57,7 @@ public class MainAuthedController extends AnchorPane implements Initializable{
             getInstance().contentContainer.getTabs().add(singleTab);
             getInstance().contentContainer.getSelectionModel().select(contentContainer.getTabs().size()-1);
 
-            anchorPane.sceneProperty().addListener((observableScene, oldScene, newScene) -> {
-                if (newScene != null) {
-                    controller.onTabChangeToActive();
-                }
-            });
+
 
         }catch (IOException e){
             e.printStackTrace();
@@ -67,7 +65,9 @@ public class MainAuthedController extends AnchorPane implements Initializable{
     }
     public void addTab(String title,String fxml,Boolean isCloseable ){
         try {
-            Tab singleTab = new Tab(title, App.loadView(fxml));
+            FXMLLoader fxmlLoader = App.loadLoader(fxml);
+            Tab singleTab = new Tab(title, fxmlLoader.load());
+            ContentController contentController =  fxmlLoader.getController();
             singleTab.setClosable(isCloseable);
             contentContainer.getTabs().add(singleTab);
             contentContainer.getSelectionModel().select(singleTab);
@@ -96,7 +96,24 @@ public class MainAuthedController extends AnchorPane implements Initializable{
 
          addTab("Welcome","content/shared/Welcome",new WelcomeController(loggedUser.getId()),false);
 
+        /*
+         contentContainer.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>() {
+            @Override
+            public void changed(ObservableValue<? extends Tab> observable, Tab oldTab, Tab newTab) {
+                // If the new tab is not null and its content is an AnchorPane, retrieve the controller and call its method
+                System.out.println("BRUH");
+                if (newTab != null  ) {
+                    newTab
 
+                    Object controller = anchorPane.getProperties().get("controller");
+                    if (controller instanceof ContentController) {
+                        System.out.println("BRUH");
+                        ((ContentController) controller).onTabChangeToActive();
+                    }
+                }
+            }
+        });
+        */
 
 
 

@@ -100,6 +100,11 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/" + fxml + ".fxml"));
         return fxmlLoader.load(); // todo we need to return controller here
     }
+    public static FXMLLoader loadLoader(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/" + fxml + ".fxml"));
+        return fxmlLoader;
+    }
+
     public static Parent loadViewController(String fxml, Object controller) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/" + fxml + ".fxml"));
         fxmlLoader.setController(controller);
