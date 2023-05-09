@@ -11,10 +11,8 @@
             fx:controller="com.giga.htask.controllers.content.doctors.DoctorsController"
             fx:id="contentRoot" >
     <ScrollPane fx:id="contentScrollPane">
-        <VBox fx:id="contentVbox"  >
-
+        <VBox fx:id="contentVbox">
                 <Label text="Doctors" styleClass="content-title" fx:id="contentTitle"/>
-
                 <HBox fx:id="contentOutput">
                     <Label  styleClass="error" fx:id="contentError" />
                     <Label styleClass="success" fx:id="contentSuccess" />
@@ -61,6 +59,6 @@
                         <Button fx:id="addDoctor" text="Submit" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
                     </GridPane>
                 </VBox>
-
         </VBox>
+    </ScrollPane>
 </AnchorPane>
