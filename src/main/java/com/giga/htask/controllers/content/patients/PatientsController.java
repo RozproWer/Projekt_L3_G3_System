@@ -289,6 +289,13 @@ public class PatientsController extends ContentController implements Initializab
             alert.showAndWait();
             return;
         }
+        if(addressField.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Address cannot be empty");
+            alert.showAndWait();
+            return;
+        }
 
 
 

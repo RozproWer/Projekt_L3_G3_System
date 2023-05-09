@@ -237,6 +237,91 @@ public class DoctorController extends ContentController implements Initializable
      * Edits doctor details and saves them to database. if successfull, displays success message, otherwise displays error message
      */
     private void editDoctor() {
+        if(nameField.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Name cannot be empty");
+            alert.showAndWait();
+            return;
+        }
+        if(surnameField.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Surname cannot be empty");
+            alert.showAndWait();
+            return;
+        }
+        if(emailField.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Email cannot be empty");
+            alert.showAndWait();
+            return;
+        }
+        if(telephoneField.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Telephone cannot be empty");
+            alert.showAndWait();
+            return;
+        }
+        if(addressField.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Address cannot be empty");
+            alert.showAndWait();
+            return;
+        }
+        if(peselField.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Pesel cannot be empty");
+            alert.showAndWait();
+            return;
+        }
+        if(!peselField.getText().matches("[0-9]+")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Pesel must contain only numbers");
+            alert.showAndWait();
+            return;
+        }
+        if(peselField.getText().length() != 11){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Pesel must contain 11 numbers");
+            alert.showAndWait();
+            return;
+        }
+        if(!emailField.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Email is not valid");
+            alert.showAndWait();
+            return;
+        }
+        if(!telephoneField.getText().matches("[0-9]+")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Telephone must contain only numbers");
+            alert.showAndWait();
+            return;
+        }
+        if(telephoneField.getText().length() > 15){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Telephone is too long");
+            alert.showAndWait();
+            return;
+        }
+        if(addressField.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Address cannot be empty");
+            alert.showAndWait();
+            return;
+        }
+
         user.setName(nameField.getText());
         user.setSurname(surnameField.getText());
         user.setEmail(emailField.getText());
