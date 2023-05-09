@@ -1,6 +1,7 @@
 package com.giga.htask.controllers;
 
 import com.giga.htask.App;
+import com.giga.htask.controllers.content.ContentController;
 import com.giga.htask.controllers.content.shared.WelcomeController;
 import com.giga.htask.model.Context;
 import com.giga.htask.model.User;
@@ -34,14 +35,10 @@ public class MainAuthedController extends AnchorPane implements Initializable{
 
     @FXML
     private Label labelUserInfo;
-
-
     @FXML
     private  TabPane contentContainer;
-
     @FXML
     private Button buttonLogout;
-
     @FXML
     private VBox verticalMenu;
 
@@ -49,15 +46,21 @@ public class MainAuthedController extends AnchorPane implements Initializable{
 
 
 
-    public  void addTab(String title,String fxml,Object controller,Boolean isCloseable ) {
+    public  void addTab(String title, String fxml, ContentController controller, Boolean isCloseable ) {
         Tab singleTab = new Tab(title);
         singleTab.setClosable(isCloseable);
         try{
             AnchorPane anchorPane = (AnchorPane) App.loadViewController(fxml,controller);
             singleTab.setContent(anchorPane);
             getInstance().contentContainer.getTabs().add(singleTab);
-
             getInstance().contentContainer.getSelectionModel().select(contentContainer.getTabs().size()-1);
+
+            anchorPane.sceneProperty().addListener((observableScene, oldScene, newScene) -> {
+                if (newScene != null) {
+                    controller.onTabChangeToActive();
+                }
+            });
+
         }catch (IOException e){
             e.printStackTrace();
         }

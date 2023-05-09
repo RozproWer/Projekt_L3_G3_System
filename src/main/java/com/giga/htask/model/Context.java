@@ -97,8 +97,8 @@ public class Context {
         session.beginTransaction();
 
         loggedUser.getUserSettings().setDarkMode(darkMode);
-
         session.saveOrUpdate(loggedUser);
+        session.saveOrUpdate(loggedUser.getUserSettings());
         session.getTransaction().commit();
         session.close();
     }
