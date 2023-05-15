@@ -100,9 +100,7 @@ public class TaskController extends ContentController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         super.initialize(location, resources);
-        contentTitle.setText("Task of Patient " + task.getDoctorPatient().getPatient().getName() + " " + task.getDoctorPatient().getPatient().getSurname());
-        doctorLabel.setText(task.getDoctorPatient().getDoctor().getName() + " " + task.getDoctorPatient().getDoctor().getSurname());
-        patientLabel.setText(task.getDoctorPatient().getPatient().getName() + " " + task.getDoctorPatient().getPatient().getSurname());
+
         messages = Context.getInstance().getMessagesByTask(task.getId());
         handleTabButtons();
         handleEditTask();
@@ -133,6 +131,9 @@ public class TaskController extends ContentController implements Initializable {
 
     @Override
     protected void updateTables() {
+        contentTitle.setText("Task of Patient " + task.getDoctorPatient().getPatient().getName() + " " + task.getDoctorPatient().getPatient().getSurname());
+        doctorLabel.setText(task.getDoctorPatient().getDoctor().getName() + " " + task.getDoctorPatient().getDoctor().getSurname());
+        patientLabel.setText(task.getDoctorPatient().getPatient().getName() + " " + task.getDoctorPatient().getPatient().getSurname());
         titleLabel.setText(task.getTitle());
         titleField.setText(task.getTitle());
         descriptionTextArea.setText(task.getDescription());

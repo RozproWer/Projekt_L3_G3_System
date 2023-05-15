@@ -96,9 +96,12 @@ public abstract class ContentController implements Initializable {
         updateTablesIfNeeded(refresh);
     }
     protected void updateTablesIfNeeded(Boolean refresh){
+        if (refresh){
+            updateTables();
+        }
     }
 
-    public void onTabChangeToActive(){
-        System.out.println("GIGAMORSWIN");
+    public void onTabSelected(){
+        updateTablesIfNeeded(true);
     }
 }

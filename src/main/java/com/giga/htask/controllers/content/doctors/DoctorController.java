@@ -147,7 +147,7 @@ public class DoctorController extends ContentController implements Initializable
         handleTable();
         updateTables();
         handleSummary();
-        handleEdit();
+
         handleAssignPatient();
         handleRoles();
         handleTabButtons();
@@ -430,6 +430,7 @@ public class DoctorController extends ContentController implements Initializable
         doctorPatientsTable.setItems(Context.getInstance().getDoctorPatientsTable(user.getId()));
         patientsComboBox.setItems(Context.getInstance().getUnassignedPatients(user.getId()));
         doctorPatientsTable.refresh();
+        handleEdit();
     }
 
 }

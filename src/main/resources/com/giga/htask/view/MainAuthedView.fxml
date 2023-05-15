@@ -28,7 +28,7 @@
             </VBox>
         </left>
         <center >
-            <TabPane fx:id="contentContainer">
+            <TabPane fx:id="contentTabPane">
                 <tabs>
                 </tabs>
             </TabPane>

@@ -57,9 +57,7 @@ public class VisitController extends ContentController implements Initializable 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         super.initialize(location, resources);
-        contentTitle.setText("Visit of Patient " + visit.getDoctorPatient().getPatient().getName()+ " " + visit.getDoctorPatient().getPatient().getSurname());
-        doctorLabel.setText(visit.getDoctorPatient().getDoctor().getName() + " " + visit.getDoctorPatient().getDoctor().getSurname());
-        patientLabel.setText(visit.getDoctorPatient().getPatient().getName() + " " + visit.getDoctorPatient().getPatient().getSurname());
+
 
         handleTabButtons();
         handleEditTask();
@@ -68,6 +66,9 @@ public class VisitController extends ContentController implements Initializable 
     }
     @Override
     protected void updateTables(){
+        contentTitle.setText("Visit of Patient " + visit.getDoctorPatient().getPatient().getName()+ " " + visit.getDoctorPatient().getPatient().getSurname());
+        doctorLabel.setText(visit.getDoctorPatient().getDoctor().getName() + " " + visit.getDoctorPatient().getDoctor().getSurname());
+        patientLabel.setText(visit.getDoctorPatient().getPatient().getName() + " " + visit.getDoctorPatient().getPatient().getSurname());
         titleLabel.setText(visit.getTitle());
         titleField.setText(visit.getTitle());
         descriptionTextArea.setText(visit.getDescription());

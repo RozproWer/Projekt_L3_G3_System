@@ -38,7 +38,7 @@ public class MainAuthedController extends AnchorPane implements Initializable{
     @FXML
     private Label labelUserInfo;
     @FXML
-    private  TabPane contentContainer;
+    private  TabPane contentTabPane;
     @FXML
     private Button buttonLogout;
     @FXML
@@ -54,8 +54,8 @@ public class MainAuthedController extends AnchorPane implements Initializable{
         try{
             AnchorPane anchorPane = (AnchorPane) App.loadViewController(fxml,controller);
             singleTab.setContent(anchorPane);
-            getInstance().contentContainer.getTabs().add(singleTab);
-            getInstance().contentContainer.getSelectionModel().select(contentContainer.getTabs().size()-1);
+            getInstance().contentTabPane.getTabs().add(singleTab);
+            getInstance().contentTabPane.getSelectionModel().select(contentTabPane.getTabs().size()-1);
 
 
 
@@ -67,10 +67,18 @@ public class MainAuthedController extends AnchorPane implements Initializable{
         try {
             FXMLLoader fxmlLoader = App.loadLoader(fxml);
             Tab singleTab = new Tab(title, fxmlLoader.load());
-            ContentController contentController =  fxmlLoader.getController();
+            //OnSelectionChanged
+
+
+            singleTab.setOnSelectionChanged(event -> {
+                if(singleTab.isSelected()){
+                    ContentController contentController =  fxmlLoader.getController();
+                    contentController.onTabSelected();
+                }
+            });
             singleTab.setClosable(isCloseable);
-            contentContainer.getTabs().add(singleTab);
-            contentContainer.getSelectionModel().select(singleTab);
+            contentTabPane.getTabs().add(singleTab);
+            contentTabPane.getSelectionModel().select(singleTab);
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -95,26 +103,6 @@ public class MainAuthedController extends AnchorPane implements Initializable{
 
 
          addTab("Welcome","content/shared/Welcome",new WelcomeController(loggedUser.getId()),false);
-
-        /*
-         contentContainer.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>() {
-            @Override
-            public void changed(ObservableValue<? extends Tab> observable, Tab oldTab, Tab newTab) {
-                // If the new tab is not null and its content is an AnchorPane, retrieve the controller and call its method
-                System.out.println("BRUH");
-                if (newTab != null  ) {
-                    newTab
-
-                    Object controller = anchorPane.getProperties().get("controller");
-                    if (controller instanceof ContentController) {
-                        System.out.println("BRUH");
-                        ((ContentController) controller).onTabChangeToActive();
-                    }
-                }
-            }
-        });
-        */
-
 
 
         Button buttonPatients = new Button("Patients");

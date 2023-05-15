@@ -91,10 +91,10 @@ public class TasksController extends ContentController implements Initializable 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         super.initialize(location, resources);
-        contentTitle.setText("Tasks of " + user.getName() + " " + user.getSurname());
+
         handleTables();
         updateTables();
-        handleAddTask();
+
         handleRoles();
     }
     public void handleRoles(){
@@ -251,8 +251,10 @@ public class TasksController extends ContentController implements Initializable 
 
     @Override
     protected void updateTablesIfNeeded(Boolean refresh){
+        contentTitle.setText("Tasks of " + user.getName() + " " + user.getSurname());
         sfoList.updateLists(Context.getInstance().getTasksTable(user.getId()), p -> true);
         tasksTable.setItems(sfoList.getSortedList());
+        handleAddTask();
         tasksTable.refresh();
     }
 

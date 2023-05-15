@@ -90,13 +90,9 @@ public class VisitsController  extends ContentController implements Initializabl
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         super.initialize(location, resources);
-        contentTitle.setText("Visits of " + user.getName() + " " + user.getSurname());
         handleTables();
         updateTables();
-        handleAddVisit();
         handleRoles();
-
-
     }
 
     public void handleRoles(){
@@ -256,6 +252,8 @@ public class VisitsController  extends ContentController implements Initializabl
     }
     @Override
     protected void updateTablesIfNeeded(Boolean refresh){
+        handleAddVisit();
+        contentTitle.setText("Visits of " + user.getName() + " " + user.getSurname());
         sfoList.updateLists(Context.getInstance().getVisitsTable(user.getId()), p -> true);
         visitsTable.setItems(sfoList.getSortedList());
         visitsTable.refresh();
