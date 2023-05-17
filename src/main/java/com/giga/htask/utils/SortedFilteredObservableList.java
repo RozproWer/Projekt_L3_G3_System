@@ -20,6 +20,7 @@ public class SortedFilteredObservableList<T> {
         this.filteredList = new FilteredList<T>(FXCollections.observableArrayList(observableList), filter);
         this.sortedList = new SortedList<T>(filteredList);
         this.observableList = observableList;
+
         this.observableList.setAll(sortedList);
     }
 
@@ -33,5 +34,10 @@ public class SortedFilteredObservableList<T> {
     }
     public SortedList<T> getSortedList() {
         return sortedList;
+    }
+
+    //create method to set predicate for filteredList
+    public void setPredicate(java.util.function.Predicate<T> predicate) {
+        filteredList.setPredicate(predicate);
     }
 }

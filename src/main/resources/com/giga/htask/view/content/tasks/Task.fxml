@@ -50,7 +50,7 @@
                     <TextArea fx:id="descriptionTextArea" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                     <Label text="Status:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
                     <CheckBox fx:id="statusCheckBox" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                    <Button fx:id="submitEditTask" text="Submit Edit Visit" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                    <Button fx:id="submitEditTask" text="Submit Edit Task" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
                 </GridPane>
             </VBox>
         <VBox>

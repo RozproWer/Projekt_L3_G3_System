@@ -99,7 +99,10 @@ public class DoctorController extends ContentController implements Initializable
     private VBox assignVBox;
     @FXML
     private VBox patientsVBox;
-
+    @FXML
+    private Label peselLabel;
+    @FXML
+    private Label createdOnLabel;
 
     public void handleRoles(){
         switch( Context.getInstance().getLoggedUser().getRole()){
@@ -113,6 +116,8 @@ public class DoctorController extends ContentController implements Initializable
                 assignVBox.setVisible(false);
                 deleteColumn.setVisible(false);
                 pesel.setVisible(false);
+                peselLabel.setVisible(false);
+                createdOnLabel.setVisible(false);
                 createdOn.setVisible(false);
                 editVBox.setVisible(false);
                 patientsVBox.setVisible(false);

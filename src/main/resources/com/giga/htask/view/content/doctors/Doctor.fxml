@@ -28,13 +28,13 @@
                             <TextField fx:id="nameField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
                             <Label text="Surname:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
                             <TextField fx:id="surnameField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                            <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                            <Label text="Email:"  GridPane.columnIndex="0" GridPane.rowIndex="2"/>
                             <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                            <Label text="Phone:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                            <Label text="Phone:"  GridPane.columnIndex="0" GridPane.rowIndex="3"/>
                             <TextField fx:id="telephoneField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-                            <Label text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                            <Label text="Address:"  fx:id="addressLabel" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
                             <TextField fx:id="addressField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
-                            <Label text="Pesel:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                            <Label text="Pesel:" fx:id="peselLabel" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
                             <TextField fx:id="peselField" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
                             <Label text="Specialization:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
                             <TextField fx:id="specializationField" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
@@ -65,10 +65,10 @@
                             <Label fx:id="specialization" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
                             <Label text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
                             <Label fx:id="description" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
-                            <Label text="Created on:" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+                            <Label text="Created on:" fx:id="createdOnLabel" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
                             <Label fx:id="createdOn" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
-                            <Button fx:id="showTasksButton" GridPane.columnIndex="0" GridPane.rowIndex="10" text="Show Visits"/>
-                            <Button fx:id="showVisitsButton" GridPane.columnIndex="1" GridPane.rowIndex="10"  text="Show Tasks"/>
+                            <Button fx:id="showTasksButton" GridPane.columnIndex="0" GridPane.rowIndex="10" text="Show Tasks"/>
+                            <Button fx:id="showVisitsButton" GridPane.columnIndex="1" GridPane.rowIndex="10"  text="Show Visits"/>
                         </GridPane>
                     </VBox>
 

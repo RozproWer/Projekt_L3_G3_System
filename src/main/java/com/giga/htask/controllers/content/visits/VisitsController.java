@@ -27,7 +27,7 @@ import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.ResourceBundle;
 
-public class VisitsController  extends ContentController implements Initializable {
+public class VisitsController extends ContentController implements Initializable {
 
     SortedFilteredObservableList<Visit> sfoList = Context.getInstance().getSortedFilteredObservableVisitsTable(user.getId());
     @FXML
@@ -81,7 +81,7 @@ public class VisitsController  extends ContentController implements Initializabl
     @FXML
     private VBox addVBox;
     @FXML
-    private DateTimePicker  appointmentOnDateTimePicker;
+    private DateTimePicker appointmentOnDateTimePicker;
 
     public VisitsController(Integer userId) {
         super(userId);
@@ -95,8 +95,8 @@ public class VisitsController  extends ContentController implements Initializabl
         handleRoles();
     }
 
-    public void handleRoles(){
-        switch( Context.getInstance().getLoggedUser().getRole()){
+    public void handleRoles() {
+        switch (Context.getInstance().getLoggedUser().getRole()) {
             case ("patient"):
                 addVBox.setVisible(false);
                 deleteColumn.setVisible(false);
@@ -104,17 +104,17 @@ public class VisitsController  extends ContentController implements Initializabl
         }
     }
 
-    private void handleTables(){
+    private void handleTables() {
         //set columns
-        visitIdColumn.setCellValueFactory(new PropertyValueFactory<Visit,Integer>("id"));
+        visitIdColumn.setCellValueFactory(new PropertyValueFactory<Visit, Integer>("id"));
         TimestampValueFactory<Visit> createdOnFactory = new TimestampValueFactory<>(Visit::getCreatedOn);
         visitCreatedOnColumn.setCellValueFactory(createdOnFactory);
-        TimestampValueFactory<Visit> visitAppointmentOnFactory = new TimestampValueFactory<>(Visit::getCreatedOn);
+        TimestampValueFactory<Visit> visitAppointmentOnFactory = new TimestampValueFactory<>(Visit::getAppointmentOn);
         visitAppointmentOnColumn.setCellValueFactory(visitAppointmentOnFactory);
 
-        editColumn.setCellValueFactory(new PropertyValueFactory<Visit,Integer>("id"));
-        visitTitleColumn.setCellValueFactory(new PropertyValueFactory<Visit,String>("title"));
-        deleteColumn.setCellValueFactory(new PropertyValueFactory<Visit,Integer>("id"));
+        editColumn.setCellValueFactory(new PropertyValueFactory<Visit, Integer>("id"));
+        visitTitleColumn.setCellValueFactory(new PropertyValueFactory<Visit, String>("title"));
+        deleteColumn.setCellValueFactory(new PropertyValueFactory<Visit, Integer>("id"));
 
         patientNameColumn.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getDoctorPatient().getPatient().getName()));
@@ -138,13 +138,13 @@ public class VisitsController  extends ContentController implements Initializabl
 
 
         Callback<TableColumn<Visit, Integer>, TableCell<Visit, Integer>> cellEditFactory =
-                new ButtonCellAddTabFactory( "Edit visit", "content/visits/Visit", VisitController.class);
+                new ButtonCellAddTabFactory("Edit visit", "content/visits/Visit", VisitController.class);
 
         Callback<TableColumn<Visit, Integer>, TableCell<Visit, Integer>> cellDoctorFactory =
-                new ButtonCellAddTabFactory( "Edit Doctor", "content/doctors/Doctor", DoctorController.class);
+                new ButtonCellAddTabFactory("Edit Doctor", "content/doctors/Doctor", DoctorController.class);
 
         Callback<TableColumn<Visit, Integer>, TableCell<Visit, Integer>> cellPatientFactory =
-                new ButtonCellAddTabFactory( "Edit Patient", "content/patients/Patient", PatientController.class);
+                new ButtonCellAddTabFactory("Edit Patient", "content/patients/Patient", PatientController.class);
 
         sfoList.getSortedList().comparatorProperty().bind(visitsTable.comparatorProperty());
 
@@ -170,12 +170,12 @@ public class VisitsController  extends ContentController implements Initializabl
                                         alert.showAndWait();
 
                                         if (alert.getResult() == ButtonType.OK) {
-                                           if( Context.getInstance().deleteEntityById(Visit.class,id)){
-                                               updateTables();
-                                               setSuccess("Task deleted successfully");
-                                           }else{
-                                               setError("Task could not be deleted");
-                                           }
+                                            if (Context.getInstance().deleteEntityById(Visit.class, id)) {
+                                                updateTables();
+                                                setSuccess("Task deleted successfully");
+                                            } else {
+                                                setError("Task could not be deleted");
+                                            }
 
                                         }
                                     });
@@ -194,9 +194,7 @@ public class VisitsController  extends ContentController implements Initializabl
         doctorShowColumn.setCellFactory(cellDoctorFactory);
         patientShowColumn.setCellFactory(cellPatientFactory);
 
-
         //sorting
-
         visitsTable.sortPolicyProperty().set(new Callback<TableView<Visit>, Boolean>() {
             @Override
             public Boolean call(TableView<Visit> param) {
@@ -220,7 +218,7 @@ public class VisitsController  extends ContentController implements Initializabl
 
             sfoList.getFilteredList().setPredicate(visit -> {
 
-                if( !visit.getDoctorPatient().getPatient().equals(user) && !visit.getDoctorPatient().getDoctor().equals(user)){
+                if (!visit.getDoctorPatient().getPatient().equals(user) && !visit.getDoctorPatient().getDoctor().equals(user)) {
                     return false;
                 }
                 if (newValue == null || newValue.isEmpty()) {
@@ -232,38 +230,50 @@ public class VisitsController  extends ContentController implements Initializabl
                 //filter by name, surname, email, pesel, specialization
                 if (visit.getTitle().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                } else if (visit.getCreatedOn().toString().toLowerCase().contains(lowerCaseFilter)){
+                } else if (visit.getCreatedOn().toString().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
                 } else if (visit.getAppointmentOn().toString().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
                 }
                 return false;
             });
-            visitsTable.setItems(sfoList.getSortedList());
+            final Comparator<Visit> tableComparator = visitsTable.getComparator();
+            // if the column is set to unsorted, tableComparator can be null
+            Comparator<Visit> comparator = tableComparator == null ? null : new Comparator<Visit>() {
+                @Override
+                public int compare(Visit o1, Visit o2) {
+                    // secondly sort by the comparator that was set for the table
+                    return tableComparator.compare(o1, o2);
+                }
+            };
+            visitsTable.setItems(sfoList.getFilteredList().sorted(comparator));
         });
+
         //block dates before today in appointmentOnDateTimePicker
         appointmentOnDateTimePicker.setDayCellFactory(picker -> new DateCell() {
             public void updateItem(LocalDate date, boolean empty) {
                 super.updateItem(date, empty);
                 LocalDate today = LocalDate.now();
-                setDisable(empty || date.compareTo(today) < 0 );
+                setDisable(empty || date.compareTo(today) < 0);
             }
         });
     }
+
     @Override
-    protected void updateTablesIfNeeded(Boolean refresh){
+    protected void updateTablesIfNeeded(Boolean refresh) {
         handleAddVisit();
         contentTitle.setText("Visits of " + user.getName() + " " + user.getSurname());
         sfoList.updateLists(Context.getInstance().getVisitsTable(user.getId()), p -> true);
         visitsTable.setItems(sfoList.getSortedList());
         visitsTable.refresh();
     }
-    private void handleAddVisit(){
-        AddTitleLabel.setText("Create visit for "+user.getRole()+" "+user.getName()+" "+user.getSurname());
-        if(user.getRole().equals("doctor")){
+
+    private void handleAddVisit() {
+        AddTitleLabel.setText("Create visit for " + user.getRole() + " " + user.getName() + " " + user.getSurname());
+        if (user.getRole().equals("doctor")) {
             addUserLabel.setText("Select Patient");
             userComboBox.setItems(Context.getInstance().getAssignedPatients(user.getId()));
-        }else{
+        } else {
             addUserLabel.setText("Select Doctor");
             userComboBox.setItems(Context.getInstance().getAssignedDoctors(user.getId()));
         }
@@ -277,15 +287,15 @@ public class VisitsController  extends ContentController implements Initializabl
         addVisitButton.setOnAction(event -> addVisit());
     }
 
-    private void addVisit(){
-        if(userComboBox.getSelectionModel().getSelectedItem() == null){
+    private void addVisit() {
+        if (userComboBox.getSelectionModel().getSelectedItem() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("You have to select user");
             alert.showAndWait();
             return;
         }
-        if(titleField.getText().isEmpty()){
+        if (titleField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Title cannot be empty");
@@ -297,23 +307,23 @@ public class VisitsController  extends ContentController implements Initializabl
         visit.setCreatedOn(Timestamp.valueOf(LocalDateTime.now()));
         visit.setTitle(titleField.getText());
         visit.setDescription(descriptionTextArea.getText());
-        //visit.setCreatedOn(Timestamp.valueOf(LocalDateTime.now()));
+
         LocalDateTime time = appointmentOnDateTimePicker.getDateTimeValue();
         Timestamp timestamp = Timestamp.valueOf(time);
         visit.setAppointmentOn(timestamp);
 
         User patientOrDoctor = (User) userComboBox.getSelectionModel().getSelectedItem();
-        if (user.getRole().equals("doctor")){
-            visit.setDoctorPatient(Context.getInstance().getDoctorPatientByDoctorAndPatientId(user.getId(),patientOrDoctor.getId()));
-        }else{
-            visit.setDoctorPatient(Context.getInstance().getDoctorPatientByDoctorAndPatientId(patientOrDoctor.getId(),user.getId()));
+        if (user.getRole().equals("doctor")) {
+            visit.setDoctorPatient(Context.getInstance().getDoctorPatientByDoctorAndPatientId(user.getId(), patientOrDoctor.getId()));
+        } else {
+            visit.setDoctorPatient(Context.getInstance().getDoctorPatientByDoctorAndPatientId(patientOrDoctor.getId(), user.getId()));
         }
         Boolean success = Context.getInstance().saveOrUpdateEntity(visit);
-        if(success){
+        if (success) {
             setSuccess("Visit added successfully");
             updateTables();
 
-        }else{
+        } else {
             setError("Error while adding Visit");
         }
     }

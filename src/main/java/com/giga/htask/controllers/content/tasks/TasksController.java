@@ -77,6 +77,7 @@ public class TasksController extends ContentController implements Initializable 
 
 
     SortedFilteredObservableList<Task> sfoList = Context.getInstance().getSortedFilteredObservableTasksTable(user.getId());
+
     /**
      * Constructs a new instance of the {@code TasksController} class with the specified user ID.
      * This constructor calls the constructor of the superclass ({@code UserController}) with the same argument.
@@ -97,8 +98,9 @@ public class TasksController extends ContentController implements Initializable 
 
         handleRoles();
     }
-    public void handleRoles(){
-        switch( Context.getInstance().getLoggedUser().getRole()){
+
+    public void handleRoles() {
+        switch (Context.getInstance().getLoggedUser().getRole()) {
             case ("patient"):
                 addVBox.setVisible(false);
                 deleteColumn.setVisible(false);
@@ -106,20 +108,20 @@ public class TasksController extends ContentController implements Initializable 
         }
     }
 
-    private void handleTables(){
+    private void handleTables() {
 
         //set columns
-        taskIdColumn.setCellValueFactory(new PropertyValueFactory<Task,Integer>("id"));
+        taskIdColumn.setCellValueFactory(new PropertyValueFactory<Task, Integer>("id"));
         TimestampValueFactory<Task> createdOnFactory = new TimestampValueFactory<>(Task::getCreatedOn);
         taskCreatedOnColumn.setCellValueFactory(createdOnFactory);
         TimestampValueFactory<Task> taskFinishedOnFactory = new TimestampValueFactory<>(Task::getCreatedOn);
         taskFinishedOnColumn.setCellValueFactory(taskFinishedOnFactory);
 
-        taskStatusOnColumn.setCellValueFactory(new PropertyValueFactory<Task,String>("status"));
+        taskStatusOnColumn.setCellValueFactory(new PropertyValueFactory<Task, String>("status"));
 
-        editColumn.setCellValueFactory(new PropertyValueFactory<Task,Integer>("id"));
+        editColumn.setCellValueFactory(new PropertyValueFactory<Task, Integer>("id"));
 
-        taskTitleColumn.setCellValueFactory(new PropertyValueFactory<Task,String>("title"));
+        taskTitleColumn.setCellValueFactory(new PropertyValueFactory<Task, String>("title"));
 
         patientNameColumn.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getDoctorPatient().getPatient().getName()));
@@ -143,13 +145,13 @@ public class TasksController extends ContentController implements Initializable 
 
 
         Callback<TableColumn<Task, Integer>, TableCell<Task, Integer>> cellEditFactory =
-                new ButtonCellAddTabFactory( "Edit task", "content/tasks/Task", TaskController.class);
+                new ButtonCellAddTabFactory("Edit task", "content/tasks/Task", TaskController.class);
 
         Callback<TableColumn<Task, Integer>, TableCell<Task, Integer>> cellDoctorFactory =
-                new ButtonCellAddTabFactory( "Edit Doctor", "content/doctors/Doctor", DoctorController.class);
+                new ButtonCellAddTabFactory("Edit Doctor", "content/doctors/Doctor", DoctorController.class);
 
         Callback<TableColumn<Task, Integer>, TableCell<Task, Integer>> cellPatientFactory =
-                new ButtonCellAddTabFactory( "Edit Patient", "content/patients/Patient", PatientController.class);
+                new ButtonCellAddTabFactory("Edit Patient", "content/patients/Patient", PatientController.class);
 
 
         deleteColumn.setCellValueFactory(new PropertyValueFactory<Task, Integer>("id"));
@@ -176,11 +178,10 @@ public class TasksController extends ContentController implements Initializable 
 
         //filtering
         filterField.textProperty().addListener((observable, oldValue, newValue) -> {
-            sfoList.getSortedList().comparatorProperty().bind(tasksTable.comparatorProperty());
+            //sfoList.getSortedList().comparatorProperty().bind(tasksTable.comparatorProperty());
+            sfoList.setPredicate(task -> {
 
-            sfoList.getFilteredList().setPredicate(task -> {
-
-                if( !task.getDoctorPatient().getPatient().equals(user) && !task.getDoctorPatient().getDoctor().equals(user)){
+                if (!task.getDoctorPatient().getPatient().equals(user) && !task.getDoctorPatient().getDoctor().equals(user)) {
                     return false;
                 }
                 if (newValue == null || newValue.isEmpty()) {
@@ -192,16 +193,26 @@ public class TasksController extends ContentController implements Initializable 
                 //filter by name, surname, email, pesel, specialization
                 if (task.getTitle().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                } else if (task.getCreatedOn().toString().toLowerCase().contains(lowerCaseFilter)){
+                } else if (task.getCreatedOn().toString().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                } else if (task.getStatus().toLowerCase().contains(lowerCaseFilter)){
+                } else if (task.getStatus().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                }else if (task.getFinishedOn().toString().toLowerCase().contains(lowerCaseFilter)) {
+                } else if (task.getFinishedOn() != null && task.getFinishedOn().toString().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
                 }
                 return false;
             });
-            tasksTable.setItems(sfoList.getSortedList());
+            final Comparator<Task> tableComparator = tasksTable.getComparator();
+            // if the column is set to unsorted, tableComparator can be null
+            Comparator<Task> comparator = tableComparator == null ? null : new Comparator<Task>() {
+                @Override
+                public int compare(Task o1, Task o2) {
+                    // secondly sort by the comparator that was set for the table
+                    return tableComparator.compare(o1, o2);
+                }
+            };
+            tasksTable.setItems(sfoList.getFilteredList().sorted(comparator));
+
         });
 
 
@@ -226,10 +237,10 @@ public class TasksController extends ContentController implements Initializable 
                                         alert.showAndWait();
 
                                         if (alert.getResult() == ButtonType.OK) {
-                                            if(Context.getInstance().deleteEntityById(Task.class,id)){
+                                            if (Context.getInstance().deleteEntityById(Task.class, id)) {
                                                 updateTables();
                                                 setSuccess("Task deleted successfully");
-                                            }else{
+                                            } else {
                                                 setError("Task could not be deleted");
                                             }
 
@@ -250,22 +261,34 @@ public class TasksController extends ContentController implements Initializable 
     }
 
     @Override
-    protected void updateTablesIfNeeded(Boolean refresh){
+    protected void updateTablesIfNeeded(Boolean refresh) {
+        handleAddTask();
         contentTitle.setText("Tasks of " + user.getName() + " " + user.getSurname());
         sfoList.updateLists(Context.getInstance().getTasksTable(user.getId()), p -> true);
         tasksTable.setItems(sfoList.getSortedList());
-        handleAddTask();
         tasksTable.refresh();
     }
 
-    private void handleAddTask(){
-        AddTitleLabel.setText("Create task for "+user.getRole()+" "+user.getName()+" "+user.getSurname());
-        if(user.getRole().equals("doctor")){
+    private void handleAddTask() {
+        AddTitleLabel.setText("Create task for " + user.getRole() + " " + user.getName() + " " + user.getSurname());
+
+        if (user.getRole().equals("doctor")) {
             addUserLabel.setText("Select Patient");
             userComboBox.setItems(Context.getInstance().getAssignedPatients(user.getId()));
-        }else{
+            userComboBox.setVisible(true);
+            addUserLabel.setVisible(true);
+        } else {
             addUserLabel.setText("Select Doctor");
-            userComboBox.setItems(Context.getInstance().getAssignedDoctors(user.getId()));
+            if (Context.getInstance().getLoggedUser().getRole().equals("doctor")) {
+                userComboBox.getSelectionModel().select(Context.getInstance().getLoggedUser());
+                userComboBox.setVisible(false);
+                addUserLabel.setVisible(false);
+            } else {
+                userComboBox.setItems(Context.getInstance().getAssignedDoctors(user.getId()));
+                userComboBox.setVisible(true);
+                addUserLabel.setVisible(true);
+            }
+
         }
 
         titleField.setTextFormatter(new TextFormatter<String>(change ->
@@ -276,15 +299,15 @@ public class TasksController extends ContentController implements Initializable 
         addTaskButton.setOnAction(event -> addTask());
     }
 
-    private void addTask(){
-        if(userComboBox.getSelectionModel().getSelectedItem() == null){
+    private void addTask() {
+        if (userComboBox.getSelectionModel().getSelectedItem() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("You have to select user");
             alert.showAndWait();
             return;
         }
-        if(titleField.getText().isEmpty()){
+        if (titleField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Title cannot be empty");
@@ -296,20 +319,20 @@ public class TasksController extends ContentController implements Initializable 
         task.setTitle(titleField.getText());
         task.setDescription(descriptionTextArea.getText());
         task.setStatus("unfinished");
-        //get doctorPatient using context function getDoctorPatient
-        User patientOrDoctor = (User) userComboBox.getSelectionModel().getSelectedItem();
-        if (user.getRole().equals("doctor")){
-          task.setDoctorPatient(Context.getInstance().getDoctorPatientByDoctorAndPatientId(user.getId(),patientOrDoctor.getId()));
 
-        }else {
-            task.setDoctorPatient(Context.getInstance().getDoctorPatientByDoctorAndPatientId(patientOrDoctor.getId(),user.getId()));
+        User patientOrDoctor = (User) userComboBox.getSelectionModel().getSelectedItem();
+        if (user.getRole().equals("doctor")) {
+            task.setDoctorPatient(Context.getInstance().getDoctorPatientByDoctorAndPatientId(user.getId(), patientOrDoctor.getId()));
+
+        } else {
+            task.setDoctorPatient(Context.getInstance().getDoctorPatientByDoctorAndPatientId(patientOrDoctor.getId(), user.getId()));
         }
         Boolean success = Context.getInstance().saveOrUpdateEntity(task);
-        if(success){
+        if (success) {
             setSuccess("Task added successfully");
             updateTables();
 
-        }else{
+        } else {
             setError("Error while adding task");
         }
     }

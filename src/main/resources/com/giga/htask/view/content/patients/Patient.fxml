@@ -56,8 +56,8 @@
                         <Label fx:id="createdOn" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
                         <Label text="Role:" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
                         <Label fx:id="role" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
-                        <Button fx:id="showTasksButton" GridPane.columnIndex="0" GridPane.rowIndex="8" text="Show Visits"/>
-                        <Button fx:id="showVisitsButton" GridPane.columnIndex="1" GridPane.rowIndex="8"  text="Show Tasks"/>
+                        <Button fx:id="showTasksButton" GridPane.columnIndex="0" GridPane.rowIndex="8" text="Show Tasks"/>
+                        <Button fx:id="showVisitsButton" GridPane.columnIndex="1" GridPane.rowIndex="8"  text="Show Visits"/>
                     </GridPane>
                 </VBox>
 

@@ -47,7 +47,7 @@
                     <TextArea fx:id="descriptionTextArea" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                     <Label text="Appointed on:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
                     <DateTimePicker fx:id="appointmentOnDateTimePicker" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                    <Button fx:id="submitEditTask" text="Submit Edit Task" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                    <Button fx:id="submitEditVisit" text="Submit Edit Visit" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
                 </GridPane>
             </VBox>
 

@@ -38,7 +38,7 @@ public class VisitController extends ContentController implements Initializable 
     @FXML
     Button showDoctorButton;
     @FXML
-    Button submitEditTask;
+    Button submitEditVisit;
     @FXML
     TextField titleField;
     @FXML
@@ -125,7 +125,7 @@ public class VisitController extends ContentController implements Initializable 
         titleField.setTextFormatter(new TextFormatter<String>(change ->
                 change.getControlNewText().length() <= 255 ? change : null));
 
-        submitEditTask.setOnAction(event -> editVisit());
+        submitEditVisit.setOnAction(event -> editVisit());
     }
 
     private void handleTabButtons(){
