@@ -11,51 +11,54 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:id="contentRoot">
     <ScrollPane fx:id="contentScrollPane">
-    <VBox fx:id="contentVbox">
-        <Label text="Tasks" styleClass="content-title" fx:id="contentTitle"/>
-        <HBox fx:id="contentOutput">
-            <Label text="" styleClass="error" fx:id="contentError" visible="false"/>
-            <Label text="" styleClass="success" fx:id="contentSuccess" visible="false"/>
-            <Label text="" styleClass="info" fx:id="contentInfo" visible="false"/>
-        </HBox>
-        <VBox fx:id="contentTasks">
+        <VBox fx:id="contentVbox">
+            <Label text="Tasks" styleClass="content-title" fx:id="contentTitle"/>
+            <HBox fx:id="contentOutput">
+                <Label text="" styleClass="error" fx:id="contentError" visible="false"/>
+                <Label text="" styleClass="success" fx:id="contentSuccess" visible="false"/>
+                <Label text="" styleClass="info" fx:id="contentInfo" visible="false"/>
+            </HBox>
+            <VBox fx:id="contentTasks">
 
-            <TextField fx:id="filterField" promptText="Search" />
-            <TableView fx:id="visitsTable" visible="true">
-                <columns>
-                    <TableColumn fx:id="visitIdColumn" prefWidth="70.0" text="ID" />
-                    <TableColumn fx:id="visitTitleColumn" prefWidth="70.0" text="Title" />
-                    <TableColumn fx:id="visitCreatedOnColumn" prefWidth="70.0" text="Created On" />
-                    <TableColumn fx:id="visitAppointmentOnColumn" prefWidth="70.0" text="Appointed On" />
-                    <TableColumn fx:id="doctorNameColumn" prefWidth="100.0" text="Doctor Name" />
-                    <TableColumn fx:id="doctorSurnameColumn" prefWidth="100.0" text="Doctor Surname" />
-                    <TableColumn fx:id="doctorPeselColumn" prefWidth="100.0" text="Doctor Pesel" />
-                    <TableColumn fx:id="doctorSpecializationColumn" prefWidth="100.0" text="Doctor Specialization" />
-                    <TableColumn fx:id="patientNameColumn" prefWidth="100.0" text="Patient Name" />
-                    <TableColumn fx:id="patientSurnameColumn" prefWidth="100.0" text="Patient Surname" />
-                    <TableColumn fx:id="patientPeselColumn" prefWidth="100.0" text="Patient Pesel" />
-                    <TableColumn fx:id="patientShowColumn" prefWidth="100.0" text="Show patient" />
-                    <TableColumn fx:id="doctorShowColumn" prefWidth="100.0" text="Show doctor" />
-                    <TableColumn fx:id="editColumn"  prefWidth="150.0" text="Details" />
-                    <TableColumn fx:id="deleteColumn"   prefWidth="100.0" text="Delete" />
-                </columns>
-            </TableView>
-            <VBox fx:id="addVBox">
-                <Label text="Add Visits"  fx:id="AddTitleLabel" styleClass="content-title" />
-                <GridPane fx:id="addForm" hgap="10" vgap="10">
-                    <Label text="Title:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                    <TextField fx:id="titleField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-                    <Label fx:id="addUserLabel" text="Patient:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-                    <ComboBox fx:id="userComboBox" prefWidth="350.0" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                    <Label text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-                    <TextArea fx:id="descriptionTextArea" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="5"/>
-                    <Button fx:id="addVisitButton" text="Add Visit" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
-                    <Label text="Appointment On:" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
-                    <DateTimePicker fx:id="appointmentOnDateTimePicker" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
-                </GridPane>
+                <TextField fx:id="filterField" promptText="Search"/>
+                <TableView fx:id="visitsTable" visible="true">
+                    <columns>
+                        <TableColumn fx:id="visitIdColumn" prefWidth="70.0" text="ID"/>
+                        <TableColumn fx:id="visitTitleColumn" prefWidth="70.0" text="Title"/>
+                        <TableColumn fx:id="visitCreatedOnColumn" prefWidth="70.0" text="Created On"/>
+                        <TableColumn fx:id="visitAppointmentOnColumn" prefWidth="70.0" text="Appointed On"/>
+                        <TableColumn fx:id="doctorNameColumn" prefWidth="100.0" text="Doctor Name"/>
+                        <TableColumn fx:id="doctorSurnameColumn" prefWidth="100.0" text="Doctor Surname"/>
+                        <TableColumn fx:id="doctorPeselColumn" prefWidth="100.0" text="Doctor Pesel"/>
+                        <TableColumn fx:id="doctorSpecializationColumn" prefWidth="100.0" text="Doctor Specialization"/>
+                        <TableColumn fx:id="patientNameColumn" prefWidth="100.0" text="Patient Name"/>
+                        <TableColumn fx:id="patientSurnameColumn" prefWidth="100.0" text="Patient Surname"/>
+                        <TableColumn fx:id="patientPeselColumn" prefWidth="100.0" text="Patient Pesel"/>
+                        <TableColumn fx:id="patientShowColumn" prefWidth="100.0" text="Show patient"/>
+                        <TableColumn fx:id="doctorShowColumn" prefWidth="100.0" text="Show doctor"/>
+                        <TableColumn fx:id="editColumn" prefWidth="150.0" text="Details"/>
+                        <TableColumn fx:id="deleteColumn" prefWidth="100.0" text="Delete"/>
+                    </columns>
+                </TableView>
+                <VBox fx:id="addVBox">
+                    <Label text="Add Visits" fx:id="AddTitleLabel" styleClass="content-title"/>
+                    <GridPane fx:id="addForm" hgap="10" vgap="10">
+                        <Label text="Title:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                        <TextField fx:id="titleField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                        <Label fx:id="addUserLabel" text="Patient:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                        <ComboBox fx:id="userComboBox" prefWidth="350.0" GridPane.columnIndex="1"
+                                  GridPane.rowIndex="1"/>
+                        <Label text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                        <TextArea fx:id="descriptionTextArea" GridPane.columnIndex="1" GridPane.rowIndex="2"
+                                  GridPane.rowSpan="5"/>
+                        <Button fx:id="addVisitButton" text="Add Visit" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+                        <Label text="Appointment On:" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+                        <DateTimePicker fx:id="appointmentOnDateTimePicker" GridPane.columnIndex="1"
+                                        GridPane.rowIndex="8"/>
+                    </GridPane>
+                </VBox>
+
             </VBox>
-
         </VBox>
-    </VBox>
     </ScrollPane>
 </AnchorPane>

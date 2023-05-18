@@ -74,7 +74,7 @@ public class Context {
             return false;
         }
 
-        if(isDarkMode == null) {
+        if (isDarkMode == null) {
             //load from database
             Session session = sessionFactory.openSession();
             session.beginTransaction();
@@ -105,6 +105,7 @@ public class Context {
 
     /*Doctors and patients have shared observable list*/
     private ObservableList<User> usersTable = FXCollections.observableArrayList();
+
     public ObservableList<User> getUserTable() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -116,11 +117,13 @@ public class Context {
         filteredPatientsTable = new FilteredList<User>(usersTable, p -> p.getRole().equals("patient"));
         return usersTable;
     }
+
     private void refreshUserTableIfNeeded(Boolean refresh) {
         if (usersTable.isEmpty() || refresh) {
             getUserTable();
         }
     }
+
     public void refreshUsersTable() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -131,15 +134,18 @@ public class Context {
     }
 
     private FilteredList<User> filteredDoctorsTable = new FilteredList<>(usersTable, p -> p.getRole().equals("doctor"));
-    private SortedList<User> sortedDoctorsTable =  new SortedList<>(filteredDoctorsTable);
+    private SortedList<User> sortedDoctorsTable = new SortedList<>(filteredDoctorsTable);
+
     public FilteredList<User> getFilteredDoctorsTable() {
         return filteredDoctorsTable;
     }
+
     public SortedList<User> getSortedDoctorsTable() {
         refreshUserTableIfNeeded(false);
         sortedDoctorsTable = new SortedList<User>(filteredDoctorsTable);
         return sortedDoctorsTable;
     }
+
     public SortedList<User> getSortedDoctorsTable(Boolean refresh) {
         refreshUserTableIfNeeded(refresh);
         sortedDoctorsTable = new SortedList<User>(filteredDoctorsTable);
@@ -147,17 +153,20 @@ public class Context {
     }
 
     private FilteredList<User> filteredPatientsTable = new FilteredList<>(usersTable, p -> p.getRole().equals("patient"));
-    private SortedList<User> sortedPatientsTable =  new SortedList<>(filteredPatientsTable);
+    private SortedList<User> sortedPatientsTable = new SortedList<>(filteredPatientsTable);
+
     public SortedList<User> getSortedPatientsTable() {
         refreshUserTableIfNeeded(false);
         sortedPatientsTable = new SortedList<User>(filteredPatientsTable);
         return sortedPatientsTable;
     }
+
     public SortedList<User> getSortedPatientsTable(Boolean refresh) {
         refreshUserTableIfNeeded(refresh);
         sortedPatientsTable = new SortedList<User>(filteredPatientsTable);
         return sortedPatientsTable;
     }
+
     public FilteredList<User> getFilteredPatientsTable() {
         return filteredPatientsTable;
     }
@@ -248,8 +257,9 @@ public class Context {
     public SortedFilteredObservableList<Task> getSortedFilteredObservableTasksTable(Integer userId) {
         return new SortedFilteredObservableList<Task>(getTasksTable(userId), p -> true);
     }
+
     public SortedFilteredObservableList<Visit> getSortedFilteredObservableVisitsTable(Integer userId) {
-        return new SortedFilteredObservableList<Visit>(getVisitsTable(userId,"all"), p -> true);
+        return new SortedFilteredObservableList<Visit>(getVisitsTable(userId, "all"), p -> true);
     }
 
     /**
@@ -295,7 +305,7 @@ public class Context {
             session.remove(entity);
             session.getTransaction().commit();
             success = true;
-        }catch (PersistenceException e) {
+        } catch (PersistenceException e) {
             System.err.println("\u001B[31m" + "Error: " + e.getMessage() + "\u001B[0m");
             session.getTransaction().rollback();
         } finally {
@@ -314,7 +324,7 @@ public class Context {
         return entity;
     }
 
-    public DoctorPatient getDoctorPatientByDoctorAndPatientId(Integer doctorId, Integer patientId){
+    public DoctorPatient getDoctorPatientByDoctorAndPatientId(Integer doctorId, Integer patientId) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Query query = session.createQuery("SELECT dp FROM DoctorPatient dp WHERE dp.doctor.id = :doctorId AND dp.patient.id = :patientId");
@@ -331,9 +341,9 @@ public class Context {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Query query = session.createQuery("SELECT dp.patient FROM DoctorPatient dp WHERE dp.doctor.id = :doctorId");
-        if(loggedUser.getRole().equals("doctor")){
+        if (loggedUser.getRole().equals("doctor")) {
             query.setParameter("doctorId", loggedUser.getId());
-        }else{
+        } else {
             query.setParameter("doctorId", doctorId);
         }
         List patients = query.getResultList();
@@ -341,11 +351,12 @@ public class Context {
         session.close();
         return FXCollections.observableArrayList(patients);
     }
+
     public ObservableList getPatientDoctorsTable(Integer patientId) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        if(loggedUser.getRole().equals("doctor")){
+        if (loggedUser.getRole().equals("doctor")) {
             Query query = session.createQuery("SELECT dp.doctor FROM DoctorPatient dp WHERE dp.patient.id = :patientId and dp.doctor.id = :doctorId");
             query.setParameter("patientId", patientId);
             query.setParameter("doctorId", loggedUser.getId());
@@ -353,7 +364,7 @@ public class Context {
             session.getTransaction().commit();
             session.close();
             return FXCollections.observableArrayList(doctors);
-        }else{
+        } else {
             Query query = session.createQuery("SELECT dp.doctor FROM DoctorPatient dp WHERE dp.patient.id = :patientId");
             query.setParameter("patientId", patientId);
             List doctors = query.getResultList();
@@ -363,6 +374,7 @@ public class Context {
         }
 
     }
+
     public Integer getDoctorPatientId(int doctorId, int patientId) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -401,6 +413,7 @@ public class Context {
         session.close();
         return FXCollections.observableArrayList(patients);
     }
+
     public String generatePassword() {
         String password = "";
         for (int i = 0; i < 8; i++) {
@@ -408,6 +421,7 @@ public class Context {
         }
         return password;
     }
+
     public ObservableList<User> getAssignedDoctors(Integer patientId) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();

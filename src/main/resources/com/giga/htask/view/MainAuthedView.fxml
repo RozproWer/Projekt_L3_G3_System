@@ -7,27 +7,27 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.TabPane?>
-<VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" >
+<VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
     <BorderPane prefWidth="Infinity">
 
         <left>
             <HBox spacing="10" style="-fx-padding: 10 10 10 10;">
-                <Label fx:id="labelUserInfo"  text="User: John Doe (Admin)" />
+                <Label fx:id="labelUserInfo" text="User: John Doe (Admin)"/>
             </HBox>
         </left>
-        <right >
+        <right>
             <HBox spacing="10" style="-fx-padding: 10 10 10 10;">
-                <Button fx:id="buttonLogout" text="Logout" BorderPane.alignment="CENTER_RIGHT" />
+                <Button fx:id="buttonLogout" text="Logout" BorderPane.alignment="CENTER_RIGHT"/>
             </HBox>
         </right>
 
         <left>
             <VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
-                  spacing="10" alignment="CENTER" fx:id="verticalMenu" >
+                  spacing="10" alignment="CENTER" fx:id="verticalMenu">
 
             </VBox>
         </left>
-        <center >
+        <center>
             <TabPane fx:id="contentTabPane">
                 <tabs>
                 </tabs>

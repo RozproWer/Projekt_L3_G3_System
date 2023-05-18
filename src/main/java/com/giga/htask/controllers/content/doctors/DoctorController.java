@@ -4,6 +4,7 @@ import com.giga.htask.controllers.MainAuthedController;
 import com.giga.htask.controllers.content.patients.PatientController;
 import com.giga.htask.controllers.content.tasks.TasksController;
 import com.giga.htask.model.DoctorPatient;
+import com.giga.htask.model.Visit;
 import com.giga.htask.utils.ButtonCellAddTabFactory;
 import com.giga.htask.controllers.content.ContentController;
 import com.giga.htask.controllers.content.visits.VisitsController;
@@ -106,8 +107,8 @@ public class DoctorController extends ContentController implements Initializable
     @FXML
     private Button generateReportButton;
 
-    public void handleRoles(){
-        switch( Context.getInstance().getLoggedUser().getRole()){
+    public void handleRoles() {
+        switch (Context.getInstance().getLoggedUser().getRole()) {
             case ("doctor"):
                 patientsComboBox.setVisible(false);
                 assignVBox.setVisible(false);
@@ -161,16 +162,16 @@ public class DoctorController extends ContentController implements Initializable
     }
 
     /**
-     *   Handles report generation after clicking generateReportButton.
+     * Handles report generation after clicking generateReportButton.
      */
     private void handleReport() {
 
-        if(!Context.getInstance().getLoggedUser().getRole().equals("patient")){
+        if (!Context.getInstance().getLoggedUser().getRole().equals("patient")) {
             generateReportButton.setVisible(true);
             generateReportButton.setOnAction(event -> {
                 Context.getInstance().reportGenerator.generateUserReport(user);
             });
-        }else{
+        } else {
             generateReportButton.setVisible(false);
         }
     }
@@ -293,7 +294,7 @@ public class DoctorController extends ContentController implements Initializable
         submitEditDoctor.setOnAction(event -> editDoctor());
     }
 
-    private void handleTabButtons(){
+    private void handleTabButtons() {
         showTasksButton.setOnAction(event -> {
             try {
                 ContentController controller = TasksController.class.getDeclaredConstructor(Integer.class).newInstance((Integer) user.getId());
@@ -317,84 +318,84 @@ public class DoctorController extends ContentController implements Initializable
      * Edits doctor details and saves them to database. if successfull, displays success message, otherwise displays error message
      */
     private void editDoctor() {
-        if(nameField.getText().isEmpty()){
+        if (nameField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Name cannot be empty");
             alert.showAndWait();
             return;
         }
-        if(surnameField.getText().isEmpty()){
+        if (surnameField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Surname cannot be empty");
             alert.showAndWait();
             return;
         }
-        if(emailField.getText().isEmpty()){
+        if (emailField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Email cannot be empty");
             alert.showAndWait();
             return;
         }
-        if(telephoneField.getText().isEmpty()){
+        if (telephoneField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Telephone cannot be empty");
             alert.showAndWait();
             return;
         }
-        if(addressField.getText().isEmpty()){
+        if (addressField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Address cannot be empty");
             alert.showAndWait();
             return;
         }
-        if(peselField.getText().isEmpty()){
+        if (peselField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Pesel cannot be empty");
             alert.showAndWait();
             return;
         }
-        if(!peselField.getText().matches("[0-9]+")){
+        if (!peselField.getText().matches("[0-9]+")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Pesel must contain only numbers");
             alert.showAndWait();
             return;
         }
-        if(peselField.getText().length() != 11){
+        if (peselField.getText().length() != 11) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Pesel must contain 11 numbers");
             alert.showAndWait();
             return;
         }
-        if(!emailField.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")){
+        if (!emailField.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Email is not valid");
             alert.showAndWait();
             return;
         }
-        if(!telephoneField.getText().matches("[0-9]+")){
+        if (!telephoneField.getText().matches("[0-9]+")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Telephone must contain only numbers");
             alert.showAndWait();
             return;
         }
-        if(telephoneField.getText().length() > 15){
+        if (telephoneField.getText().length() > 15) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Telephone is too long");
             alert.showAndWait();
             return;
         }
-        if(addressField.getText().isEmpty()){
+        if (addressField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Address cannot be empty");
@@ -449,7 +450,16 @@ public class DoctorController extends ContentController implements Initializable
         }
     }
 
+    @Override
     protected void updateTables() {
+
+        user = Context.getInstance().getEntityById(User.class, user.getId());
+        if (user == null) {
+            System.out.println("Visit does not exist anymore");
+            closeTab();
+            return;
+        }
+
         doctorPatientsTable.setItems(Context.getInstance().getDoctorPatientsTable(user.getId()));
         patientsComboBox.setItems(Context.getInstance().getUnassignedPatients(user.getId()));
         doctorPatientsTable.refresh();

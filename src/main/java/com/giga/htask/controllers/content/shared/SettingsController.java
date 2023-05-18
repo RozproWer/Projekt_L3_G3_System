@@ -23,10 +23,9 @@ public class SettingsController extends ContentController implements Initializab
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        if(Context.getInstance().isDarkMode()){
+        if (Context.getInstance().isDarkMode()) {
             radioButtonIsDarkMode.setSelected(true);
-        }
-        else{
+        } else {
             radioButtonIsDarkMode.setSelected(false);
         }
 

@@ -35,7 +35,7 @@ public class ButtonCellAddTabFactory<T> implements Callback<TableColumn<User, T>
                     setGraphic(null);
                 } else {
                     try {
-                        ContentController controller = controllerClass.getDeclaredConstructor(Integer.class).newInstance((Integer)item);
+                        ContentController controller = controllerClass.getDeclaredConstructor(Integer.class).newInstance((Integer) item);
                         btn.setOnAction(event -> {
                             MainAuthedController.getInstance().addTab(tabTitle, fxmlPath, controller, true);
                         });

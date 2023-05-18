@@ -12,7 +12,7 @@ public class SortedFilteredObservableList<T> {
     private SortedList<T> sortedList;
     private ObservableList<T> observableList;
 
-    public SortedFilteredObservableList( ObservableList<T> observableList, java.util.function.Predicate<T> filter) {
+    public SortedFilteredObservableList(ObservableList<T> observableList, java.util.function.Predicate<T> filter) {
         updateLists(observableList, filter);
     }
 
@@ -32,6 +32,7 @@ public class SortedFilteredObservableList<T> {
     public FilteredList<T> getFilteredList() {
         return filteredList;
     }
+
     public SortedList<T> getSortedList() {
         return sortedList;
     }

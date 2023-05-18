@@ -33,6 +33,7 @@ public class App extends Application {
 
 
     public static Stage stage;
+
     //called when app starts up and sets root of scene to MainView.fxml
     @Override
     public void start(Stage stage) throws IOException, ClassNotFoundException {
@@ -54,7 +55,7 @@ public class App extends Application {
         // Get dimensions of the screen to make it fullscreen
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
 
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("view/" + "MainView"+ ".fxml"));
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("view/" + "MainView" + ".fxml"));
         Parent root = loader.load();
         MainController controller1 = new MainController();
         loader.setController(controller1);
@@ -74,21 +75,22 @@ public class App extends Application {
         stage.show();
     }
 
-    public static void changeTheme(){
-        if(Context.getInstance().isDarkMode()){
+    public static void changeTheme() {
+        if (Context.getInstance().isDarkMode()) {
             App.stage.getScene().getStylesheets().add(App.class.getResource("styles/darkmode.css").toExternalForm());
-        }
-        else{
+        } else {
             App.stage.getScene().getStylesheets().remove(App.class.getResource("styles/darkmode.css").toExternalForm());
         }
     }
-    private static void loadStyles(){
+
+    private static void loadStyles() {
         App.stage.getScene().getStylesheets().add(App.class.getResource("styles/styles.css").toExternalForm());
 
-        if(Context.getInstance().isDarkMode()){
+        if (Context.getInstance().isDarkMode()) {
             App.stage.getScene().getStylesheets().add(App.class.getResource("styles/darkmode.css").toExternalForm());
         }
     }
+
     //loads fxml file and sets controller to MainController
     public static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/" + fxml + ".fxml"));
@@ -100,6 +102,7 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/" + fxml + ".fxml"));
         return fxmlLoader.load(); // todo we need to return controller here
     }
+
     public static FXMLLoader loadLoader(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/" + fxml + ".fxml"));
         return fxmlLoader;

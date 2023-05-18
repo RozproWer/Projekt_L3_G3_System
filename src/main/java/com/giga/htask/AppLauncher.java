@@ -1,4 +1,5 @@
 package com.giga.htask;
+
 /**
  * Main class of app. Launches app and omits javaFX library error which occurs when launching app from App class
  *

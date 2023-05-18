@@ -10,20 +10,20 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:id="contentRoot">
     <ScrollPane fx:id="contentScrollPane">
-    <VBox fx:id="contentVbox">
+        <VBox fx:id="contentVbox">
 
-        <Label text="Hospital Tasks App" styleClass="content-title" fx:id="contentTitle"/>
-        <HBox fx:id="contentOutput">
-            <Label text="" styleClass="error" fx:id="contentError" visible="false"/>
-            <Label text="" styleClass="success" fx:id="contentSuccess" visible="false"/>
-            <Label text="" styleClass="info" fx:id="contentInfo" visible="false"/>
-        </HBox>
-        <VBox fx:id="clockBox" alignment="CENTER">
-            <Label fx:id="userLabel" style="-fx-font-size: 48pt;"/>
-            <Label fx:id="timeLabel" style="-fx-font-size: 48pt;"/>
-            <Label fx:id="dateLabel" style="-fx-font-size: 16pt;"/>
+            <Label text="Hospital Tasks App" styleClass="content-title" fx:id="contentTitle"/>
+            <HBox fx:id="contentOutput">
+                <Label text="" styleClass="error" fx:id="contentError" visible="false"/>
+                <Label text="" styleClass="success" fx:id="contentSuccess" visible="false"/>
+                <Label text="" styleClass="info" fx:id="contentInfo" visible="false"/>
+            </HBox>
+            <VBox fx:id="clockBox" alignment="CENTER">
+                <Label fx:id="userLabel" style="-fx-font-size: 48pt;"/>
+                <Label fx:id="timeLabel" style="-fx-font-size: 48pt;"/>
+                <Label fx:id="dateLabel" style="-fx-font-size: 16pt;"/>
+            </VBox>
         </VBox>
-    </VBox>
     </ScrollPane>
 
 </AnchorPane>

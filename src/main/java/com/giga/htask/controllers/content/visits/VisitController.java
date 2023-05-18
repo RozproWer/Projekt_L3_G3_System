@@ -1,5 +1,6 @@
 package com.giga.htask.controllers.content.visits;
 
+import com.giga.htask.model.Task;
 import com.giga.htask.model.Visit;
 import com.giga.htask.controllers.MainAuthedController;
 import com.giga.htask.controllers.content.ContentController;
@@ -66,6 +67,14 @@ public class VisitController extends ContentController implements Initializable 
     }
     @Override
     protected void updateTables(){
+
+        visit = Context.getInstance().getEntityById(Visit.class, visit.getId());
+        if (visit == null) {
+            System.out.println("Visit does not exist anymore");
+            closeTab();
+            return;
+        }
+
         contentTitle.setText("Visit of Patient " + visit.getDoctorPatient().getPatient().getName()+ " " + visit.getDoctorPatient().getPatient().getSurname());
         doctorLabel.setText(visit.getDoctorPatient().getDoctor().getName() + " " + visit.getDoctorPatient().getDoctor().getSurname());
         patientLabel.setText(visit.getDoctorPatient().getPatient().getName() + " " + visit.getDoctorPatient().getPatient().getSurname());

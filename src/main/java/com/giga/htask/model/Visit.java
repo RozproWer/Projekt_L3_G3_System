@@ -68,6 +68,7 @@ public class Visit {
     public void setCreatedOn(Timestamp createdOn) {
         this.createdOn = createdOn;
     }
+
     @PrePersist
     protected void onCreate() {
         createdOn = new Timestamp(System.currentTimeMillis());

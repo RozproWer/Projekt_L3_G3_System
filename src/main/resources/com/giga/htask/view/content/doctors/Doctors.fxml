@@ -9,38 +9,38 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.giga.htask.controllers.content.doctors.DoctorsController"
-            fx:id="contentRoot" >
-    <ScrollPane fx:id="contentScrollPane"   >
+            fx:id="contentRoot">
+    <ScrollPane fx:id="contentScrollPane">
         <content>
-        <VBox fx:id="contentVbox"  >
+            <VBox fx:id="contentVbox">
                 <Label text="Doctors" styleClass="content-title" fx:id="contentTitle"/>
                 <HBox fx:id="contentOutput">
-                    <Label  styleClass="error" fx:id="contentError" />
-                    <Label styleClass="success" fx:id="contentSuccess" />
-                    <Label styleClass="info" fx:id="contentInfo" />
+                    <Label styleClass="error" fx:id="contentError"/>
+                    <Label styleClass="success" fx:id="contentSuccess"/>
+                    <Label styleClass="info" fx:id="contentInfo"/>
                 </HBox>
 
-                <TextField fx:id="filterField" promptText="Search" />
+                <TextField fx:id="filterField" promptText="Search"/>
                 <TableView fx:id="doctorsTable" visible="true">
                     <columns>
-                        <TableColumn fx:id="idColumn" prefWidth="70.0" text="ID" />
-                        <TableColumn fx:id="nameColumn" prefWidth="100.0" text="Name" />
-                        <TableColumn fx:id="surnameColumn" prefWidth="100.0" text="Surname" />
-                        <TableColumn fx:id="peselColumn" prefWidth="75.0" text="PESEL" />
-                        <TableColumn fx:id="addressColumn" prefWidth="100.0" text="Address" />
-                        <TableColumn fx:id="telephoneColumn" prefWidth="100.0" text="Telephone" />
-                        <TableColumn fx:id="emailColumn" prefWidth="100.0" text="Email" />
-                        <TableColumn fx:id="roleColumn" prefWidth="75.0" text="Role" />
-                        <TableColumn fx:id="specializationColumn" prefWidth="200.0" text="Specialization" />
-                        <TableColumn fx:id="createdOnColumn" prefWidth="150.0" text="Created On" />
-                        <TableColumn fx:id="tasksColumn"   prefWidth="100.0" text="Tasks" />
-                        <TableColumn fx:id="visitsColumn"   prefWidth="100.0" text="Visits" />
-                        <TableColumn fx:id="editColumn"  prefWidth="150.0" text="Edit/Show" />
-                        <TableColumn fx:id="deleteColumn"   prefWidth="100.0" text="Delete" />
+                        <TableColumn fx:id="idColumn" prefWidth="70.0" text="ID"/>
+                        <TableColumn fx:id="nameColumn" prefWidth="100.0" text="Name"/>
+                        <TableColumn fx:id="surnameColumn" prefWidth="100.0" text="Surname"/>
+                        <TableColumn fx:id="peselColumn" prefWidth="75.0" text="PESEL"/>
+                        <TableColumn fx:id="addressColumn" prefWidth="100.0" text="Address"/>
+                        <TableColumn fx:id="telephoneColumn" prefWidth="100.0" text="Telephone"/>
+                        <TableColumn fx:id="emailColumn" prefWidth="100.0" text="Email"/>
+                        <TableColumn fx:id="roleColumn" prefWidth="75.0" text="Role"/>
+                        <TableColumn fx:id="specializationColumn" prefWidth="200.0" text="Specialization"/>
+                        <TableColumn fx:id="createdOnColumn" prefWidth="150.0" text="Created On"/>
+                        <TableColumn fx:id="tasksColumn" prefWidth="100.0" text="Tasks"/>
+                        <TableColumn fx:id="visitsColumn" prefWidth="100.0" text="Visits"/>
+                        <TableColumn fx:id="editColumn" prefWidth="150.0" text="Edit/Show"/>
+                        <TableColumn fx:id="deleteColumn" prefWidth="100.0" text="Delete"/>
                     </columns>
                 </TableView>
-                <VBox  fx:id="addVBox" >
-                    <Label text="Add Doctor" styleClass="content-title" />
+                <VBox fx:id="addVBox">
+                    <Label text="Add Doctor" styleClass="content-title"/>
                     <GridPane fx:id="addForm" hgap="10" vgap="10">
                         <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
                         <TextField fx:id="nameField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
@@ -62,7 +62,7 @@
                     </GridPane>
                 </VBox>
 
-        </VBox>
+            </VBox>
         </content>
     </ScrollPane>
 </AnchorPane>

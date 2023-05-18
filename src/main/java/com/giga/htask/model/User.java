@@ -52,6 +52,7 @@ public class User {
     public UserDoctor getUserDoctor() {
         return userDoctor;
     }
+
     public void setUserDoctor(UserDoctor userDoctor) {
         this.userDoctor = userDoctor;
     }
@@ -61,6 +62,7 @@ public class User {
     public UserSettings getUserSettings() {
         return userSettings;
     }
+
     public void setUserSettings(UserSettings userSettings) {
         this.userSettings = userSettings;
     }
@@ -154,16 +156,18 @@ public class User {
     public void setCreatedOn(Timestamp createdOn) {
         this.createdOn = createdOn;
     }
+
     @PrePersist
     protected void onCreate() {
         createdOn = new Timestamp(System.currentTimeMillis());
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && Objects.equals(name,user.name) && Objects.equals(surname,user.surname) && Objects.equals(pesel, user.pesel) && Objects.equals(address, user.address) && Objects.equals(telephone, user.telephone) && Objects.equals(email, user.email) && Objects.equals(role, user.role) && Objects.equals(password, user.password) && Objects.equals(createdOn, user.createdOn);
+        return id == user.id && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(pesel, user.pesel) && Objects.equals(address, user.address) && Objects.equals(telephone, user.telephone) && Objects.equals(email, user.email) && Objects.equals(role, user.role) && Objects.equals(password, user.password) && Objects.equals(createdOn, user.createdOn);
     }
 
     @Override
@@ -185,7 +189,7 @@ public class User {
         if (role.equals("doctor")) {
             return id + ": " + name + " " + surname + " (" + userDoctor.getSpecialization() + ")";
         } else {
-            return  id+" (" + pesel+  "): "+  name + " " + surname;
+            return id + " (" + pesel + "): " + name + " " + surname;
         }
     }
 }

@@ -186,8 +186,8 @@ public class ReportGenerator {
             document.add(taskTable);
 
             // Add visits
-            ObservableList<Visit> upcomingVisits = Context.getInstance().getVisitsTable(user.getId(),"upcoming");
-            ObservableList<Visit> pastVisits = Context.getInstance().getVisitsTable(user.getId(),"past");
+            ObservableList<Visit> upcomingVisits = Context.getInstance().getVisitsTable(user.getId(), "upcoming");
+            ObservableList<Visit> pastVisits = Context.getInstance().getVisitsTable(user.getId(), "past");
 
             // Add upcoming visits
             document.add(new Paragraph("\nUpcoming Visits:\n"));

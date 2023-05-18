@@ -81,8 +81,8 @@ public class PatientsController extends ContentController implements Initializab
         handleAddPatient();
     }
 
-    private void handleRoles(){
-        switch( Context.getInstance().getLoggedUser().getRole()){
+    private void handleRoles() {
+        switch (Context.getInstance().getLoggedUser().getRole()) {
             case ("doctor"):
                 addVBox.setVisible(false);
                 deleteColumn.setVisible(false);
@@ -94,28 +94,28 @@ public class PatientsController extends ContentController implements Initializab
         }
     }
 
-    private void handleTables(){
-        idColumn.setCellValueFactory(new PropertyValueFactory<User,Integer>("id")); //probowałem
-        nameColumn.setCellValueFactory(new PropertyValueFactory<User,String>("name"));
-        surnameColumn.setCellValueFactory(new PropertyValueFactory<User,String>("surname"));
-        emailColumn.setCellValueFactory(new PropertyValueFactory<User,String>("email"));
-        telephoneColumn.setCellValueFactory(new PropertyValueFactory<User,String>("telephone"));
-        addressColumn.setCellValueFactory(new PropertyValueFactory<User,String>("address"));
-        peselColumn.setCellValueFactory(new PropertyValueFactory<User,String>("pesel"));
-        roleColumn.setCellValueFactory(new PropertyValueFactory<User,String>("role"));
-        deleteColumn.setCellValueFactory(new PropertyValueFactory<User,Integer>("id"));
-        editColumn.setCellValueFactory(new PropertyValueFactory<User,Integer>("id"));
-        visitsColumn.setCellValueFactory(new PropertyValueFactory<User,Integer>("id"));
-        tasksColumn.setCellValueFactory(new PropertyValueFactory<User,Integer>("id"));
+    private void handleTables() {
+        idColumn.setCellValueFactory(new PropertyValueFactory<User, Integer>("id")); //probowałem
+        nameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("name"));
+        surnameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("surname"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<User, String>("email"));
+        telephoneColumn.setCellValueFactory(new PropertyValueFactory<User, String>("telephone"));
+        addressColumn.setCellValueFactory(new PropertyValueFactory<User, String>("address"));
+        peselColumn.setCellValueFactory(new PropertyValueFactory<User, String>("pesel"));
+        roleColumn.setCellValueFactory(new PropertyValueFactory<User, String>("role"));
+        deleteColumn.setCellValueFactory(new PropertyValueFactory<User, Integer>("id"));
+        editColumn.setCellValueFactory(new PropertyValueFactory<User, Integer>("id"));
+        visitsColumn.setCellValueFactory(new PropertyValueFactory<User, Integer>("id"));
+        tasksColumn.setCellValueFactory(new PropertyValueFactory<User, Integer>("id"));
         TimestampValueFactory<User> createdOnFactory = new TimestampValueFactory<>(User::getCreatedOn);
         createdOnColumn.setCellValueFactory(createdOnFactory);
 
         Callback<TableColumn<User, Integer>, TableCell<User, Integer>> cellEditFactory =
-                new ButtonCellAddTabFactory( "View patient", "content/patients/Patient", PatientController.class);
+                new ButtonCellAddTabFactory("View patient", "content/patients/Patient", PatientController.class);
         Callback<TableColumn<User, Integer>, TableCell<User, Integer>> cellVisitsFactory =
-                new ButtonCellAddTabFactory( "Patient's visits", "content/visits/Visits", VisitsController.class);
+                new ButtonCellAddTabFactory("Patient's visits", "content/visits/Visits", VisitsController.class);
         Callback<TableColumn<User, Integer>, TableCell<User, Integer>> cellTasksFactory =
-                new ButtonCellAddTabFactory( "Patient's tasks", "content/tasks/Tasks", TasksController.class);
+                new ButtonCellAddTabFactory("Patient's tasks", "content/tasks/Tasks", TasksController.class);
 
         deleteColumn.setCellValueFactory(new PropertyValueFactory<User, Integer>("id"));
         Callback<TableColumn<User, String>, TableCell<User, Integer>> cellDeleteFactory =
@@ -139,10 +139,10 @@ public class PatientsController extends ContentController implements Initializab
                                         alert.showAndWait();
 
                                         if (alert.getResult() == ButtonType.OK) {
-                                            if(Context.getInstance().deleteEntityById(User.class,vID)){
+                                            if (Context.getInstance().deleteEntityById(User.class, vID)) {
                                                 setSuccess("Successfully deleted entity");
                                                 updateTables(true);
-                                            }else{
+                                            } else {
                                                 setError("Error while deleting entity");
                                             }
 
@@ -187,7 +187,7 @@ public class PatientsController extends ContentController implements Initializab
             Context.getInstance().getSortedPatientsTable().comparatorProperty().bind(patientsTable.comparatorProperty());
 
             Context.getInstance().getFilteredPatientsTable().setPredicate(user -> {
-                if(!user.getRole().equals("patient")) {
+                if (!user.getRole().equals("patient")) {
                     return false;
                 }
                 if (newValue == null || newValue.isEmpty()) {
@@ -198,9 +198,9 @@ public class PatientsController extends ContentController implements Initializab
                 //filter by name, surname, email, pesel, specialization
                 if (user.getSurname().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                } else if (user.getEmail().toLowerCase().contains(lowerCaseFilter)){
+                } else if (user.getEmail().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                } else if (user.getPesel().toLowerCase().contains(lowerCaseFilter)){
+                } else if (user.getPesel().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
                 }
                 return false;
@@ -212,7 +212,7 @@ public class PatientsController extends ContentController implements Initializab
     /**
      * Method used to set text formaters, and handle add doctor button
      */
-    private void handleAddPatient(){
+    private void handleAddPatient() {
         nameField.setTextFormatter(new TextFormatter<String>(change ->
                 change.getControlNewText().length() <= 255 ? change : null));
         surnameField.setTextFormatter(new TextFormatter<String>(change ->
@@ -234,84 +234,84 @@ public class PatientsController extends ContentController implements Initializab
     private void addPatient() {
 
         //validation:
-        if(nameField.getText().isEmpty()){
+        if (nameField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Name cannot be empty");
             alert.showAndWait();
             return;
         }
-        if(surnameField.getText().isEmpty()){
+        if (surnameField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Surname cannot be empty");
             alert.showAndWait();
             return;
         }
-        if(emailField.getText().isEmpty()){
+        if (emailField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Email cannot be empty");
             alert.showAndWait();
             return;
         }
-        if(telephoneField.getText().isEmpty()){
+        if (telephoneField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Telephone cannot be empty");
             alert.showAndWait();
             return;
         }
-        if(addressField.getText().isEmpty()){
+        if (addressField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Address cannot be empty");
             alert.showAndWait();
             return;
         }
-        if(peselField.getText().isEmpty()){
+        if (peselField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Pesel cannot be empty");
             alert.showAndWait();
             return;
         }
-        if(!peselField.getText().matches("[0-9]+")){
+        if (!peselField.getText().matches("[0-9]+")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Pesel must contain only numbers");
             alert.showAndWait();
             return;
         }
-        if(peselField.getText().length() != 11){
+        if (peselField.getText().length() != 11) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Pesel must contain 11 numbers");
             alert.showAndWait();
             return;
         }
-        if(!emailField.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")){
+        if (!emailField.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Email is not valid");
             alert.showAndWait();
             return;
         }
-        if(!telephoneField.getText().matches("[0-9]+")){
+        if (!telephoneField.getText().matches("[0-9]+")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Telephone must contain only numbers");
             alert.showAndWait();
             return;
         }
-        if(telephoneField.getText().length() > 15){
+        if (telephoneField.getText().length() > 15) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Telephone is too long");
             alert.showAndWait();
             return;
         }
-        if(addressField.getText().isEmpty()){
+        if (addressField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Address cannot be empty");
@@ -328,11 +328,11 @@ public class PatientsController extends ContentController implements Initializab
         user.setAddress(addressField.getText());
         user.setPesel(peselField.getText());
         user.setPassword(Context.getInstance().generatePassword());
-        if(Context.getInstance().saveOrUpdateEntity(user)) {
+        if (Context.getInstance().saveOrUpdateEntity(user)) {
             Context.getInstance().reportGenerator.generateNewUserReport(user);
             updateTables(true);
             setSuccess("Patient added successfully");
-        }else{
+        } else {
             setError("Error while adding patient");
         }
     }
@@ -340,10 +340,11 @@ public class PatientsController extends ContentController implements Initializab
     /**
      * Updates patients table in case of adding new patient or editing existing one.
      * It affects all tabs that are using doctors or patient table throught Context.
+     *
      * @param refresh if true, table will be refreshed
      */
     @Override
-    protected void updateTablesIfNeeded(Boolean refresh){
+    protected void updateTablesIfNeeded(Boolean refresh) {
         patientsTable.setItems(Context.getInstance().getSortedPatientsTable(refresh));
         patientsTable.refresh();
     }

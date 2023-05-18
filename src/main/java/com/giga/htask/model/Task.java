@@ -73,6 +73,7 @@ public class Task {
     public void setCreatedOn(Timestamp createdOn) {
         this.createdOn = createdOn;
     }
+
     @PrePersist
     protected void onCreate() {
         createdOn = new Timestamp(System.currentTimeMillis());
@@ -104,6 +105,7 @@ public class Task {
     public List<Message> getMessages() {
         return messages;
     }
+
     public void setMessages(List<Message> messages) {
         this.messages = messages;
     }

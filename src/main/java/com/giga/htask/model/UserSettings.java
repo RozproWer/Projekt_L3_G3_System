@@ -18,7 +18,6 @@ import java.util.Objects;
 public class UserSettings {
 
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

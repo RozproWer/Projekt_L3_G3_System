@@ -131,6 +131,13 @@ public class TaskController extends ContentController implements Initializable {
 
     @Override
     protected void updateTables() {
+        //check if entity still exists
+        task = Context.getInstance().getEntityById(Task.class, task.getId());
+        if (task == null) {
+            System.out.println("Task does not exist anymore");
+            closeTab();
+            return;
+        }
         contentTitle.setText("Task of Patient " + task.getDoctorPatient().getPatient().getName() + " " + task.getDoctorPatient().getPatient().getSurname());
         doctorLabel.setText(task.getDoctorPatient().getDoctor().getName() + " " + task.getDoctorPatient().getDoctor().getSurname());
         patientLabel.setText(task.getDoctorPatient().getPatient().getName() + " " + task.getDoctorPatient().getPatient().getSurname());

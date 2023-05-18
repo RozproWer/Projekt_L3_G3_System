@@ -18,7 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-public class WelcomeController  extends ContentController implements Initializable {
+public class WelcomeController extends ContentController implements Initializable {
 
     @FXML
     private Label timeLabel;

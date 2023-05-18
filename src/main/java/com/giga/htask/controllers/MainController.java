@@ -43,7 +43,7 @@ public class MainController implements Initializable {
         String email = emailField.getText();
         String password = passwordField.getText();
         Context.getInstance().login(email, password);
-        if (  Context.getInstance().getLoggedUser() == null){
+        if (Context.getInstance().getLoggedUser() == null) {
             errorLabel.setText("Invalid username or password.");
             return;
         }

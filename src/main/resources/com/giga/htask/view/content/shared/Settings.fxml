@@ -20,5 +20,5 @@
             </HBox>
             <RadioButton text="Dark Mode" fx:id="radioButtonIsDarkMode"/>
         </VBox>
-</ScrollPane>
+    </ScrollPane>
 </AnchorPane>

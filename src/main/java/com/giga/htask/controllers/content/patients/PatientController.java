@@ -22,8 +22,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
-*   Controller for single patient view.
-*/
+ * Controller for single patient view.
+ */
 public class PatientController extends ContentController implements Initializable {
 
     @FXML
@@ -106,8 +106,8 @@ public class PatientController extends ContentController implements Initializabl
         super(userId);
     }
 
-    private void handleRoles(){
-        switch( Context.getInstance().getLoggedUser().getRole()){
+    private void handleRoles() {
+        switch (Context.getInstance().getLoggedUser().getRole()) {
             case ("doctor"):
                 assignVBox.setVisible(false);
                 deleteColumn.setVisible(false);
@@ -123,11 +123,13 @@ public class PatientController extends ContentController implements Initializabl
                 break;
         }
     }
+
     /**
      * Initializes the controller with the specified location and resources. Sets the content title to display the
      * name and surname of the doctor being edited, and calls the handleTable() and handleSummary() methods to set up
      * the patient table view and summary view with appropriate data and cell factories.
-     * @param location The location of the FXML file.
+     *
+     * @param location  The location of the FXML file.
      * @param resources The resources used by the FXML file.
      */
     @Override
@@ -144,8 +146,8 @@ public class PatientController extends ContentController implements Initializabl
     }
 
     /**
-    *   Handles report generation after clicking generateReportButton.
-    */
+     * Handles report generation after clicking generateReportButton.
+     */
     private void handleReport() {
         generateReportButton.setOnAction(event -> {
             Context.getInstance().reportGenerator.generateUserReport(user);
@@ -157,22 +159,22 @@ public class PatientController extends ContentController implements Initializabl
      * Sets up the patient table view with the appropriate columns and cell factories, and populates it with data
      * rom the Context instance. Also sets up the edit, tasks, visits, and delete buttons for each patient row.
      */
-    private void handleTable(){
-        idColumn.setCellValueFactory(new PropertyValueFactory<DoctorPatient,Integer>("id"));
-        nameColumn.setCellValueFactory(new PropertyValueFactory<User,String>("name"));
-        surnameColumn.setCellValueFactory(new PropertyValueFactory<User,String>("surname"));
-        emailColumn.setCellValueFactory(new PropertyValueFactory<User,String>("email"));
-        peselColumn.setCellValueFactory(new PropertyValueFactory<User,String>("pesel"));
-        specializationColumn.setCellValueFactory(new PropertyValueFactory<User,String>("specialization"));
-        editColumn.setCellValueFactory(new PropertyValueFactory<User,Integer>("id"));
+    private void handleTable() {
+        idColumn.setCellValueFactory(new PropertyValueFactory<DoctorPatient, Integer>("id"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("name"));
+        surnameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("surname"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<User, String>("email"));
+        peselColumn.setCellValueFactory(new PropertyValueFactory<User, String>("pesel"));
+        specializationColumn.setCellValueFactory(new PropertyValueFactory<User, String>("specialization"));
+        editColumn.setCellValueFactory(new PropertyValueFactory<User, Integer>("id"));
 
 
         Callback<TableColumn<User, Integer>, TableCell<User, Integer>> cellEditFactory =
-                new ButtonCellAddTabFactory( "View doctor", "content/doctors/Doctor", DoctorController.class);
+                new ButtonCellAddTabFactory("View doctor", "content/doctors/Doctor", DoctorController.class);
         Callback<TableColumn<User, Integer>, TableCell<User, Integer>> cellVisitsFactory =
-                new ButtonCellAddTabFactory( "Patient's and Doctor's visits", "content/visits/Visits", VisitsController.class); //TODO
+                new ButtonCellAddTabFactory("Patient's and Doctor's visits", "content/visits/Visits", VisitsController.class); //TODO
         Callback<TableColumn<User, Integer>, TableCell<User, Integer>> cellTasksFactory =
-                new ButtonCellAddTabFactory( "Patient's and Doctor's tasks", "content/tasks/Tasks", TasksController.class);//TODO
+                new ButtonCellAddTabFactory("Patient's and Doctor's tasks", "content/tasks/Tasks", TasksController.class);//TODO
 
         deleteColumn.setCellValueFactory(new PropertyValueFactory<User, Integer>("id"));
         Callback<TableColumn<User, String>, TableCell<User, Integer>> cellDeleteFactory =
@@ -196,12 +198,12 @@ public class PatientController extends ContentController implements Initializabl
                                         alert.showAndWait();
 
                                         if (alert.getResult() == ButtonType.OK) {
-                                            if (Context.getInstance().deleteEntityById(DoctorPatient.class,Context.getInstance().getDoctorPatientId(id,user.getId()))){
+                                            if (Context.getInstance().deleteEntityById(DoctorPatient.class, Context.getInstance().getDoctorPatientId(id, user.getId()))) {
 
                                                 setSuccess("Doctor unassigned successfully");
                                                 updateTables();
 
-                                            }else{
+                                            } else {
 
                                                 setError("Error while unassigning doctor");
                                             }
@@ -223,7 +225,8 @@ public class PatientController extends ContentController implements Initializabl
 
 
     }
-    private void handleTabButtons(){
+
+    private void handleTabButtons() {
         showTasksButton.setOnAction(event -> {
             try {
                 ContentController controller = TasksController.class.getDeclaredConstructor(Integer.class).newInstance((Integer) user.getId());
@@ -241,10 +244,18 @@ public class PatientController extends ContentController implements Initializabl
             }
         });
     }
+
     @Override
-    protected void updateTablesIfNeeded(Boolean refresh){
+    protected void updateTablesIfNeeded(Boolean refresh) {
+        user = Context.getInstance().getEntityById(User.class, user.getId());
+        if (user == null) {
+            System.out.println("User does not exist anymore");
+            closeTab();
+            return;
+        }
         patientDoctorsTable.setItems(Context.getInstance().getPatientDoctorsTable(user.getId()));
         doctorsComboBox.setItems(Context.getInstance().getUnassignedDoctors(user.getId()));
+
         handleEdit();
         patientDoctorsTable.refresh();
     }
@@ -254,7 +265,7 @@ public class PatientController extends ContentController implements Initializabl
      * Handles the edit button.
      * It updates the user object with the new data from the text fields.
      */
-    private void handleEdit(){
+    private void handleEdit() {
         //set max fields length to match database
         nameField.setTextFormatter(new TextFormatter<String>(change ->
                 change.getControlNewText().length() <= 255 ? change : null));
@@ -283,7 +294,7 @@ public class PatientController extends ContentController implements Initializabl
      * Populates the summary view with information from the currently selected user.
      * This method sets the text of the labels in the view to the corresponding properties of the user object.
      */
-    private void handleSummary(){
+    private void handleSummary() {
         name.setText(user.getName());
         surname.setText(user.getSurname());
         role.setText(user.getRole());
@@ -297,85 +308,85 @@ public class PatientController extends ContentController implements Initializabl
     /**
      * Edits doctor details and saves them to database. if successfull, displays success message, otherwise displays error message
      */
-    private void editPatient(){
-        if(nameField.getText().isEmpty()){
+    private void editPatient() {
+        if (nameField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Name cannot be empty");
             alert.showAndWait();
             return;
         }
-        if(surnameField.getText().isEmpty()){
+        if (surnameField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Surname cannot be empty");
             alert.showAndWait();
             return;
         }
-        if(emailField.getText().isEmpty()){
+        if (emailField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Email cannot be empty");
             alert.showAndWait();
             return;
         }
-        if(addressField.getText().isEmpty()){
+        if (addressField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Address cannot be empty");
             alert.showAndWait();
             return;
         }
-        if(telephoneField.getText().isEmpty()){
+        if (telephoneField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Telephone cannot be empty");
             alert.showAndWait();
             return;
         }
-        if(addressField.getText().isEmpty()){
+        if (addressField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Address cannot be empty");
             alert.showAndWait();
             return;
         }
-        if(peselField.getText().isEmpty()){
+        if (peselField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Pesel cannot be empty");
             alert.showAndWait();
             return;
         }
-        if(!peselField.getText().matches("[0-9]+")){
+        if (!peselField.getText().matches("[0-9]+")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Pesel must contain only numbers");
             alert.showAndWait();
             return;
         }
-        if(peselField.getText().length() != 11){
+        if (peselField.getText().length() != 11) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Pesel must contain 11 numbers");
             alert.showAndWait();
             return;
         }
-        if(!emailField.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")){
+        if (!emailField.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Email is not valid");
             alert.showAndWait();
             return;
         }
-        if(!telephoneField.getText().matches("[0-9]+")){
+        if (!telephoneField.getText().matches("[0-9]+")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Telephone must contain only numbers");
             alert.showAndWait();
             return;
         }
-        if(telephoneField.getText().length() > 15){
+        if (telephoneField.getText().length() > 15) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Telephone is too long");
@@ -391,7 +402,7 @@ public class PatientController extends ContentController implements Initializabl
 
         boolean isSuccess = Context.getInstance().saveOrUpdateEntity(user);
 
-        if(isSuccess) {
+        if (isSuccess) {
             setSuccess("Successfully updated patient details");
             handleSummary();
         } else {
@@ -402,7 +413,7 @@ public class PatientController extends ContentController implements Initializabl
     /**
      * Handles the assign doctor button
      */
-    private void handleAssignDoctor(){
+    private void handleAssignDoctor() {
         assignDoctorButton.setOnAction(event -> assignDoctor());
     }
 
@@ -416,13 +427,13 @@ public class PatientController extends ContentController implements Initializabl
             doctorPatient.setPatient(user);
             doctorPatient.setDoctor(doctor);
             boolean isSuccess = Context.getInstance().saveOrUpdateEntity(doctorPatient);
-            if(isSuccess) {
+            if (isSuccess) {
                 setSuccess("Successfully assigned doctor");
                 updateTables(true);
             } else {
                 setError("Failed to assign doctor");
             }
-        }else{
+        } else {
             setError("Please select a doctor");
         }
     }

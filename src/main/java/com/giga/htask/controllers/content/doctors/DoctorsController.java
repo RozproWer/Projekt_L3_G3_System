@@ -79,6 +79,7 @@ public class DoctorsController extends ContentController implements Initializabl
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         super.initialize(location, resources);
         handleTables();
         updateTables();

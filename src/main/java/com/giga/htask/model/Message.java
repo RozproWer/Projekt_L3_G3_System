@@ -48,6 +48,7 @@ public class Message {
     public void setCreatedOn(Timestamp createdOn) {
         this.createdOn = createdOn;
     }
+
     @PrePersist
     protected void onCreate() {
         createdOn = new Timestamp(System.currentTimeMillis());
@@ -63,7 +64,6 @@ public class Message {
     public void setMessage(String message) {
         this.message = message;
     }
-
 
 
     @ManyToOne
@@ -83,7 +83,7 @@ public class Message {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Message message = (Message) o;
-        return id == message.id && task == message.task  && Objects.equals(createdOn, message.createdOn) && Objects.equals(this.message, message.message);
+        return id == message.id && task == message.task && Objects.equals(createdOn, message.createdOn) && Objects.equals(this.message, message.message);
     }
 
     @Override
