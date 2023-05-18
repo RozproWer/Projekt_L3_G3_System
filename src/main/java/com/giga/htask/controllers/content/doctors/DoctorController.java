@@ -103,6 +103,8 @@ public class DoctorController extends ContentController implements Initializable
     private Label peselLabel;
     @FXML
     private Label createdOnLabel;
+    @FXML
+    private Button generateReportButton;
 
     public void handleRoles(){
         switch( Context.getInstance().getLoggedUser().getRole()){
@@ -152,11 +154,27 @@ public class DoctorController extends ContentController implements Initializable
         handleTable();
         updateTables();
         handleSummary();
-
+        handleReport();
         handleAssignPatient();
         handleRoles();
         handleTabButtons();
     }
+
+    /**
+     *   Handles report generation after clicking generateReportButton.
+     */
+    private void handleReport() {
+
+        if(!Context.getInstance().getLoggedUser().getRole().equals("patient")){
+            generateReportButton.setVisible(true);
+            generateReportButton.setOnAction(event -> {
+                Context.getInstance().reportGenerator.generateUserReport(user);
+            });
+        }else{
+            generateReportButton.setVisible(false);
+        }
+    }
+
 
     /**
      * Populates the summary view with information from the currently selected user.

@@ -13,8 +13,10 @@
     <ScrollPane  fx:id="contentScrollPane">
         <content>
             <VBox fx:id="contentVbox" styleClass="content-vbox">
-
-                <Label text="Doctor" styleClass="content-title" fx:id="contentTitle"/>
+                <VBox>
+                    <Label text="Doctor" styleClass="content-title" fx:id="contentTitle"/>
+                    <Button fx:id="generateReportButton" text="Generate doctor raport"/>
+                </VBox>
                 <HBox fx:id="contentOutput">
                     <Label text="" styleClass="error" fx:id="contentError"/>
                     <Label text="" styleClass="success" fx:id="contentSuccess"/>
@@ -100,7 +102,9 @@
                         </VBox>
                     </VBox>
                 </HBox>
+                <HBox>
 
+                </HBox>
             </VBox>
         </content>
     </ScrollPane>

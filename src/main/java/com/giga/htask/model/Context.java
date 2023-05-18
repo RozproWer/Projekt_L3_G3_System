@@ -197,7 +197,7 @@ public class Context {
         return tasksTable;
     }
 
-    public ObservableList<Visit> getVisitsTable(Integer userId) {
+    public ObservableList<Visit> getVisitsTable(Integer userId, String type) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         User user = getEntityById(User.class, userId);
@@ -205,16 +205,33 @@ public class Context {
 
         if (loggedUser.getRole().equals("doctor")) {
             if (user.getRole().equals("doctor")) {
-                query = session.createQuery("SELECT DISTINCT v FROM Visit v WHERE v.doctorPatient IN (SELECT dp FROM DoctorPatient dp WHERE dp.doctor.id = :loggedId)");
-
+                if (type.equals("upcoming")) {
+                    query = session.createQuery("SELECT DISTINCT v FROM Visit v WHERE v.appointmentOn >= current_date() AND v.doctorPatient IN (SELECT dp FROM DoctorPatient dp WHERE dp.doctor.id = :loggedId)");
+                } else if (type.equals("past")) {
+                    query = session.createQuery("SELECT DISTINCT v FROM Visit v WHERE v.appointmentOn < current_date() AND v.doctorPatient IN (SELECT dp FROM DoctorPatient dp WHERE dp.doctor.id = :loggedId)");
+                } else {
+                    query = session.createQuery("SELECT DISTINCT v FROM Visit v WHERE v.doctorPatient IN (SELECT dp FROM DoctorPatient dp WHERE dp.doctor.id = :loggedId)");
+                }
                 query.setParameter("loggedId", loggedUser.getId());
-            }else{
-                query = session.createQuery("SELECT DISTINCT v FROM Visit v WHERE v.doctorPatient IN (SELECT dp FROM DoctorPatient dp WHERE dp.patient.id = :userId and dp.doctor.id = :loggedId)");
+            } else {
+                if (type.equals("incoming")) {
+                    query = session.createQuery("SELECT DISTINCT v FROM Visit v WHERE v.appointmentOn >= current_date() AND v.doctorPatient IN (SELECT dp FROM DoctorPatient dp WHERE dp.patient.id = :userId and dp.doctor.id = :loggedId)");
+                } else if (type.equals("past")) {
+                    query = session.createQuery("SELECT DISTINCT v FROM Visit v WHERE v.appointmentOn < current_date() AND v.doctorPatient IN (SELECT dp FROM DoctorPatient dp WHERE dp.patient.id = :userId and dp.doctor.id = :loggedId)");
+                } else {
+                    query = session.createQuery("SELECT DISTINCT v FROM Visit v WHERE v.doctorPatient IN (SELECT dp FROM DoctorPatient dp WHERE dp.patient.id = :userId and dp.doctor.id = :loggedId)");
+                }
                 query.setParameter("userId", userId);
                 query.setParameter("loggedId", loggedUser.getId());
             }
         } else {
-            query = session.createQuery("SELECT DISTINCT v FROM Visit v WHERE v.doctorPatient IN (SELECT dp FROM DoctorPatient dp WHERE dp.patient.id = :userId OR dp.doctor.id = :userId)");
+            if (type.equals("upcoming")) {
+                query = session.createQuery("SELECT DISTINCT v FROM Visit v WHERE v.appointmentOn >= current_date() AND (v.doctorPatient IN (SELECT dp FROM DoctorPatient dp WHERE dp.patient.id = :userId OR dp.doctor.id = :userId))");
+            } else if (type.equals("past")) {
+                query = session.createQuery("SELECT DISTINCT v FROM Visit v WHERE v.appointmentOn < current_date() AND (v.doctorPatient IN (SELECT dp FROM DoctorPatient dp WHERE dp.patient.id = :userId OR dp.doctor.id = :userId))");
+            } else {
+                query = session.createQuery("SELECT DISTINCT v FROM Visit v WHERE v.doctorPatient IN (SELECT dp FROM DoctorPatient dp WHERE dp.patient.id = :userId OR dp.doctor.id = :userId)");
+            }
             query.setParameter("userId", userId);
         }
 
@@ -223,8 +240,6 @@ public class Context {
         session.close();
 
         ObservableList<Visit> visitsTable = FXCollections.observableArrayList();
-        System.out.println("gigatest");
-        System.out.println(userVisits);
         visitsTable.setAll(userVisits);
         return visitsTable;
     }
@@ -234,7 +249,7 @@ public class Context {
         return new SortedFilteredObservableList<Task>(getTasksTable(userId), p -> true);
     }
     public SortedFilteredObservableList<Visit> getSortedFilteredObservableVisitsTable(Integer userId) {
-        return new SortedFilteredObservableList<Visit>(getVisitsTable(userId), p -> true);
+        return new SortedFilteredObservableList<Visit>(getVisitsTable(userId,"all"), p -> true);
     }
 
     /**
@@ -393,7 +408,7 @@ public class Context {
         }
         return password;
     }
-    public ObservableList getAssignedDoctors(Integer patientId) {
+    public ObservableList<User> getAssignedDoctors(Integer patientId) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Query query = session.createQuery("SELECT DISTINCT dp.doctor FROM DoctorPatient dp WHERE dp.patient.id = :patientId");
@@ -404,7 +419,7 @@ public class Context {
         return FXCollections.observableArrayList(doctors);
     }
 
-    public ObservableList getAssignedPatients(Integer doctorId) {
+    public ObservableList<User> getAssignedPatients(Integer doctorId) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Query query = session.createQuery("SELECT DISTINCT dp.patient FROM DoctorPatient dp WHERE dp.doctor.id = :doctorId");
@@ -427,4 +442,6 @@ public class Context {
         return FXCollections.observableArrayList(messages);
 
     }
+
+
 }

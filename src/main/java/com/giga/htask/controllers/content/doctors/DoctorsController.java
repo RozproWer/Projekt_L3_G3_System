@@ -72,6 +72,7 @@ public class DoctorsController extends ContentController implements Initializabl
     @FXML
     private Button addDoctor;
 
+
     public DoctorsController() {
         super(Context.getInstance().getLoggedUser().getId());
     }
@@ -82,7 +83,10 @@ public class DoctorsController extends ContentController implements Initializabl
         handleTables();
         updateTables();
         handleAddDoctor();
+
     }
+
+
 
     private void handleTables(){
         idColumn.setCellValueFactory(new PropertyValueFactory<User,Integer>("id")); //probowałem

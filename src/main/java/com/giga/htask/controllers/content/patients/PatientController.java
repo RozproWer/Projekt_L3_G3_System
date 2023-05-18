@@ -92,6 +92,9 @@ public class PatientController extends ContentController implements Initializabl
     private VBox assignVBox;
     @FXML
     private VBox doctorsVBox;
+    @FXML
+    private Button generateReportButton;
+
 
     /**
      * Constructs a new instance of the {@code EditPatientController} class with the specified user ID.
@@ -121,11 +124,11 @@ public class PatientController extends ContentController implements Initializabl
         }
     }
     /**
-     Initializes the controller with the specified location and resources. Sets the content title to display the
-     name and surname of the doctor being edited, and calls the handleTable() and handleSummary() methods to set up
-     the patient table view and summary view with appropriate data and cell factories.
-     @param location The location of the FXML file.
-     @param resources The resources used by the FXML file.
+     * Initializes the controller with the specified location and resources. Sets the content title to display the
+     * name and surname of the doctor being edited, and calls the handleTable() and handleSummary() methods to set up
+     * the patient table view and summary view with appropriate data and cell factories.
+     * @param location The location of the FXML file.
+     * @param resources The resources used by the FXML file.
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -135,11 +138,20 @@ public class PatientController extends ContentController implements Initializabl
         handleTable();
         updateTables();
         handleSummary();
-
         handleAssignDoctor();
         handleTabButtons();
-
+        handleReport();
     }
+
+    /**
+    *   Handles report generation after clicking generateReportButton.
+    */
+    private void handleReport() {
+        generateReportButton.setOnAction(event -> {
+            Context.getInstance().reportGenerator.generateUserReport(user);
+        });
+    }
+
 
     /**
      * Sets up the patient table view with the appropriate columns and cell factories, and populates it with data

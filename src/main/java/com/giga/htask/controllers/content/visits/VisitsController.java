@@ -263,7 +263,7 @@ public class VisitsController extends ContentController implements Initializable
     protected void updateTablesIfNeeded(Boolean refresh) {
         handleAddVisit();
         contentTitle.setText("Visits of " + user.getName() + " " + user.getSurname());
-        sfoList.updateLists(Context.getInstance().getVisitsTable(user.getId()), p -> true);
+        sfoList.updateLists(Context.getInstance().getVisitsTable(user.getId(),"all"), p -> true);
         visitsTable.setItems(sfoList.getSortedList());
         visitsTable.refresh();
     }
